@@ -14,45 +14,171 @@
 </head>
 <body>
 
-<!-- header comienzo -->
-<header>
+    <!-- header comienzo -->
+    <header>
 
-    <div class="usuario">
-        <img src="images/pic.jpg" alt="">    
-        <h3 class="nombre"> Luciano Lemos </h3>
-        <p class="profesion"> Programador Full stack</p> 
-    </div>
+        <div class="usuario">
+            <img src="images/pic.jpg" alt="">    
+            <h3 class="nombre"> Luciano Lemos </h3>
+            <p class="profesion"> Programador Full stack</p> 
+        </div>
 
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#formacion">Formacion Académica</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#formacion">Formacion Académica</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- header final -->
 
-<!-- header final -->
-<div id="menu" class="fas fa-bars"></div>
+    <!-- Opcion|Menu arriba a la derecha -->
+    <div id="menu" class="fas fa-bars"></div>
 
-<!-- Home comienzo -->
-<section class="home" id="home">
-    <h3>Hola a todos</h3>
-    <h1>Mi nombre es <span>Luciano Lemos</span></h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed provident voluptatum alias quae magni rem consectetur quisquam harum corrupti! Voluptatum accusamus dolorem ullam possimus quo aperiam. Ut, voluptatem praesentium. Rerum.</p>
-    <a href="about"><button class="btn">Sobre mi <i class="fas fa-user"></i></button></a>
-</section>
-<!-- Home final -->
+    <!-- Home comienzo -->
+    <section class="home" id="home">
+        <h3>Hola a todos</h3>
+        <h1>Mi nombre es <span>Luciano Lemos</span></h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed provident voluptatum alias quae magni rem consectetur quisquam harum corrupti! Voluptatum accusamus dolorem ullam possimus quo aperiam. Ut, voluptatem praesentium. Rerum.</p>
+        <a href="#about"><button class="btn">Sobre mi <i class="fas fa-user"></i></button></a>
+    </section>
+    <!-- Home final -->
 
 
+    <!-- SECCION about comienzo -->
+    <section class="about" id="about">
+        <h1 class="heading"> <span>About</span> me </h1>
+        <div class="row">
+            <div class="info">
+                <h3> <span> Nombre: </span> Luciano Lemos</h3>
+                <h3> <span> Edad: </span> 31 </h3>
+                <h3> <span> Profesión: </span> Programador Junior</h3>
+                <h3> <span> Caracteristicas: </span> Algunos detalles sobre mi</h3>
+                <h3> <span> Idiomas: </span> Español, Inglés y Portugués</h3>  
+                <a href="#"><button class="btn"> Descargar CV <i class="fas fa-download"></i></button></a>           
+            </div>
+            
+            <div class="counter">
+                <div class="box">
+                    <span>2+</span>
+                    <h3>Años de experiencia</h3>
+                </div>
+                <div class="box">
+                    <span>20</span>
+                    <h3>Proyectos terminados</h3>
+                </div>
+                <div class="box">
+                    <span>10</span>
+                    <h3>Inventando un poco</h3>
+                </div>
+                <div class="box">
+                    <span>7</span>
+                    <h3>El numero de la suerte</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- SECCION about final -->
 
-<!-- jquery cdn link -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"> </script>
+
+    <!-- SECCION formacion comienzo -->
+    <section class="formacion" id="formacion">
+        <h1 class="heading">Mi <span> formación </span></h1>
+        
+        <div class="box-container">
+            <div class="box">
+            <i class="fas fa-graduation-cap"></i>
+            <span>2020</span>
+            <h3>Ciclo superior en administracion y finanzas</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ut mollitia. Necessitatibus a repellat soluta quam mollitia optio aperiam, non quos velit corporis ut sunt labore! Consequatur, commodi fugit. Eius.</p>
+            </div>
+
+            <div class="box">
+            <i class="fas fa-graduation-cap"></i>
+            <span>2019</span>
+            <h3>Ciclo superior en administracion y finanzas</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ut mollitia. Necessitatibus a repellat soluta quam mollitia optio aperiam, non quos velit corporis ut sunt labore! Consequatur, commodi fugit. Eius.</p>
+            </div>
     
-<!-- Link archivo js -->
-<script src="js/script.js"></script>
+            <div class="box">
+            <i class="fas fa-graduation-cap"></i>
+            <span>2017</span>
+            <h3>Ciclo superior en administracion y finanzas</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, ut mollitia. Necessitatibus a repellat soluta quam mollitia optio aperiam, non quos velit corporis ut sunt labore! Consequatur, commodi fugit. Eius.</p>
+            </div>
+            
+        </div>
+    </section>
+    <!-- SECCION formacion final -->
+
+
+
+    <!-- SECCION Portafolio comienzo -->
+    <section class="portafolio" id="portafolio">
+        <h1 class="heading"> Mi <span> portafolio </span></h1>
+        <div class="box-container">
+
+            <div class="box">
+                <img src="images/img1.jpg" alt="">
+            </div>
+
+            <div class="box">
+                <img src="images/img2.jpg" alt="">
+            </div>
+
+            <div class="box">
+                <img src="images/img3.jpg" alt="">
+            </div>
+
+            <div class="box">
+                <img src="images/img4.jpg" alt="">
+            </div>
+
+        </div>
+    </section>
+    <!-- SECCION Portafolio final -->
+
+
+    <!-- SECCION contacto comienzo -->
+    <section class="contacto" id="contacto">
+        <h1 class="heading"> <span> Contacto </span> personal</h1>
+        <div class="row">
+            <div class="content">
+                <h3 class="titulo">Información de contacto</h3>
+
+                <div class="info">
+                    <h3><i class="fas fa-envelope"></i> llemos@uoc.edu</h3>
+                    <h3><i class="fas fa-phone"></i> +34 604 12 48 41</h3>
+                    <h3><i class="fas fa-map-marker-alt"></i> Las Palmas de Gran Canaria (Con posibilidad de traslado)</h3>
+                    <h3><i class="fas fa-envelope"></i> llemos@uoc.edu</h3>
+                </div>
+            </div>
+
+            <form action="">
+                <input type="text" placeholder="name" class="box">
+                <input type="email" placeholder="email" class="box">
+                <input type="text" placeholder="motivo" class="box">
+                <textarea name="" id="" cols="30" rows="10" class="box message" placeholder="message"></textarea>
+                <button type="submit" class="btn">Enviar<i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+    <!-- SECCION contacto final -->
+
+    <!-- Scroll top button -->
+    <a href="#home" class="top">
+        <img src="images/finger-up.png" alt="">
+    </a>
+
+
+    <!-- jquery cdn link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"> </script>
+        
+    <!-- Link archivo js -->
+    <script src="js/script.js"></script>
 
 </body>
 </html>
