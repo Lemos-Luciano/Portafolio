@@ -356,6 +356,11 @@ header .navbar ul li a:hover{
     height: 7rem;
     width: 7rem;
 }
+.top img:hover{
+    position: relative;
+    top: -2rem;
+    /* transform: rotate(45deg); */
+}
 
 
 

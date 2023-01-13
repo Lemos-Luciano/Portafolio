@@ -28,4 +28,12 @@ $(document).ready(function(){
         );
         });
         
+
 });
+
+
+function enviarDatos(){
+    nombres = (document.getElementById('nombre').value)
+    console.log(document.getElementById('nombre').value)
+}
+
