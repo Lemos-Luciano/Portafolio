@@ -179,11 +179,24 @@
                 <input type="text" placeholder="motivo" class="box" name="motivo">
                 <textarea name="mensaje" id="" cols="30" rows="10" class="box message" placeholder="message"></textarea>
                 <button type="submit" class="btn" onclick="enviarDatos()">Enviar<i class="fas fa-paper-plane"></i></button>
+                <input type="hidden" name="_next" value="https://lucianolemos.vercel.app/">  <!-- Luego de submit, nos dirige a la pagina deseada -->
+                <input type="hidden" name="_captcha" value="false">  <!-- Quita el captcha de formsumit -->
             </form>
         </div>
     </section>
     <!-- SECCION contacto final -->
 
+    <!-- Popup comienzo -->
+    <div class="overlay"> <!--Fondo gris  -->
+        <div class="popup">
+            <a href="#" id="btn-cerrar" class="btn-cerrar"><i class="fa-solid fa-rectangle-xmark"></i></a>
+            <h3>Muchas gracias por dedicarme tu tiempo</h3>
+            <h4>Me pondré contacto contigo en la brevedad</h4>
+        </div>
+    </div>
+    <!-- Popu final -->
+
+    
     <!-- Scroll top button -->
     <a href="#home" class="top">
         <img src="images/finger-up.png" alt="">

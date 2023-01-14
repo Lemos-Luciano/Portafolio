@@ -374,6 +374,16 @@ header .navbar ul li a:hover{
 }
 
 
+/* Popup */
+.overlay {
+    background: rgba(0, 0, 0, .3); /*RGBA para colocar transparencia .3 */
+    position: fixed; /*Quiero que ocupe toda la pantalla*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 
 /* Media queries */
 
