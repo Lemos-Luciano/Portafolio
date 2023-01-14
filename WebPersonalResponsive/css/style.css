@@ -10,7 +10,7 @@
     box-sizing: border-box;
     text-decoration: none;
     outline: none; border: none;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     transition: all .2s linear;
 }
 
@@ -22,7 +22,7 @@
 
 html {
     font-size: 62.5%;
-    overflow-x: hidden; /*oculta el contenido que sale de la caja del navegador (para activar la barra) */
+    overflow-x: hidden; /*oculta el contenido que sobresale de la pantalla (para activar el scroll)*/
 }
 
 /* Configuracion scroll bar */
@@ -309,6 +309,17 @@ header .navbar ul li a:hover{
     margin: 2rem;
     margin-bottom: 4rem;
 }
+.contacto .row a, .about a {
+    color: #fff;
+}
+.contacto .row a:hover{
+    color: var(--yellow);
+}
+/* .about a{
+    color: #fff;
+} */
+
+
 .contacto .row form .box{
     padding: 1.5rem;
     margin: 1rem 0;
