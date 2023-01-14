@@ -32,8 +32,13 @@ $(document).ready(function(){
 });
 
 
-function enviarDatos(){
-    nombres = (document.getElementById('nombre').value)
-    console.log(document.getElementById('nombre').value)
-}
+// Popup agradecimiento EN CONSTRUCCION
+var btnAbrirPopup = document.getElementById("enviar"),
+    overlay = document.getElementById("overlay"),
+    popup = document.getElementById("popup"),
+    btnCerrarPopup = document.getElementById("btn-cerrar-popup");
+
+btnAbrirPopup.addEventListener('click', function(){
+    overlay.classList.add('activar');
+});
 
