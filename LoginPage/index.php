@@ -17,26 +17,26 @@
                 <button class="sign-up-btn">Iniciar sesión</button>
             </div>
         </div>
+        <!-- formulario crear usuario -->
         <form action="php/registro_usuarios_be.php" method="POST" class="formulario">
             <h2 class="crearCuenta">Crear una cuenta</h2>
             <p class="cuentaGratis">Crea una cuenta gratis</p>
             <input type="text" placeholder="Nombre" name="nombre_completo">
             <input type="email" placeholder="Email" name="email">
             <input type="password" placeholder="Contraseña" name="password">
-            <!-- <input type="button" value="Registrarse"> -->
             <button class="botonLoco">Registrarse</button>
         </form>
     </div>
 
 
     <div class="container-form sign-in">
-        <form action="" class="formulario">
+        <!-- Formulario iniciar sesión -->
+        <form action="php/login_usuarios_be.php" method="POST" class="formulario">
             <h2 class="crearCuenta">Iniciar sesión</h2>
             <p class="cuentaGratis">Introduce tus datos</p>
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Contraseña">
+            <input type="email" placeholder="Email" name="usuario">
+            <input type="password" placeholder="Contraseña" name="contrasena">
             <button class="botonLoco">Iniciar sesión</button>
-            <!-- <input type="button" value="Iniciar sesion"> -->
         </form>
         <div class="welcome-back">
             <div class="mensaje">
