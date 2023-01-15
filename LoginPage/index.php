@@ -43,7 +43,7 @@
             <p class="cuentaGratis">Crea una cuenta gratis</p>
             <input type="text" placeholder="Nombre" name="nombre_completo">
             <input type="email" placeholder="Email" name="email">
-            <input type="password" placeholder="Contraseña" name="password">
+            <input type="password" placeholder="Contraseña" name="contrasena">
             <button class="botonLoco">Registrarse</button>
         </form>
     </div>

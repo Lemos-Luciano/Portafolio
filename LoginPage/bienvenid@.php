@@ -34,10 +34,20 @@
     <title>Bienvenid@</title>
 </head>
 <body>
-    <h1>Bienvenido al fantástico mundo de Luciano Lemos</h1>
-    <div class="container-form">
-        <a href="php/cerrar_sesion.php">Cerrar sesión</a>
+    <div class="formulario">
+        <h1>Bienvenido al fantástico mundo de Luciano Lemos</h1>
+        <h3>Usted se encuentra dentro del usuario <?php echo $_SESSION['usuario']; ?></h3>
+        <div>
+            <a href="php/cerrar_sesion.php" class="botonLoco">Cerrar sesión</a>
 
+        </div>
+    </div>
+    <div>
+        <form action="php/cambio_password.php" method="POST" class="formulario">
+            <input type="password" placeholder="Contraseña anterior" name="vieja_password">
+            <input type="password" placeholder="Nueva contraseña" name="nueva_password">
+            <button class="botonLoco">Cambiar contraseña</button>
+        </form>
     </div>
 </body>
 </html>

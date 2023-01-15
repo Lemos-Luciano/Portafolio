@@ -7,12 +7,10 @@
 
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
-    $contrasena = hash('sha512', $contrasena);
 
 
     $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuarios WHERE email='$usuario'");
-    $verificar_contrasena = mysqli_query($conexion, "SELECT * FROM usuarios WHERE password='$contrasena'");
-
+    $verificar_contrasena = mysqli_query($conexion, "SELECT * FROM usuarios WHERE contrasena='$contrasena'");
 
     if(mysqli_num_rows($verificar_usuario)  > 0) {
         if(mysqli_num_rows($verificar_contrasena)  > 0) {
