@@ -1,3 +1,23 @@
+<?php
+
+
+    session_start();
+    // Para usuarios con sesion iniciada, son dirigidos al bienvenid@
+
+    if(isset($_SESSION['usuario'])){
+                header("location: bienvenid@.php");
+            }
+        
+
+
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

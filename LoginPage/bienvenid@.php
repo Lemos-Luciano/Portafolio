@@ -7,7 +7,7 @@
     if(!isset($_SESSION['usuario'])){
         echo '
             <script>
-                alert("Por favor debes iniciar sesion previamente");
+                alert("Acceso permitido solo para usuarios registrados, por favor debes iniciar sesion previamente");
                 window.location = "index.php";
             </script>
         ';
@@ -29,10 +29,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Bienvenid@</title>
 </head>
 <body>
     <h1>Bienvenido al fantástico mundo de Luciano Lemos</h1>
-    <button>Cerrar sesión</button>
+    <div class="container-form">
+        <a href="php/cerrar_sesion.php">Cerrar sesión</a>
+
+    </div>
 </body>
 </html>
