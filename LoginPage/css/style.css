@@ -76,7 +76,8 @@ body{
     font-size: .9rem;
     color: white;
 }
-.formulario input[type="button"] {
+/* .formulario input[type="button"] { */
+.botonLoco {
     width: 60%;
     margin: auto;
     border: solid thin white;
@@ -84,10 +85,14 @@ body{
     border-radius: 2rem;
     background-color: white;
     font-weight: 600;
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-size: .8rem;
     cursor: pointer;
     color: #222;
+}
+.botonLoco:hover{
+    border: none;
+    background-color: #6464f8;
 }
 
 .crearCuenta {
