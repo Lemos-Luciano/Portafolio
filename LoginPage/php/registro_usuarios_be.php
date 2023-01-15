@@ -5,6 +5,9 @@
     $nombre_completo = $_POST['nombre_completo'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    // Encriptado de contraseña
+    $password = hash('sha512', $password);
+
 
     $consulta = "INSERT INTO usuarios(nombre_completo, email, password)
               VALUES('$nombre_completo','$email','$password')";
