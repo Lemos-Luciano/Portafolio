@@ -10,3 +10,15 @@ document.addEventListener('click', e => {
         $SignUp.classList.toggle('active')
     }
 });
+
+
+// Pagina bienvenid@
+const $btnCambiarPass = document.querySelector('.btnCambiarPass'),
+      $cambiarPass = document.querySelector('.cambiarPass');
+
+
+document.addEventListener('click', e => {
+    if (e.target === $btnCambiarPass) {
+        $cambiarPass .classList.toggle('active')
+    }
+});

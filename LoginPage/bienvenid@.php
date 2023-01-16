@@ -34,20 +34,30 @@
     <title>Bienvenid@</title>
 </head>
 <body>
-    <div class="formulario">
-        <h1>Bienvenido al fantástico mundo de Luciano Lemos</h1>
-        <h3>Usted se encuentra dentro del usuario <?php echo $_SESSION['usuario']; ?></h3>
-        <div>
-            <a href="php/cerrar_sesion.php" class="botonLoco">Cerrar sesión</a>
+    <div>
+        <div class="formulario">
+            <div class="texto">
+                <h2>Bienvenido al fantástico mundo de Luciano Lemos</h2>
+                <p>Usted se encuentra dentro del usuario <?php echo $_SESSION['usuario']; ?></p>
+            </div>
+            <div class="botones">
+                <button class="botonLoco btnCambiarPass">Quieres cambiar la contraseña?</button>
+                <!-- <a href="" class="botonLoco btnCambiarPass">Quieres cambiar la contraseña?</a> -->
+                <a href="php/cerrar_sesion.php" class="botonLoco">Cerrar sesión</a>
 
+            </div>
+        </div>
+        <div class="cambiarPass">
+            <form action="php/cambio_password.php" method="POST" class="formulario">
+                <input type="password" placeholder="Contraseña anterior" name="vieja_password">
+                <input type="password" placeholder="Nueva contraseña" name="nueva_password">
+                <button class="botonLoco">Cambiar contraseña</button>
+            </form>
         </div>
     </div>
-    <div>
-        <form action="php/cambio_password.php" method="POST" class="formulario">
-            <input type="password" placeholder="Contraseña anterior" name="vieja_password">
-            <input type="password" placeholder="Nueva contraseña" name="nueva_password">
-            <button class="botonLoco">Cambiar contraseña</button>
-        </form>
-    </div>
+
+
+
+    <script src="js/script.js"></script>
 </body>
 </html>
