@@ -10,7 +10,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(/LoginPage/images/1.jpg);
+    background-image: url(../images/1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -213,7 +213,7 @@ a{
     flex: 1 1 0; 
 }
 .linterna.off{
-    background-image: url(/LoginPage/images/linternaOff.png);
+    background-image: url(../images/linternaOff.png);
     transform: rotate(90deg);
     height: 4rem;
     width: 4rem;
@@ -223,7 +223,7 @@ a{
     cursor: pointer;
 }
 .linterna.on{
-    background-image: url(/LoginPage/images/linternaOn.png);
+    background-image: url(../images/linternaOn.png);
     transform: rotate(90deg);
     height: 4rem;
     width: 4rem;
