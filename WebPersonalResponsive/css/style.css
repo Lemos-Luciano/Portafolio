@@ -279,7 +279,7 @@ header .navbar ul li a:hover{
     width: 26rem;
     border-radius: 1rem;
     margin: 2rem;
-    overflow: hidden;
+    /* overflow: hidden; */
     cursor: pointer;
 }
 .portafolio .box-container .box img{
@@ -290,6 +290,7 @@ header .navbar ul li a:hover{
 .portafolio .box-container .box:hover img{ /*Animacion cursor arriba*/
     transform: scale(1.2);
 }
+
 
 /* Pestaña Contacto */
 .contacto .row{
