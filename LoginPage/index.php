@@ -39,7 +39,7 @@
         </div>
         <!-- formulario crear usuario -->
         <form action="php/registro_usuarios_be.php" method="POST" class="formulario">
-            <h2 class="crearCuenta">Crear una cuenta probando</h2>
+            <h2 class="crearCuenta">Crear una cuenta</h2>
             <p class="cuentaGratis">Crea una cuenta gratis</p>
             <input type="text" placeholder="Nombre" name="nombre_completo">
             <input type="email" placeholder="Email" name="email">

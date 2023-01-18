@@ -4,6 +4,7 @@
     --yellow:#f9ca24;
 }
 
+
 *{
     font-family: 'Nunito', sans-serif;
     margin: 0; padding: 0;
@@ -281,15 +282,36 @@ header .navbar ul li a:hover{
     margin: 2rem;
     /* overflow: hidden; */
     cursor: pointer;
+    position: relative;
 }
 .portafolio .box-container .box img{
     height: 100%;
     width: 100%;
     object-fit: cover;
+    position: absolute;
+    z-index: 1;
 }
-.portafolio .box-container .box:hover img{ /*Animacion cursor arriba*/
+.portafolio .box-container .box:hover img{
     transform: scale(1.2);
 }
+.box h3{
+    font-size: 2rem;
+}
+.icono{
+    margin: 1rem;
+    position: absolute;
+    z-index: 2;
+    color: var(--yellow);
+    padding: 1rem;
+    background:rgba(0, 0, 0, 0.7);
+    border-radius: 4rem;
+}
+.icono:hover{
+    transform: scale(1.5);
+}
+
+
+
 
 
 /* Pestaña Contacto */
@@ -476,6 +498,11 @@ header .navbar ul li a:hover{
         width: 5rem;
     }
 }
+
+
+
+
+
 
 
 
