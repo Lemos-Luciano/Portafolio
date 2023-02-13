@@ -220,6 +220,8 @@ header .navbar ul li a:hover{
 }
 
 
+
+
 /* Pestaña formacion */
 .formacion .box-container{
     display: flex;
@@ -308,6 +310,27 @@ header .navbar ul li a:hover{
 }
 .icono:hover{
     transform: scale(1.5);
+}
+
+.boxDescripcion{
+    visibility: hidden;
+    opacity: 0;
+    /* display: none; */
+    font-size: 1.3rem;
+    top: 125%;
+    left: 0%;
+    position: absolute;
+    z-index: 999;
+    background: #222;
+    color: #fff;
+    padding: 2rem;
+    transition: visibility 0s, opacity 1s linear, transform 1s;
+    border-radius: 1rem;
+}
+.portafolio .box-container .box:hover .boxDescripcion{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 
