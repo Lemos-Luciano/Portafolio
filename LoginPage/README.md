@@ -1,18 +1,24 @@
 
-<h1 align="center">Página web personal</h1>
+<h1 align="center">Login Page</h1>
 
-Página web personal, allí encontrará una breve descripción sobre mí y acceso directo a mis trabajos personales.
+Proyecto en el cual podemos crear un usuario con su respectiva contraseña. El mismo es una demostración del trabajo en simultáneo con las bases de datos, utilizando HTML, CSS y JavaScript.
 
-En la parte inferior de la página web encontrará mis datos de contacto en caso de querer comunicarse conmigo. También, puede rellenar el formulario y me pondré en contacto con usted en la brevedad.
-
+Los datos del usuario se almacenan en la propia base de datos del proyecto. Una vez creado el usuario puede iniciar sesión en el mismo (también notará que no podrá crear un usuario nuevo con los mismos datos), una vez dentro de su sesión podrá: cerrar la misma, ver su usuario, contraseña y cambiar la contraseña.
 
 <br>
 
 ## 🔗 Links
+<a href="https://lemos-luciano.000webhostapp.com/index.php" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/web.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `URL del proyecto`</a>
 
 <a href="https://lucianolemos.vercel.app/" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/personalweb.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `URL Página web personal` </a>
 
 <br>
+
+## 🪧 Instrucciones
+
+1. En la pestaña "crear una cuenta", coloque los datos solicitados y haga click en registrarse
+2. Una vez creado el usuario correctamente, podrá iniciar sesión en la pestaña "iniciar sesión"
+3. Dentro de la sesión podrá ver su contraseña actual con la herramienta linterna, cambiar la contraseña o cerrar sesión
 
 
 <br>
