@@ -101,7 +101,7 @@ header .usuario img{
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border:.7rem solid var(--yellow);
+    border:.5rem solid var(--yellow);
 }
 
 header .usuario .nombre{
