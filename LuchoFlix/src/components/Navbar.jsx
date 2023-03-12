@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
 import { FaPowerOff, FaSearch } from "react-icons/fa";
-import { signOut } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Navbar({ isScrolled }) {
   const links = [
@@ -16,6 +18,12 @@ export default function Navbar({ isScrolled }) {
 
   const [showsearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
+
+  // Cerramos sesión y nos dirige a la pagina de login
+  const navigate = useNavigate();
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (!currentUser) navigate("/login");
+  });
 
   return (
     <Container>
@@ -56,7 +64,11 @@ export default function Navbar({ isScrolled }) {
               }}
             />
           </div>
-          <button onClick={() => signOut(firebaseAuth)}>
+          <button
+            onClick={() => {
+              signOut(firebaseAuth);
+            }}
+          >
             <FaPowerOff />
           </button>
         </div>
@@ -66,7 +78,7 @@ export default function Navbar({ isScrolled }) {
 }
 
 const Container = styled.div`
-  .scrooled {
+  .scrolled {
     background-color: black;
   }
   nav {
@@ -96,6 +108,9 @@ const Container = styled.div`
             color: white;
             text-decoration: none;
           }
+          a:hover {
+            color: #f34242;
+          }
         }
       }
     }
@@ -110,12 +125,12 @@ const Container = styled.div`
         }
         svg {
           color: #f34242;
-          font-size: 1.rem;
+          font-size: 1rem;
         }
       }
       .search {
         display: flex;
-        gap: 0.rem;
+        gap: 0.1rem;
         align-items: center;
         justify-content: center;
         padding: 0.2rem;
@@ -123,19 +138,19 @@ const Container = styled.div`
         button {
           background-color: transparent;
           svg {
-            color: white
+            color: white;
           }
         }
         input {
           width: 0;
           opacity: 0;
           visibility: hidden;
-          transition: 0.3s ease-in-out;
+          transition: 0.5s ease-in-out;
           background-color: transparent;
           border: none;
           color: white;
           &:focus {
-            outline:none;
+            outline: none;
           }
         }
       }
