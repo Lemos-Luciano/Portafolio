@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import backgroundImage from "../assets/home.jpg";
@@ -6,18 +6,56 @@ import MovieLogo from "../assets/homeTitle.webp";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+// Herramientas para el get con la Api
+import { API_KEY, TMBD_BASE_URL, IMAGE_PATH } from "../utils/constants";
+import axios from "axios";
 
 export default function Home() {
-
   const navigate = useNavigate();
 
+  // Si se realiza scroll se ejecuta, el fondo del nav se coloca en negro
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Si se realiza scroll se ejecuta ???
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+
+  const [peliculas, setPeliculas] = useState([]);
+  const [busqueda, setBusqueda] = useState();
+
+  // funcion que realiza la petición por get a la api
+  // const fetchPeliculas = () => {
+  //   axios.get(`${TMBD_BASE_URL}/discover/movie`, {
+  //     params: {
+  //       api_key: API_KEY,
+  //       query: "sort_by=popularity.desc",
+  //     },
+  //   });
+  // };
+
+  const fechtpeliculas = () => {
+    axios
+      .get(
+        // "https://api.themoviedb.org/3/discover/movie?api_key=0c88a0020acf0787927c7ab02d10a416&sort_by=popularity.desc"
+        `${TMBD_BASE_URL}/discover/movie`,
+        {
+          params: {
+            api_key: API_KEY,
+            query: "sort_by=popularity.desc",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.results[0].title);
+        console.log(res.data.results);
+        setPeliculas (res.data.results);
+      });
+  };
+
+  useEffect ( () => {
+    fechtpeliculas();
+  },[])
 
   return (
     <Container>
@@ -33,13 +71,27 @@ export default function Home() {
             <img src={MovieLogo} alt="Movie Logo" />
           </div>
           <div className="buttons flex">
-            <button className="flex j-center a-center" onClick={()=>navigate("/Player")}>
+            <button
+              className="flex j-center a-center"
+              onClick={() => navigate("/Player")}
+            >
               <FaPlay /> Play
             </button>
             <button className="flex j-center a-center">
               <AiOutlineInfoCircle /> Más Info
             </button>
           </div>
+        </div>
+      </div>
+      <div>
+        <h1>Películas recomendadas</h1>
+        <div className="banner">
+          {peliculas.map ( (pelicula, index) => {
+            return <div key={index}> 
+              <h4>{pelicula.title} </h4>
+              <img src={`${IMAGE_PATH + pelicula.poster_path }`} alt="" height={300} width="300" /> 
+            </div>;
+          })}
         </div>
       </div>
     </Container>
@@ -61,7 +113,7 @@ const Container = styled.div`
       position: absolute;
       bottom: 5rem;
       .logo {
-          img{
+        img {
           width: 100%;
           height: 100%;
           margin-left: 5rem;
@@ -89,12 +141,12 @@ const Container = styled.div`
           &:nth-of-type(2) {
             background-color: rgba(109, 109, 110, 0.7);
             color: white;
-            svg{
-              font-size: 1.8rem
+            svg {
+              font-size: 1.8rem;
             }
           }
         }
       }
     }
-  } 
+  }
 `;
