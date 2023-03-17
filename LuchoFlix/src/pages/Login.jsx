@@ -62,7 +62,7 @@ export default function Login() {
                   ...formValues, [e.target.name]: e.target.value,
                 })} />
 
-              <button onClick={iniciarsesion}>Crear Usuario</button>
+              <button onClick={iniciarsesion}>Iniciar sesión</button>
             </div>
           </div>
         </div>

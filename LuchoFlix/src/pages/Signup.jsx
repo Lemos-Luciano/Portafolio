@@ -54,7 +54,7 @@ export default function Signup() {
             )}
             {/* si showpassword es falso, muestra el siguiente contenido */}
             { !showPassword && (
-            <button onClick={() => setShowPassword(true)}>Get Started</button>
+            <button onClick={() => setShowPassword(true)}>Comenzar</button>
             )}
           </div>
           <button onClick={crearusuario}>Crear Usuario</button>
