@@ -9,20 +9,43 @@ import { useNavigate } from "react-router-dom";
 // Herramientas para el get con la Api
 import { API_KEY, TMBD_BASE_URL, IMAGE_PATH } from "../utils/constants";
 import axios from "axios";
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { fetchMovies, getGenero } from "../store";
+// Slider
+import Slider from '../components/Slider';
+
 
 export default function Home() {
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
 
   // Si se realiza scroll se ejecuta, el fondo del nav se coloca en negro
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // llama al reducer del store con nombre lucho
+  const genresLoaded = useSelector ((state) => state.lucho.genresLoaded);
+  const movies = useSelector ((state) => state.lucho.movies);
+
+
+  // pruebo si funciona getGenero
+  useEffect (() => {
+    dispatch(getGenero())
+  }, []);
+
+  useEffect (() => {
+    if(genresLoaded) dispatch(fetchMovies( {type : "all"}));
+  });
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-
-  const [peliculas, setPeliculas] = useState([]);
-  const [busqueda, setBusqueda] = useState();
+  // console.log(movies);
+  // const [peliculas, setPeliculas] = useState([]);
+  // const [busqueda, setBusqueda] = useState();
 
   // funcion que realiza la petición por get a la api
   // const fetchPeliculas = () => {
@@ -34,28 +57,28 @@ export default function Home() {
   //   });
   // };
 
-  const fechtpeliculas = () => {
-    axios
-      .get(
-        // "https://api.themoviedb.org/3/discover/movie?api_key=0c88a0020acf0787927c7ab02d10a416&sort_by=popularity.desc"
-        `${TMBD_BASE_URL}/discover/movie`,
-        {
-          params: {
-            api_key: API_KEY,
-            query: "sort_by=popularity.desc",
-          },
-        }
-      )
-      .then((res) => {
-        console.log(res.data.results[0].title);
-        console.log(res.data.results);
-        setPeliculas (res.data.results);
-      });
-  };
+  // const fechtpeliculas = () => {
+  //   axios
+  //     .get(
+  //       // "https://api.themoviedb.org/3/discover/movie?api_key=0c88a0020acf0787927c7ab02d10a416&sort_by=popularity.desc"
+  //       `${TMBD_BASE_URL}/discover/movie`,
+  //       {
+  //         params: {
+  //           api_key: API_KEY,
+  //           query: "sort_by=popularity.desc",
+  //         },
+  //       }
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data.results[0].title);
+  //       console.log(res.data.results);
+  //       setPeliculas (res.data.results);
+  //     });
+  // };
 
-  useEffect ( () => {
-    fechtpeliculas();
-  },[])
+  // useEffect ( () => {
+  //   fechtpeliculas();
+  // },[])
 
   return (
     <Container>
@@ -83,7 +106,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div>
+      <Slider movies={movies} />
+      {/* <div>
         <h1>Películas recomendadas</h1>
         <div className="banner">
           {peliculas.map ( (pelicula, index) => {
@@ -93,7 +117,7 @@ export default function Home() {
             </div>;
           })}
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 }
