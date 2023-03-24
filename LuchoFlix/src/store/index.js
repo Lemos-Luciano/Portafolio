@@ -21,8 +21,7 @@ export const getGenero = createAsyncThunk("lucho/genres", async () => {
   return genres;
 });
 
-
-// Crea el array con la informacion importante de la pelicula 
+// Crea el array con la informacion importante de la pelicula
 const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
   // console.log(array);
   array.forEach((pelicula) => {
@@ -54,18 +53,18 @@ const getDatosIniciales = async (api, genres, paging) => {
     } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`);
     crearArrayConDatosIniciales(results, arrayPeliculas, genres);
   }
+  // console.log(arrayPeliculas);
   return arrayPeliculas;
 };
 
-// Comprueba la cantidad de peliculas
+// Conecta con la Api para saber la cantidad de peliuclas segun su tipo
 export const fetchMovies = createAsyncThunk(
   "lucho/tendencias",
   async ({ type }, thunkApi) => {
     const {
       lucho: { genres },
     } = thunkApi.getState();
-    // return getDatosIniciales (
-    // const data = getDatosIniciales( EN CASO DE QUERER IMPRIMIR LA DATA DEBAJO
+    // const data = getDatosIniciales( EN CASO DE QUERER IMPRIMIR LA DATA DEBAJO Descomentar return datos iniciales
     return getDatosIniciales(
       // Obtenemos las tendencias, segun el type (pelicula, serie, persona)
       // https://developers.themoviedb.org/3/trending/get-trending
@@ -74,6 +73,46 @@ export const fetchMovies = createAsyncThunk(
       true
     );
     // console.log(data);
+  }
+);
+// Conecta con la Api para saber la cantidad de peliuclas segun su genero
+export const fetchDataByGenre = createAsyncThunk(
+  "lucho/moviesByGenre",
+  async ({ genre, type }, thunkApi) => {
+    const {
+      lucho: { genres },
+    } = thunkApi.getState();
+    // const data = getDatosIniciales( EN CASO DE QUERER IMPRIMIR LA DATA DEBAJO Descomentar return datos iniciales
+    return getDatosIniciales(
+      // Obtiene las peliculas|series segun su genero ordenados por popularidad
+      // https://developers.themoviedb.org/3/discover/movie-discover
+      `${TMBD_BASE_URL}/discover/${type}?api_key=${API_KEY}&with_genres=${genre}&sort_by=popularity.desc`,
+      genres
+    );
+    // console.log(data);
+  }
+);
+
+export const getUserLikedMovies = createAsyncThunk(
+  "lucho/getLiked",
+  async (email) => {
+    const {
+      data: { movies },
+    } = await axios.get(`http://localhost:5000/api/user/liked/${email}`);
+    return movies;
+  }
+);
+
+export const removeFromLikedMovies = createAsyncThunk(
+  "lucho/deleteLiked",
+  async ({ email, movieId }) => {
+    const {
+      data: { movies },
+    } = await axios.put(`http://localhost:5000/api/user/delete`, {
+      email,
+      movieId,
+    });
+    return movies;
   }
 );
 
@@ -86,6 +125,15 @@ const LuchoflixSlice = createSlice({
       state.genresLoaded = true;
     });
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
+    builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
+    builder.addCase(getUserLikedMovies.fulfilled, (state, action) => {
+      state.movies = action.payload;
+    });
+    builder.addCase(removeFromLikedMovies.fulfilled, (state, action) => {
       state.movies = action.payload;
     });
   },

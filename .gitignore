@@ -1,3 +1,6 @@
 secretos.txt
 /secretos
 /wordpress
+
+/node_modules
+.env

@@ -20,7 +20,8 @@ const CardSlider = ({ data, title }) => {
     if (direction === "right" && sliderPosition < 4 ) {
         listRef.current.style.transform = `translateX(${-230+distance}px)`;
         setSliderPosition(sliderPosition + 1);
-    }
+    };
+    console.log(distance);
   };
 
   return (
