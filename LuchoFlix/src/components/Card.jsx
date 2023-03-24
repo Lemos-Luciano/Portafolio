@@ -32,7 +32,7 @@ function Card({ movieData, isLiked = false }) {
       if (currentUser) setEmail(currentUser.email);
       else navigate("/login");
     });
-  }, []);
+  }, [navigate]);
 
   const addToList = async () => {
     try {

@@ -18,9 +18,16 @@ export default function TVshows() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (!currentUser) navigate("/login");
+    });
+  });
+
+
   // Si se realiza scroll se ejecuta, el fondo del nav se coloca en negro
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
   // llama al reducer del store con nombre lucho
   const genresLoaded = useSelector((state) => state.lucho.genresLoaded);
   const movies = useSelector((state) => state.lucho.movies);
@@ -29,22 +36,17 @@ export default function TVshows() {
   // pruebo si funciona getGenero
   useEffect(() => {
     dispatch(getGenero());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (genresLoaded) dispatch(fetchMovies({ type: "tv" }));
-  }, [genresLoaded]);
+  }, [dispatch, genresLoaded]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 
-  // NO TIENE SENTIDO, EL PROPIO NAVBAR LO ENVIARA AL LOGIN
-  // Una vez iniciada sesion deriva a la pagina de inicio
-  // onAuthStateChanged(firebaseAuth, (currentUser) => {
-  //   // if (currentUser) navigate("/");
-  // });
 
   return <Container>
     <div className="navbar">
@@ -64,4 +66,9 @@ const Container = styled.div`
   .data {
     margin-top: 8rem;
     .not-available {
-      text-align: c
+      text-align: center;
+      color: white;
+      margin-top: 4rem;
+    }
+  }
+`;

@@ -6,9 +6,6 @@ import MovieLogo from "../assets/homeTitle.webp";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-// Herramientas para el get con la Api
-import { API_KEY, TMBD_BASE_URL, IMAGE_PATH } from "../utils/constants";
-import axios from "axios";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenero } from "../store";
@@ -33,11 +30,11 @@ export default function Home() {
   // pruebo si funciona getGenero
   useEffect (() => {
     dispatch(getGenero())
-  }, []);
+  }, [dispatch]);
 
   useEffect (() => {
     if(genresLoaded) dispatch(fetchMovies( {type : "all"}));
-  }, [genresLoaded]);
+  }, [dispatch, genresLoaded]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);

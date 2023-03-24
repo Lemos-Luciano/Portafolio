@@ -26,24 +26,27 @@ export default function Movies() {
   const movies = useSelector((state) => state.lucho.movies);
   const genres = useSelector((state) => state.lucho.genres);
 
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (!currentUser) navigate("/");
+    })
+  }, [navigate] );
+
   // LLama a getGenero
   useEffect(() => {
     dispatch(getGenero());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (genresLoaded) dispatch(fetchMovies({ type: "movie" }));
-  }, [genresLoaded]);
+  }, [dispatch, genresLoaded]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
 
-  // Una vez iniciada sesion deriva a la pagina de inicio
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    // if (currentUser) navigate("/");
-  });
+
 
   return <Container>
     <div className="navbar">

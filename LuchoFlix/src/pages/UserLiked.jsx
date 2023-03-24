@@ -23,12 +23,12 @@ export default function UserLiked() {
   const [email, setEmail] = useState(undefined);
 
   // Si existe un currentuser (un usuario logueado), toma su email caso contrario ve al login
-  // useEffect(() => {
+  useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setEmail(currentUser.email);
     else navigate("/login");
   });
-// }, []);
+  }, [navigate]);
 
 
   useEffect(() => {

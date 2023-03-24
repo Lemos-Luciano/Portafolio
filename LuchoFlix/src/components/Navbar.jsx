@@ -25,7 +25,7 @@ export default function Navbar({ isScrolled }) {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate("/login");
     });
-    },[])
+    },[navigate])
 
   return (
     <Container>
