@@ -36,7 +36,7 @@ function Card({ movieData, isLiked = false }) {
 
   const addToList = async () => {
     try {
-      console.log(`${process.env.REACT_APP_BACKEND_URL}`);
+      // console.log(`${process.env.REACT_APP_BACKEND_URL}`);
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/add`, {email, data:movieData})
     } catch (error) {
       console.log(error);
