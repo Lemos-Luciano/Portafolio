@@ -42,19 +42,19 @@ export default function Signup() {
         <Header login />
         <div className="body flex column a-center j-center">
           <div className="text flex column">
-            <h1>Películas ilimitadas, series y más </h1>
+            <h1>Resumenes de películas </h1>
             <h4>Miralo cuando quieras, gratis</h4>
-            <h6>Listo para ver los mejores resumenes!?? Escribe tu correo electronico y haste miembro</h6>
+            <h6>Listo para ver los mejores resumenes!?? <br /> Escribe tu correo electronico y haste miembro</h6>
           </div>
-          <div className="form">
-            <input type="email" placeholder='Correo electrónico' name='email' value={formValues.email} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
-            {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Get started, haciendo click pasa a ser true */}
-            {showPassword && (
-                <input type="password" placeholder='Contraseña' name='password' value={formValues.password} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
+          <div className="form formsmall">
+            <input className='igual' type="email" placeholder='Correo electrónico' name='email' value={formValues.email} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
+              {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Get started, haciendo click pasa a ser true */}
+              {showPassword && (
+            <input  className='igual' type="password" placeholder='Contraseña' name='password' value={formValues.password} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
             )}
-            {/* si showpassword es falso, muestra el siguiente contenido */}
-            { !showPassword && (
-            <button onClick={() => setShowPassword(true)}>Comenzar</button>
+              {/* si showpassword es falso, muestra el siguiente contenido */}
+              { !showPassword && (
+            <button className='igual' onClick={() => setShowPassword(true)}>Comenzar</button>
             )}
           </div>
           <button onClick={crearusuario}>Crear Usuario</button>
@@ -67,6 +67,7 @@ export default function Signup() {
 
 const Container = styled.div`
   position: relative; 
+  margin-bottom: 1rem;
   .content{
     position: absolute;
     top: 0;
@@ -83,7 +84,8 @@ const Container = styled.div`
           text-align: center;
           font-size: 2rem;
           h1 {
-            padding: 0 25rem;
+            @media (max-width:800px) {      
+            padding: 0 1rem;}
           }
       }
       .form {
@@ -91,25 +93,17 @@ const Container = styled.div`
         // Si showpassword es true entonces la proporcion es 1 a 1, en caso contrario la proporcion es 2 a 1
         grid-template-columns: ${( {showPassword}) => showPassword ? "1fr 1fr" : "2fr 1fr"};
         width: 60%;
+        max-width: 30rem;
           input {
               color: black;
               // border: none;
-              padding: 1.5rem;
+              padding: 1rem;
               font-size: 1.2rem;
               border: 1px solid black;
               &:focus {outline: none;}
               }
-          button {
-              padding: 0.5rem 1rem;
-              background-color: #e50914;
-              border: none;
-              cursor: pointer;
-              color: white;
-              font-weight: bolder;
-              font-size: 1.05rem;
-              }
-          }
-      button {
+        }
+        button {
         padding: 0.5rem 1rem;
         background-color: #e50914;
         border: none;
@@ -118,7 +112,20 @@ const Container = styled.div`
         border-radius: 0.2rem;
         font-weight: bolder;
         font-size: 1.05rem;
+      }
+      .formsmall {
+        @media (max-width:800px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          // grid-template-columns: none;
+          .igual{
+            width: 20rem;
+          }
         }
+        
+    }
     }
   }
 `;

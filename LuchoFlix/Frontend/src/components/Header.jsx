@@ -18,14 +18,20 @@ export default function Header(props) {
 }
 
 const Container = styled.div`
-    margin-top: 1rem;
+    margin-top: 2rem;
     padding: 0 4rem;
+    @media (max-width:800px) {      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
     .logo {
-        img {height: 5rem;
-              margin-right: 2rem}
-        @media (max-width:600px) {
-          img {height: 3rem;}
-        }
+        img {height: 5rem;}
+        // @media (max-width:800px) {
+        //   img {height: 4rem;}
+        // }
       }
       button {
         padding: 0.5rem 1rem;
@@ -36,7 +42,7 @@ const Container = styled.div`
         border-radius: 0.2rem;
         font-weight: bolder;
         font-size: 1.05rem;
-      @media (max-width:600px) {
-        font-size: 0.75rem;
+      @media (max-width:800px) {
+        font-size: 0.95rem;
       }
 `;
