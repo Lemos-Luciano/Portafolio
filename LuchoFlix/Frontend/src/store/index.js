@@ -98,7 +98,7 @@ export const getUserLikedMovies = createAsyncThunk(
   async (email) => {
     const {
       data: { movies },
-    } = await axios.get(`http://localhost:5000/api/user/liked/${email}`);
+    } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/liked/${email}`);
     return movies;
   }
 );
@@ -108,7 +108,7 @@ export const removeFromLikedMovies = createAsyncThunk(
   async ({ email, movieId }) => {
     const {
       data: { movies },
-    } = await axios.put(`http://localhost:5000/api/user/delete`, {
+    } = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/delete`, {
       email,
       movieId,
     });
