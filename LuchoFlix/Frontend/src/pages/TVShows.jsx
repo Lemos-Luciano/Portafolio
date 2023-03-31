@@ -48,6 +48,15 @@ export default function TVshows() {
   };
 
 
+  // const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  // useEffect(()=> {
+  //   console.log(scrollLeft);
+  // })
+
+  // const posicionhorizontal = () => {
+  // console.log("Horizontal: " + window.scrollX);
+  // };
+
   return <Container>
     <div className="navbar">
       <Navbar isScrolled={isScrolled} />

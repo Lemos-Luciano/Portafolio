@@ -16,7 +16,8 @@ body {
 }
 
 html, body {
-  overflow: auto;
+  /* overflow: auto; */
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -49,3 +50,6 @@ body::-webkit-scrollbar {
   gap: 0.5rem;
 }
 
+/* .prueba {
+
+} */

@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenero } from "../store";
 // Slider
 import Slider from '../components/Slider';
+// Medidas Responsive
+import { minMedia } from "../utils/constants";
 
 
 export default function Home() {
@@ -40,42 +42,7 @@ export default function Home() {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-  // console.log(movies);
-  // const [peliculas, setPeliculas] = useState([]);
-  // const [busqueda, setBusqueda] = useState();
 
-  // funcion que realiza la petición por get a la api
-  // const fetchPeliculas = () => {
-  //   axios.get(`${TMBD_BASE_URL}/discover/movie`, {
-  //     params: {
-  //       api_key: API_KEY,
-  //       query: "sort_by=popularity.desc",
-  //     },
-  //   });
-  // };
-
-  // const fechtpeliculas = () => {
-  //   axios
-  //     .get(
-  //       // "https://api.themoviedb.org/3/discover/movie?api_key=0c88a0020acf0787927c7ab02d10a416&sort_by=popularity.desc"
-  //       `${TMBD_BASE_URL}/discover/movie`,
-  //       {
-  //         params: {
-  //           api_key: API_KEY,
-  //           query: "sort_by=popularity.desc",
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.results[0].title);
-  //       console.log(res.data.results);
-  //       setPeliculas (res.data.results);
-  //     });
-  // };
-
-  // useEffect ( () => {
-  //   fechtpeliculas();
-  // },[])
 
   return (
     <Container>
@@ -104,17 +71,6 @@ export default function Home() {
         </div>
       </div>
       <Slider movies={movies} />
-      {/* <div>
-        <h1>Películas recomendadas</h1>
-        <div className="banner">
-          {peliculas.map ( (pelicula, index) => {
-            return <div key={index}> 
-              <h4>{pelicula.title} </h4>
-              <img src={`${IMAGE_PATH + pelicula.poster_path }`} alt="" height={300} width="300" /> 
-            </div>;
-          })}
-        </div>
-      </div> */}
     </Container>
   );
 }
@@ -129,15 +85,21 @@ const Container = styled.div`
     img {
       height: 100vh;
       width: 100vw;
+      @media (max-width:${minMedia}px) {  
+        height: 70vh;    
+      }
     }
     .container {
       position: absolute;
       bottom: 5rem;
       .logo {
         img {
-          width: 100%;
           height: 100%;
+          width: 100%;
           margin-left: 5rem;
+          @media (max-width:${minMedia}px) {  
+          width: 70vw;
+          }
         }
       }
       .buttons {
@@ -166,6 +128,9 @@ const Container = styled.div`
               font-size: 1.8rem;
             }
           }
+          @media (max-width:${minMedia}px) {  
+            font-size: 0.8rem;
+            }
         }
       }
     }

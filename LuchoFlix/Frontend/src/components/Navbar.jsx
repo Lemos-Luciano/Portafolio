@@ -6,7 +6,7 @@ import { FaPowerOff, FaSearch } from "react-icons/fa";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
-
+import { minMedia } from "../utils/constants";
 
 export default function Navbar({ isScrolled }) {
   const links = [
@@ -21,20 +21,20 @@ export default function Navbar({ isScrolled }) {
 
   // Cerramos sesión y nos dirige a la pagina de login
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (!currentUser) navigate("/login");
     });
-    },[navigate])
+  }, [navigate]);
 
   return (
     <Container>
       {/* si isScrolled es true entronces la clase es scrolled en caso contrario estará solo con flex */}
       <nav className={`flex ${isScrolled ? "scrolled" : ""}`}>
         <div className="left flex a-center">
-        <Link to="/" className="brand flex a-center j-center">
-          <img src={logo} alt="logo" to="/"/>
-        </Link>
+          <Link to="/" className="brand flex a-center j-center">
+            <img src={logo} alt="logo" to="/" />
+          </Link>
           {/* <div className="brand flex a-center j-center">
             <img src={logo} alt="logo" to="/"/>
           </div> */}
@@ -90,24 +90,46 @@ const Container = styled.div`
     /* sitcky deja fija la barra cuando hago scroll */
     position: sticky;
     top: 0;
-    height: 6.5rem;
-    width: 100%;
+    // height: 6.5rem;
+    height: 15%;
+    width: 100vw;
+    // width: 100%;
     justify-content: space-between;
     position: fixed;
-    z-index: 2;
+    z-index: 200;
     padding: 0 4rem;
     align-items: center;
     transition: 0.3s ease-in-out;
+    @media (max-width: ${minMedia}px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
     .left {
       gap: 2rem;
+      @media (max-width: ${minMedia}px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
       .brand {
         img {
           height: 4rem;
+          @media (max-width: ${minMedia}px) {
+            height: 3rem;
+          }
         }
       }
       .links {
         list-style-type: none;
         gap: 2rem;
+        @media (max-width: ${minMedia}px) {
+          gap: 1rem;
+        }
         li {
           a {
             color: white;

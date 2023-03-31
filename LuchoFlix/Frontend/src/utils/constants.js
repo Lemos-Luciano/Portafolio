@@ -3,3 +3,6 @@ export const TMBD_BASE_URL = "https://api.themoviedb.org/3";
 export const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
 export const IMAGE_PATH_500 = "https://image.tmdb.org/t/p/w500";
 export const URL_IMAGE = "https://image.tmdb.org/t/p/original";
+
+// Resoluciones para el responsive
+export const minMedia = "800";

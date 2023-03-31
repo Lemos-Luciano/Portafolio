@@ -4,18 +4,29 @@ import styled from "styled-components";
 // iconos
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
+// Medidas Responsive
+import { minMedia } from "../utils/constants";
+
+
 const CardSlider = ({ data, title }) => {
   const [showControls, setShowControls] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(0);
   const [distanciaActual, setDistanciaActual] = useState(0);
   const listRef = useRef();
 
+  // let cuerpo = document;
+  // cuerpo.bind('scroll', function() {
+  //     // "Desactivar" el scroll horizontal
+  //     if (cuerpo.scrollLeft() !== 0) {
+  //         cuerpo.scrollLeft(0);
+  //     }
+  // });
 
   //   scroll slider derecha|izquierda
   const handleDirection = (direction) => {
     const boxRectTotal = listRef.current.getBoundingClientRect();
     console.log(`Width = ${boxRectTotal.width}`);
-    const boxPantalla = document.getElementById('titulo');
+    const boxPantalla = document.getElementById("titulo");
     const boxRectPantalla = boxPantalla.getBoundingClientRect();
     console.log(`Width = ${boxRectPantalla.width}`);
 
@@ -23,7 +34,10 @@ const CardSlider = ({ data, title }) => {
     // Multiplicado por pantalla computadora => lo paso a pixeles
     // divido 4 => puedo tocar 4 veces el boton
 
-    const distanciaRecorrerDivididoPX = ((boxRectTotal.width+100) / boxRectPantalla.width - 1) * boxRectPantalla.width / 4;
+    const distanciaRecorrerDivididoPX =
+      (((boxRectTotal.width + 100) / boxRectPantalla.width - 1) *
+        boxRectPantalla.width) /
+      4;
 
     // console.log("distancia es " + distancia.width);
     if (direction === "left" && sliderPosition > 0) {
@@ -32,14 +46,15 @@ const CardSlider = ({ data, title }) => {
       // console.log("la distancia x es" + distanciax);
       listRef.current.style.transform = `translateX(${distanciax}px)`;
       setSliderPosition(sliderPosition - 1);
-    };
+    }
 
     if (direction === "right" && sliderPosition < 4) {
       const distanciax = distanciaActual - distanciaRecorrerDivididoPX;
       setDistanciaActual(distanciaActual - distanciaRecorrerDivididoPX);
       listRef.current.style.transform = `translateX(${distanciax}px)`;
+      // listRef.current.style.transform = `translateX(${-230}px)`;
       setSliderPosition(sliderPosition + 1);
-    };
+    }
   };
 
   return (
@@ -52,7 +67,6 @@ const CardSlider = ({ data, title }) => {
         <h1>{title}</h1>
       </div>
 
-
       <div className="wrapper" id="titulo">
         {/* si showcontrols es falso le enviamos un none en caso contrario un string vacio */}
         <div
@@ -63,11 +77,14 @@ const CardSlider = ({ data, title }) => {
           <AiOutlineLeft onClick={() => handleDirection("left")} />
         </div>
 
-        <div className="flex slider" ref={listRef}  id="slider">
-          {data.map((movie, index) => {
-            return <Card movieData={movie} index={index} key={movie.id} />;
-          })}
+        <div className="slider-total">
+          <div className="flex slider" ref={listRef} id="slider">
+            {data.map((movie, index) => {
+              return <Card movieData={movie} index={index} key={movie.id} />;
+            })}
+          </div>
         </div>
+        
 
         <div
           className={`slider-action right ${
@@ -89,13 +106,22 @@ const Container = styled.div`
   }
   .wrapper {
     position: relative;
-    .slider {
-      margin-left: 50px;
-      width: max-content;
-      gap: 1rem;
-      // La funcion handleDirection modifica los datos con el fin de realizar el scroll
-      transform: translateX(0px);
-      transition: 0.3s ease-in-out;
+    .slider-total {
+      z-index: 50;
+      position: relative;      
+      .slider {
+        // position: absolute;
+        height: 20vh;
+        margin-left: 50px;
+        width: max-content;
+        gap: 1rem;
+        // La funcion handleDirection modifica los datos con el fin de realizar el scroll
+        transform: translateX(0px);
+        transition: 0.3s ease-in-out;
+        @media (max-width:${minMedia}px) {      
+          max-height: 100px;
+        }
+      }
     }
     .slider-action {
       background: rgba(128, 128, 128, 0.4);
@@ -116,7 +142,6 @@ const Container = styled.div`
     .left {
       left: 0;
       &:hover {
-        // opacity: 0.4;
         background: rgba(128, 128, 128, 0.8);
         cursor: pointer;
       }
@@ -128,7 +153,6 @@ const Container = styled.div`
     .right {
       right: 0;
       &:hover {
-        // opacity: 0.4;
         background: rgba(128, 128, 128, 0.8);
         cursor: pointer;
       }

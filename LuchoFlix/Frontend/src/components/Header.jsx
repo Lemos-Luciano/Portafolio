@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { minMedia } from "../utils/constants";
 
 export default function Header(props) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
   return (
-    <Container className='flex a-center j-between'>
+    <Container className="flex a-center j-between">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
@@ -14,13 +16,14 @@ export default function Header(props) {
         {props.login ? "Iniciar sesión" : "Crear cuenta"}
       </button>
     </Container>
-  )
+  );
 }
 
 const Container = styled.div`
     margin-top: 2rem;
     padding: 0 4rem;
-    @media (max-width:800px) {      
+    // @media (max-width:800px)  {  
+    @media (max-width:${minMedia}px) {      
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -30,8 +33,9 @@ const Container = styled.div`
     .logo {
         img {height: 5rem;}
         // @media (max-width:800px) {
-        //   img {height: 4rem;}
-        // }
+          @media (max-width:${minMedia}px) {      
+          img {height: 4rem;}
+        }
       }
       button {
         padding: 0.5rem 1rem;
