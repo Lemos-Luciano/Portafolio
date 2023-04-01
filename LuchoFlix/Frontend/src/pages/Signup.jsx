@@ -1,42 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import styled from "styled-components";
-import BackgroundImage from '../components/BackgroundImage';
-import Header from '../components/Header';
+import BackgroundImage from "../components/BackgroundImage";
+import Header from "../components/Header";
 import { firebaseAuth } from "../utils/firebase-config";
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import {useNavigate } from "react-router-dom";
-
-
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [formValues, setFormValues] = useState({
+    email: "",
+    password: "",
+  });
 
-
-    const [showPassword, setShowPassword]  = useState(false);
-    const [formValues, setFormValues] = useState ({
-      email: "",
-      password: "",
-    });
-
-    // Sube los datos del usuario creado a firebase
-    const crearusuario = async () => {
-      try {
-        const {email, password } = formValues;
-        await createUserWithEmailAndPassword (firebaseAuth, email, password);
-      } catch (error) {
-        console.log(error);
-        alert(error);
+  // Sube los datos del usuario creado a firebase
+  const crearusuario = async () => {
+    try {
+      const { email, password } = formValues;
+      await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    } catch (error) {
+      const errorCode = error.code;
+      console.log(errorCode);
+      if (errorCode === "auth/email-already-in-use") {
+        alert("El usuario ya se encuentra registrado");
+      } else if (errorCode === "auth/weak-password") {
+        alert("La contraseña debe tener 6 caracteres como minimo");
+      } else if (errorCode === "auth/invalid-email") {
+        alert("El usuario colocado no es un correo electrónico");
+      } else {
+        // console.log(error);
+        alert(error.message);
       }
-    };
+    }
+  };
 
-    // Una vez iniciada sesion deriva a la pagina de inicio
-    const navigate = useNavigate();
-    onAuthStateChanged(firebaseAuth, (currentUser) => {
-      if (currentUser) navigate ("/");
-    })
-
+  // Una vez iniciada sesion deriva a la pagina de inicio
+  const navigate = useNavigate();
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) navigate("/");
+  });
 
   return (
-    <Container showPassword = {showPassword}>
+    <Container showPassword={showPassword}>
       <BackgroundImage />
       <div className="content">
         <Header login />
@@ -44,31 +52,59 @@ export default function Signup() {
           <div className="text flex column">
             <h1>Resumenes de películas </h1>
             <h4>Miralo cuando quieras, gratis</h4>
-            <h6>Listo para ver los mejores resumenes!?? <br /> Escribe tu correo electronico y haste miembro</h6>
+            <h6>
+              Listo para ver los mejores resumenes!?? <br /> Escribe tu correo
+              electronico y haste miembro
+            </h6>
           </div>
           <div className="form formsmall">
-            <input className='igual' type="email" placeholder='Correo electrónico' name='email' value={formValues.email} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
-              {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Get started, haciendo click pasa a ser true */}
-              {showPassword && (
-            <input  className='igual' type="password" placeholder='Contraseña' name='password' value={formValues.password} onChange={(e) => setFormValues ({ ...formValues, [e.target.name]: e.target.value,})} />
+            <input
+              className="igual"
+              type="email"
+              placeholder="Correo electrónico"
+              name="email"
+              value={formValues.email}
+              onChange={(e) =>
+                setFormValues({
+                  ...formValues,
+                  [e.target.name]: e.target.value,
+                })
+              }
+            />
+            {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Get started, haciendo click pasa a ser true */}
+            {showPassword && (
+              <input
+                className="igual"
+                type="password"
+                placeholder="Contraseña"
+                name="password"
+                value={formValues.password}
+                onChange={(e) =>
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+              />
             )}
-              {/* si showpassword es falso, muestra el siguiente contenido */}
-              { !showPassword && (
-            <button className='igual' onClick={() => setShowPassword(true)}>Comenzar</button>
+            {/* si showpassword es falso, muestra el siguiente contenido */}
+            {!showPassword && (
+              <button className="igual" onClick={() => setShowPassword(true)}>
+                Comenzar
+              </button>
             )}
           </div>
           <button onClick={crearusuario}>Crear Usuario</button>
         </div>
       </div>
     </Container>
-  )
+  );
 }
 
-
 const Container = styled.div`
-  position: relative; 
+  position: relative;
   margin-bottom: 1rem;
-  .content{
+  .content {
     position: absolute;
     top: 0;
     left: 0;
@@ -80,30 +116,34 @@ const Container = styled.div`
     .body {
       gap: 1rem;
       .text {
-          gap: 1rem;
-          text-align: center;
-          font-size: 2rem;
-          h1 {
-            @media (max-width:800px) {      
-            padding: 0 1rem;}
+        gap: 1rem;
+        text-align: center;
+        font-size: 2rem;
+        h1 {
+          @media (max-width: 800px) {
+            padding: 0 1rem;
           }
+        }
       }
       .form {
         display: grid;
         // Si showpassword es true entonces la proporcion es 1 a 1, en caso contrario la proporcion es 2 a 1
-        grid-template-columns: ${( {showPassword}) => showPassword ? "1fr 1fr" : "2fr 1fr"};
+        grid-template-columns: ${({ showPassword }) =>
+          showPassword ? "1fr 1fr" : "2fr 1fr"};
         width: 60%;
         max-width: 30rem;
-          input {
-              color: black;
-              // border: none;
-              padding: 1rem;
-              font-size: 1.2rem;
-              border: 1px solid black;
-              &:focus {outline: none;}
-              }
+        input {
+          color: black;
+          // border: none;
+          padding: 1rem;
+          font-size: 1.2rem;
+          border: 1px solid black;
+          &:focus {
+            outline: none;
+          }
         }
-        button {
+      }
+      button {
         padding: 0.5rem 1rem;
         background-color: #e50914;
         border: none;
@@ -114,18 +154,17 @@ const Container = styled.div`
         font-size: 1.05rem;
       }
       .formsmall {
-        @media (max-width:800px) {
+        @media (max-width: 800px) {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           // grid-template-columns: none;
-          .igual{
+          .igual {
             width: 20rem;
           }
         }
-        
-    }
+      }
     }
   }
 `;

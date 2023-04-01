@@ -13,12 +13,21 @@ import { fetchMovies, getGenero } from "../store";
 import Slider from '../components/Slider';
 // Medidas Responsive
 import { minMedia } from "../utils/constants";
+// Control sesion logueada
+import { onAuthStateChanged } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 
 
 export default function Home() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (!currentUser) navigate("/login");
+    });
+  });
 
 
   // Si se realiza scroll se ejecuta, el fondo del nav se coloca en negro

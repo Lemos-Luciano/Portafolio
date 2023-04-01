@@ -6,7 +6,7 @@ import video from "../assets/Video.mp4";
 import axios from "axios";
 
 // Medidas Responsive
-import { minMedia } from "../utils/constants";
+// import { minMedia } from "../utils/constants";
 
 
 // Control logueo

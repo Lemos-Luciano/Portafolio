@@ -1,14 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import BackgroundImage from '../components/BackgroundImage';
-import Header from '../components/Header';
+import BackgroundImage from "../components/BackgroundImage";
+import Header from "../components/Header";
 import { firebaseAuth } from "../utils/firebase-config";
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function Login() {
+  // Una vez iniciada sesion deriva a la pagina de inicio
+  const navigate = useNavigate();
+  const [olvidoPass, setOlvidoPass] = useState(true);
+
+  useEffect(() => {
+    onAuthStateChanged(firebaseAuth, (currentUser) => {
+      if (currentUser) navigate("/");
+    });
+  }, [navigate]);
 
   const [formValues, setFormValues] = useState({
     email: "",
@@ -21,19 +32,42 @@ export default function Login() {
       const { email, password } = formValues;
       await signInWithEmailAndPassword(firebaseAuth, email, password);
     } catch (error) {
-      console.log(error);
-      alert(error);
+      const errorCode = error.code;
+      if (errorCode === "auth/wrong-password") {
+        alert("La contraseña introducida es incorrecta");
+      } else if (errorCode === "auth/user-not-found") {
+        alert("El usuario colocado es incorrecto");
+      } else if (errorCode === "auth/invalid-email") {
+        alert("El usuario colocado no es un correo electrónico");
+      } else {
+        alert(error);
+        console.log(errorCode);
+      }
     }
   };
 
-  // Una vez iniciada sesion deriva a la pagina de inicio
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    onAuthStateChanged(firebaseAuth, (currentUser) => {
-      if (currentUser) navigate("/");
-    })
-  }, [navigate] );
+  const recuperarpassword = async () => {
+    try {
+      const { email } = formValues;
+      await sendPasswordResetEmail(firebaseAuth, email);
+      alert(
+        "En unos minutos recibirás un correo electrónico con las instrucciones para cambiar tu contraseña"
+      );
+      navigate("/");
+    } catch (error) {
+      const errorCode = error.code;
+      if (errorCode === "auth/wrong-password") {
+        alert("La contraseña introducida es incorrecta");
+      } else if (errorCode === "auth/user-not-found") {
+        alert("El usuario colocado es incorrecto");
+      } else if (errorCode === "auth/invalid-email") {
+        alert("El usuario colocado no es un correo electrónico");
+      } else {
+        alert(error);
+        console.log(errorCode);
+      }
+    }
+  };
 
   return (
     <Container>
@@ -45,38 +79,60 @@ export default function Login() {
             <div className="title">
               <h3>Iniciar sesión</h3>
             </div>
-            <div className="container flex column">
+            <div className="container flex column a-center">
               <input
                 type="email"
-                placeholder='Correo electrónico'
-                name='email'
+                placeholder="Correo electrónico"
+                name="email"
                 value={formValues.email}
-                onChange={(e) => setFormValues({
-                  ...formValues, [e.target.name]: e.target.value,
-                })} />
+                onChange={(e) =>
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+              />
 
-              <input
-                type="password"
-                placeholder='Contraseña'
-                name='password'
-                value={formValues.password}
-                onChange={(e) => setFormValues({
-                  ...formValues, [e.target.name]: e.target.value,
-                })} />
+              {olvidoPass ? (
+                <>
+                  <input
+                    type="password"
+                    placeholder="Contraseña"
+                    name="password"
+                    value={formValues.password}
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
+                  />
+                  <button onClick={iniciarsesion}>Iniciar sesión</button>
+                </>
+              ) : (
+                <button onClick={recuperarpassword}>
+                  Recuperar contraseña
+                </button>
+              )}
 
-              <button onClick={iniciarsesion}>Iniciar sesión</button>
+              <h5
+                onClick={() => {
+                  setOlvidoPass(!olvidoPass);
+                }}
+              >
+                ¿Olvidaste tu contraseña?
+              </h5>
             </div>
           </div>
         </div>
       </div>
     </Container>
-  )
+  );
 }
 
-
-const Container = styled.div`
-  position: relative; 
-  .content{
+const Container = styled.div/*css*/ `
+  position: relative;
+  .content {
     position: absolute;
     top: 0;
     left: 0;
@@ -98,7 +154,7 @@ const Container = styled.div`
           gap: 2rem;
           input {
             padding: 0.5rem 1rem;
-            widht: 15rem;
+            // width: 15rem;
           }
           button {
             padding: 0.5rem 1rem;
@@ -109,8 +165,13 @@ const Container = styled.div`
             border-radius: 0.2rem;
             font-weight: bolder;
             font-size: 1.05rem;
+          }
+          h5 {
+            &:hover{
+              color: red;
+              cursor: pointer;
             }
-          
+          }
         }
       }
     }
