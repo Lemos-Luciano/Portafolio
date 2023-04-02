@@ -77,7 +77,11 @@ export default function Login() {
         <div className="form-container flex column a-center j-center">
           <div className="form flex column a-center j-center">
             <div className="title">
+            {olvidoPass ? 
               <h3>Iniciar sesión</h3>
+              :
+              <h3>Cambio contraseña</h3>
+            }
             </div>
             <div className="container flex column a-center">
               <input
@@ -115,11 +119,8 @@ export default function Login() {
                 </button>
               )}
 
-              <h5
-                onClick={() => {
-                  setOlvidoPass(!olvidoPass);
-                }}
-              >
+              <h5 onClick={() => 
+                  setOlvidoPass(!olvidoPass)}>
                 ¿Olvidaste tu contraseña?
               </h5>
             </div>

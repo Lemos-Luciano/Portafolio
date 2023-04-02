@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
@@ -9,6 +9,10 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
+
+
+
+
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -16,8 +20,8 @@ export default function Signup() {
     password: "",
   });
 
-  // Sube los datos del usuario creado a firebase
-  const crearusuario = async () => {
+  // Sube los datos del usuario creado a firebase y responde los distintos errores
+  const crearusuario = useCallback ( async () => {
     try {
       const { email, password } = formValues;
       await createUserWithEmailAndPassword(firebaseAuth, email, password);
@@ -30,18 +34,44 @@ export default function Signup() {
         alert("La contraseña debe tener 6 caracteres como minimo");
       } else if (errorCode === "auth/invalid-email") {
         alert("El usuario colocado no es un correo electrónico");
+      } else if (errorCode === "auth/internal-error") {
+        alert("Falta colocar la contraseña");
       } else {
-        // console.log(error);
+        console.log(error);
         alert(error.message);
       }
     }
-  };
+  }
+  , [formValues] ) ;
 
-  // Una vez iniciada sesion deriva a la pagina de inicio
+// Una vez iniciada sesion deriva a la pagina de inicio
   const navigate = useNavigate();
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) navigate("/");
   });
+
+
+  
+// key= tecla precionada , keycode= codigo de la tecla
+  const handleUserKeyPress = useCallback((event) => {
+    const { key, keyCode } = event;
+    // Si Keycode esta entre 0 y 90 y luego cumple los requisitos se ejecuta
+    if (keyCode >= 0 && keyCode <= 90) {
+      if (showPassword===false && key==="Enter") {
+        setShowPassword(true);
+      } else if (showPassword===true && key==="Enter") {
+        crearusuario(formValues);
+      }
+    }
+  }, [showPassword, formValues, crearusuario]);
+
+  // Registra cada tecla oprimida (keydown), removeEventListener quitamos el listener para que no se sumen cada vez que se ejecute el useEffect, caso contrario se ejecutarian varios keydown al mismo tiempo
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   return (
     <Container showPassword={showPassword}>
@@ -50,11 +80,11 @@ export default function Signup() {
         <Header login />
         <div className="body flex column a-center j-center">
           <div className="text flex column">
-            <h1>Resumenes de películas </h1>
-            <h4>Miralo cuando quieras, gratis</h4>
+            <h1>Sinoposis de películas </h1>
+            <h4>Miralo cuando quieras, ¡Gratis!</h4>
             <h6>
-              Listo para ver los mejores resumenes!?? <br /> Escribe tu correo
-              electronico y haste miembro
+              ¿Preparado para ver los mejores resumenes? <br /> Escribe tu
+              correo electronico y haste miembro
             </h6>
           </div>
           <div className="form formsmall">
@@ -70,31 +100,41 @@ export default function Signup() {
                   [e.target.name]: e.target.value,
                 })
               }
-            />
-            {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Get started, haciendo click pasa a ser true */}
-            {showPassword && (
-              <input
-                className="igual"
-                type="password"
-                placeholder="Contraseña"
-                name="password"
-                value={formValues.password}
-                onChange={(e) =>
-                  setFormValues({
-                    ...formValues,
-                    [e.target.name]: e.target.value,
-                  })
-                }
               />
+            {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Comenzar, haciendo click pasa a ser true */}
+            {showPassword && (
+              <div>
+                <input
+                  className="igual"
+                  type="password"
+                  placeholder="Contraseña"
+                  name="password"
+                  value={formValues.password}
+                  onChange={(e) =>
+                    setFormValues({
+                      ...formValues,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+                <div>
+                  <button className="igual" onClick={crearusuario}>
+                    Crear Usuario
+                  </button>
+                </div>
+              </div>
             )}
             {/* si showpassword es falso, muestra el siguiente contenido */}
             {!showPassword && (
-              <button className="igual" onClick={() => setShowPassword(true)}>
+              <button
+                className="igual"
+                name="comenzar"
+                onClick={() => {setShowPassword(true); console.log(showPassword);}}
+              >
                 Comenzar
               </button>
             )}
           </div>
-          <button onClick={crearusuario}>Crear Usuario</button>
         </div>
       </div>
     </Container>
@@ -116,9 +156,19 @@ const Container = styled.div`
     .body {
       gap: 1rem;
       .text {
+        width: 80%;
+        margin-bottom: 2rem;
         gap: 1rem;
         text-align: center;
         font-size: 2rem;
+        @media (max-width: 1300px) {
+          font-size: 1.7rem;
+          gap: 0.8rem;
+        }
+        @media (max-width: 800px) {
+          font-size: 1.5rem;
+          gap: 0.7rem;
+        }
         h1 {
           @media (max-width: 800px) {
             padding: 0 1rem;
@@ -135,8 +185,8 @@ const Container = styled.div`
         input {
           color: black;
           // border: none;
-          padding: 1rem;
-          font-size: 1.2rem;
+          padding: 0.7rem;
+          font-size: 1rem;
           border: 1px solid black;
           &:focus {
             outline: none;
@@ -151,18 +201,19 @@ const Container = styled.div`
         color: white;
         border-radius: 0.2rem;
         font-weight: bolder;
-        font-size: 1.05rem;
+        font-size: 1.2rem;
       }
       .formsmall {
-        @media (max-width: 800px) {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          // grid-template-columns: none;
-          .igual {
-            width: 20rem;
-          }
+        // @media (max-width: 800px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // grid-template-columns: none;
+        .igual {
+          width: 20rem;
+          margin-bottom: 0.2rem;
+          // }
         }
       }
     }
