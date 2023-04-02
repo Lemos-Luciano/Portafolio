@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import BackgroundImage from "../components/BackgroundImage";
 import Header from "../components/Header";
@@ -27,7 +27,7 @@ export default function Login() {
   });
 
   // Sube los datos del usuario creado a firebase
-  const iniciarsesion = async () => {
+  const iniciarsesion = useCallback( async () => {
     try {
       const { email, password } = formValues;
       await signInWithEmailAndPassword(firebaseAuth, email, password);
@@ -44,9 +44,11 @@ export default function Login() {
         console.log(errorCode);
       }
     }
-  };
+  }
+  , [formValues] ) ;
 
-  const recuperarpassword = async () => {
+
+  const recuperarpassword = useCallback( async () => {
     try {
       const { email } = formValues;
       await sendPasswordResetEmail(firebaseAuth, email);
@@ -67,7 +69,30 @@ export default function Login() {
         console.log(errorCode);
       }
     }
-  };
+  }
+  , [formValues, navigate] ) ;
+
+  
+  // key= tecla precionada , keycode= codigo de la tecla
+  const handleUserKeyPress = useCallback((event) => {
+    const { key, keyCode } = event;
+    // Si Keycode esta entre 0 y 90 y luego cumple los requisitos se ejecuta
+    if (keyCode >= 0 && keyCode <= 90) {
+      if (olvidoPass===true && key==="Enter") {
+        iniciarsesion(formValues);
+      } else if (olvidoPass===false && key==="Enter") {
+        recuperarpassword(formValues);
+      }
+    }
+  }, [iniciarsesion, recuperarpassword, olvidoPass, formValues]);
+
+  // Registra cada tecla oprimida (keydown), removeEventListener quitamos el listener para que no se sumen cada vez que se ejecute el useEffect, caso contrario se ejecutarian varios keydown al mismo tiempo
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   return (
     <Container>
@@ -95,6 +120,7 @@ export default function Login() {
                     [e.target.name]: e.target.value,
                   })
                 }
+                autoFocus
               />
 
               {olvidoPass ? (

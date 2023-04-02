@@ -100,6 +100,7 @@ export default function Signup() {
                   [e.target.name]: e.target.value,
                 })
               }
+              autoFocus
               />
             {/* si showpassword es true entonces muestra el input, en caso contrario muestra el buton Comenzar, haciendo click pasa a ser true */}
             {showPassword && (
