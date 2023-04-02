@@ -97,8 +97,10 @@ export const getUserLikedMovies = createAsyncThunk(
   "lucho/getLiked",
   async (email) => {
     const {
+      // data: { movies },
       data: { movies },
     } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/liked/${email}`);
+    // return movies;
     return movies;
   }
 );
@@ -131,10 +133,10 @@ const LuchoflixSlice = createSlice({
       state.movies = action.payload;
     });
     builder.addCase(getUserLikedMovies.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.moviesliked = action.payload;
     });
     builder.addCase(removeFromLikedMovies.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.moviesliked = action.payload;
     });
   },
 });

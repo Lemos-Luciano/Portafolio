@@ -48,8 +48,6 @@ function Card({ movieData, isLiked = false }) {
     }
   };
 
-  console.log(isHovered);
-
   return (
     <Container
       onMouseEnter={() => setIsHovered(true)}

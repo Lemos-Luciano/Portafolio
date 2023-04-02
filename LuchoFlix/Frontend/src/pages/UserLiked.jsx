@@ -18,8 +18,9 @@ export default function UserLiked() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // llama al reducer del store con nombre lucho
-  const movies = useSelector((state) => state.lucho.movies);
-
+  // const movies = useSelector((state) => state.lucho.movies);
+  const moviesliked = useSelector((state) => state.lucho.moviesliked);
+  
   const [email, setEmail] = useState(undefined);
 
   // Si existe un currentuser (un usuario logueado), toma su email caso contrario ve al login
@@ -33,6 +34,7 @@ export default function UserLiked() {
 
   useEffect(() => {
     if (email) {
+      console.log("use effect accionado");
       dispatch(getUserLikedMovies(email));
     }
   }, [dispatch, email]);
@@ -47,11 +49,26 @@ export default function UserLiked() {
       <Navbar isScrolled={isScrolled} />
       <div className="content flex column">
         <h1>Mi lista</h1>
-        <div className="grid flex">
-          {movies.map((movie, index) => {
+        {/* {console.log(movies)} */}
+        {console.log(moviesliked)}
+        {/* {movies===undefined ? ( */}
+        {(moviesliked===undefined || moviesliked.length === 0) ? (
+          <h2>No tiene peliculas favoritas</h2>
+        ) : (
+          <>
+          <h2>Tiene peliculas favoritas</h2>
+          <div className="grid flex">
+          {moviesliked.map((movie, index) => {
             return <Card movieData={movie} index={index} key={movie.id} isLiked={true}/>;
           })}
         </div>
+        </>
+        )}
+        {/* <div className="grid flex">
+          {movies.map((movie, index) => {
+            return <Card movieData={movie} index={index} key={movie.id} isLiked={true}/>;
+          })}
+        </div> */}
       </div>
     </Container>
   );
