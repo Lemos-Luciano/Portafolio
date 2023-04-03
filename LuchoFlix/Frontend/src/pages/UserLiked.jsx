@@ -34,7 +34,7 @@ export default function UserLiked() {
 
   useEffect(() => {
     if (email) {
-      console.log("use effect accionado");
+      // console.log("use effect accionado");
       dispatch(getUserLikedMovies(email));
     }
   }, [dispatch, email]);
@@ -49,14 +49,11 @@ export default function UserLiked() {
       <Navbar isScrolled={isScrolled} />
       <div className="content flex column">
         <h1>Mi lista</h1>
-        {/* {console.log(movies)} */}
         {console.log(moviesliked)}
-        {/* {movies===undefined ? ( */}
         {(moviesliked===undefined || moviesliked.length === 0) ? (
           <h2>No tiene peliculas favoritas</h2>
         ) : (
           <>
-          <h2>Tiene peliculas favoritas</h2>
           <div className="grid flex">
           {moviesliked.map((movie, index) => {
             return <Card movieData={movie} index={index} key={movie.id} isLiked={true}/>;

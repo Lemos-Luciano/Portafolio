@@ -7,6 +7,7 @@ import Player from "./pages/Player";
 import Movies from "./pages/Movies";
 import TVShows from "./pages/TVShows";
 import UserLiked from "./pages/UserLiked";
+import Searched from "./pages/Searched";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route exact path="/milista" element={<UserLiked />} />
         <Route exact path="/series" element={<TVShows />} />
         <Route exact path="/Player" element={<Player />} />
+        <Route exact path="/busqueda" element={<Searched />} />
       </Routes>
     </BrowserRouter>
   )

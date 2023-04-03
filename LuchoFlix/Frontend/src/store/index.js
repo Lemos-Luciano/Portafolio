@@ -23,7 +23,7 @@ export const getGenero = createAsyncThunk("lucho/genres", async () => {
 
 // Crea el array con la informacion importante de la pelicula
 const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
-  // console.log(array);
+  // console.log("creararray con datos iniciales utiliza el siguiente array" + array);
   array.forEach((pelicula) => {
     const generosDePelicula = [];
     // compara el id con el nombre del genero
@@ -53,7 +53,7 @@ const getDatosIniciales = async (api, genres, paging) => {
     } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`);
     crearArrayConDatosIniciales(results, arrayPeliculas, genres);
   }
-  // console.log(arrayPeliculas);
+  // console.log("datos iniciales da el siguiente array " + arrayPeliculas);
   return arrayPeliculas;
 };
 
@@ -75,6 +75,28 @@ export const fetchMovies = createAsyncThunk(
     // console.log(data);
   }
 );
+
+
+// BUSQUEDAS
+export const fetchSearched = createAsyncThunk(
+  "lucho/searched",
+  async ({ type }, thunkApi) => {
+    const {
+      lucho: { genres },
+    } = thunkApi.getState();
+    const data = getDatosIniciales(
+      // Obtenemos la pelicula, series, etc. segun la query que le demos
+      `https://api.themoviedb.org/3/search/multi?api_key=0c88a0020acf0787927c7ab02d10a416&language=es&query=juego%20de%20tronos&page=1`,
+      genres,
+      true
+    );
+    console.log("luego del fetchsearchead tenemos: " + data);
+    return data
+  }
+);
+
+
+
 // Conecta con la Api para saber la cantidad de peliuclas segun su genero
 export const fetchDataByGenre = createAsyncThunk(
   "lucho/moviesByGenre",
@@ -128,6 +150,9 @@ const LuchoflixSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.movies = action.payload;
+    });
+    builder.addCase(fetchSearched.fulfilled, (state, action) => {
+      state.moviessearched = action.payload;
     });
     builder.addCase(fetchDataByGenre.fulfilled, (state, action) => {
       state.movies = action.payload;
