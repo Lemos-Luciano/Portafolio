@@ -7,6 +7,11 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
 import { useNavigate } from "react-router-dom";
 import { minMedia } from "../utils/constants";
+import { useDispatch } from "react-redux";
+
+// Obetener datos, utilizando el store
+import { fetchSearched, getGenero } from "../store";
+
 
 export default function Navbar({ isScrolled }) {
   const links = [
@@ -16,6 +21,9 @@ export default function Navbar({ isScrolled }) {
     { name: "Mi lista", link: "/milista" },
   ];
 
+  const dispatch = useDispatch();
+  
+  const [busqueda, setBusqueda] = useState ("")
   const [showsearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
 
@@ -27,6 +35,33 @@ export default function Navbar({ isScrolled }) {
     });
   }, [navigate]);
 
+
+  const handleChange = (event) => {
+    // 👇 Get input value from "event"
+    setBusqueda(event.target.value);
+  };
+
+  let palabramodificada = ""
+  const buscarpelis = () => {
+    dispatch(fetchSearched({ type: palabramodificada}));
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      // 👇 Get input value
+      let palabra = busqueda;
+      palabramodificada = palabra.trim().replace(/\s+/g, '%20');
+      buscarpelis(palabramodificada);
+      
+      console.log("tocaste la tecla enter y busqueda es: " + busqueda);
+      console.log("tocaste la tecla enter: " + palabramodificada);
+    }
+  };
+
+  const iniciarbusqueda = () => {
+    console.log("iniciaste la busqueda: " + busqueda);
+  };
+  
   return (
     <Container>
       {/* si isScrolled es true entronces la clase es scrolled en caso contrario estará solo con flex */}
@@ -55,6 +90,7 @@ export default function Navbar({ isScrolled }) {
               onBlur={() => {
                 if (!inputHover) setShowSearch(false);
               }}
+              onClick={iniciarbusqueda}
             >
               <FaSearch />
             </button>
@@ -67,8 +103,12 @@ export default function Navbar({ isScrolled }) {
                 setShowSearch(false);
                 setInputHover(false);
               }}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
+          {<h4>{busqueda}</h4>}
+          {console.log({busqueda})}
           <button
             onClick={() => {
               signOut(firebaseAuth);
@@ -77,6 +117,7 @@ export default function Navbar({ isScrolled }) {
             <FaPowerOff />
           </button>
         </div>
+        <button onClick={buscarpelis}>Buscar pelis</button>
       </nav>
     </Container>
   );

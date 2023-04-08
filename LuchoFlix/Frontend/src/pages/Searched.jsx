@@ -35,9 +35,13 @@ const Searched = () => {
     dispatch(getGenero());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (genresLoaded) dispatch(fetchSearched({ type: "all" }));
-  }, [dispatch, genresLoaded]);
+  // useEffect(() => {
+  //   if (genresLoaded) dispatch(fetchSearched({ type: "all" }));
+  // }, [dispatch, genresLoaded]);
+
+  const buscarpelis = () => {
+    dispatch(fetchSearched({ type: "all" }));
+  };
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -56,19 +60,26 @@ const Searched = () => {
       <Navbar isScrolled={isScrolled} />
       <div className="content flex a-center column">
         <h1>Peliculas Buscadas</h1>
-        {console.log(moviessearched)}
+        {console.log("movies ssearched es igual a = " + moviessearched)}
         {moviessearched === undefined || moviessearched.length === 0 ? (
           <h4>No se encontraron películas </h4>
         ) : (
-            <>
-          {/* <Slider movies={moviessearched} /> */}
+          <>
+            {/* <Slider movies={moviessearched} /> */}
 
-          <div className="grid flex">
-          {moviessearched.map((movie, index) => {
-            return <Card movieData={movie} index={index} key={movie.id} isLiked={true}/>;
-          })}
-        </div>
-        </>
+            <div className="grid flex">
+              {moviessearched.map((movie, index) => {
+                return (
+                  <Card
+                    movieData={movie}
+                    index={index}
+                    key={movie.id}
+                    isLiked={true}
+                  />
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </Container>

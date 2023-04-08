@@ -14,46 +14,68 @@ const initialState = {
 
 // Comprueba la cantidad de generos que existe en la api (comedia, horror, aventura), asyncthunk hay que pasarle el slice (lucho/genres), luego la reconoceremos segun su id
 export const getGenero = createAsyncThunk("lucho/genres", async () => {
-  const {
-    data: { genres },
-  } = await axios.get(`${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+  // generos de series
+  const generosSeries = await axios.get(
+    `${TMBD_BASE_URL}/genre/tv/list?api_key=${API_KEY}`
+  );
+  // generos de pelicula
+  const generosPeliculas = await axios.get(
+    `${TMBD_BASE_URL}/genre/movie/list?api_key=${API_KEY}`
+  );
+
+  let genres = generosSeries.data.genres.concat(generosPeliculas.data.genres);
+
+  // Elimina los generos repetidos
+  let hash = {};
+  genres = genres.filter((o) => (hash[o.id] ? false : (hash[o.id] = true)));
+
   // console.log(genres);
   return genres;
 });
 
-// Crea el array con la informacion importante de la pelicula
+// Crea el array con la informacion importante de cada pelicula
 const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
-  // console.log("creararray con datos iniciales utiliza el siguiente array" + array);
-  array.forEach((pelicula) => {
+  array.forEach((element) => {
     const generosDePelicula = [];
-    // compara el id con el nombre del genero
-    pelicula.genre_ids.forEach((genero) => {
-      const nombreGenero = genres.find(({ id }) => id === genero);
-      if (nombreGenero) generosDePelicula.push(nombreGenero.name);
+
+    if (
+      // comprueba que el objeto de la pelicula tenga la informacion necesaria
+      element.id &&
+      element.genre_ids && element.genre_ids.length > 0 &&
+      element.backdrop_path &&
+      (element.original_title || element.original_name )
+      ) {
+        // Cambian el id del genero por el nombre del genero en string 
+        element.genre_ids.forEach((genero) => {
+          const nombreGenero = genres.find(({ id }) => id === genero);
+          if (nombreGenero) {
+            generosDePelicula.push(nombreGenero.name);
+          } else {
+            console.log("hubo un error");
+          }
+        });
+        // agrega al array de cada pelicula la informacion necesaria
+        arrayPeliculas.push({
+          id: element.id,
+          name: element.original_name
+            ? element.original_name
+            : element.original_title,
+          image: element.backdrop_path,
+          genres: generosDePelicula.slice(0, 3),
+        });
+        }
     });
-    // si tiene imagen lo adjunta en los datos importantes
-    if (pelicula.backdrop_path) {
-      arrayPeliculas.push({
-        id: pelicula.id,
-        name: pelicula?.original_name
-          ? pelicula.original_name
-          : pelicula.original_title,
-        image: pelicula.backdrop_path,
-        genres: generosDePelicula.slice(0, 3),
-      });
-    }
-  });
 };
 
 const getDatosIniciales = async (api, genres, paging) => {
   const arrayPeliculas = [];
+
   for (let i = 1; arrayPeliculas.length < 60 && i < 10; i++) {
     const {
       data: { results },
     } = await axios.get(`${api}${paging ? `&page=${i}` : ""}`);
     crearArrayConDatosIniciales(results, arrayPeliculas, genres);
   }
-  // console.log("datos iniciales da el siguiente array " + arrayPeliculas);
   return arrayPeliculas;
 };
 
@@ -76,7 +98,6 @@ export const fetchMovies = createAsyncThunk(
   }
 );
 
-
 // BUSQUEDAS
 export const fetchSearched = createAsyncThunk(
   "lucho/searched",
@@ -84,18 +105,17 @@ export const fetchSearched = createAsyncThunk(
     const {
       lucho: { genres },
     } = thunkApi.getState();
+    // const uri = `https://api.themoviedb.org/3/search/multi?api_key=0c88a0020acf0787927c7ab02d10a416&language=es&query=${type}&page=1`;
     const data = getDatosIniciales(
       // Obtenemos la pelicula, series, etc. segun la query que le demos
-      `https://api.themoviedb.org/3/search/multi?api_key=0c88a0020acf0787927c7ab02d10a416&language=es&query=juego%20de%20tronos&page=1`,
+      `https://api.themoviedb.org/3/search/multi?api_key=0c88a0020acf0787927c7ab02d10a416&language=es&query=${type}`,
       genres,
       true
     );
-    console.log("luego del fetchsearchead tenemos: " + data);
-    return data
+    // console.log(uri);
+    return data;
   }
 );
-
-
 
 // Conecta con la Api para saber la cantidad de peliuclas segun su genero
 export const fetchDataByGenre = createAsyncThunk(
@@ -121,7 +141,9 @@ export const getUserLikedMovies = createAsyncThunk(
     const {
       // data: { movies },
       data: { movies },
-    } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/liked/${email}`);
+    } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/user/liked/${email}`
+    );
     // return movies;
     return movies;
   }
@@ -171,4 +193,3 @@ export const store = configureStore({
     lucho: LuchoflixSlice.reducer,
   },
 });
-
