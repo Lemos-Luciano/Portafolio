@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getUserLikedMovies } from "../store";
+import { minMedia } from "../utils/constants";
+
 // Control sesion logueada
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
@@ -48,7 +50,9 @@ export default function UserLiked() {
     <Container>
       <Navbar isScrolled={isScrolled} />
       <div className="content flex column">
-        <h1>Mi lista</h1>
+        <div>
+          <h1>Mi lista</h1>
+        </div>
         {console.log(moviesliked)}
         {(moviesliked===undefined || moviesliked.length === 0) ? (
           <h2>No tiene peliculas favoritas</h2>
@@ -76,12 +80,27 @@ const Container = styled.div`
         margin: 2.3rem;
         margin-top: 8rem;
         gap: 3rem;
+        @media (max-width: ${minMedia}px) {
+          margin-top: 11rem;
+        }
         h1 {
             margin-left: 3rem;
+            @media (max-width: ${minMedia}px) {
+              display: flex;
+              justify-content: center;
+              margin-left: unset;
+            }
         }
         .grid {
             flex-wrap: wrap;
             gap: 1rem;
+            @media (max-width: ${minMedia}px) {
+              justify-content: center;
+            }
+        }
+
+        img {
+          max-height: 150px;
         }
     }
 `;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
@@ -11,7 +11,8 @@ import { useDispatch } from "react-redux";
 
 // Obetener datos, utilizando el store
 import { fetchSearched, getGenero } from "../store";
-
+import { clearAllListeners } from "@reduxjs/toolkit";
+import { BsWindowSidebar } from "react-icons/bs";
 
 export default function Navbar({ isScrolled }) {
   const links = [
@@ -19,13 +20,16 @@ export default function Navbar({ isScrolled }) {
     { name: "Series", link: "/series" },
     { name: "Películas", link: "/peliculas" },
     { name: "Mi lista", link: "/milista" },
+    // { name: "Busquedas", link: "/busqueda" },
   ];
 
   const dispatch = useDispatch();
-  
-  const [busqueda, setBusqueda] = useState ("")
+
+  const [busqueda, setBusqueda] = useState("");
   const [showsearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
+  const [buscar, setBuscar] = useState(false);
+  const refBuscador = useRef();
 
   // Cerramos sesión y nos dirige a la pagina de login
   const navigate = useNavigate();
@@ -35,33 +39,30 @@ export default function Navbar({ isScrolled }) {
     });
   }, [navigate]);
 
-
   const handleChange = (event) => {
     // 👇 Get input value from "event"
     setBusqueda(event.target.value);
   };
 
-  let palabramodificada = ""
+  let palabramodificada = "";
   const buscarpelis = () => {
-    dispatch(fetchSearched({ type: palabramodificada}));
+    dispatch(fetchSearched({ type: palabramodificada }));
   };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      // 👇 Get input value
-      let palabra = busqueda;
-      palabramodificada = palabra.trim().replace(/\s+/g, '%20');
-      buscarpelis(palabramodificada);
-      
-      console.log("tocaste la tecla enter y busqueda es: " + busqueda);
-      console.log("tocaste la tecla enter: " + palabramodificada);
+    if (event.key === "Enter" || buscar) {
+      iniciarbusqueda();
     }
   };
-
   const iniciarbusqueda = () => {
     console.log("iniciaste la busqueda: " + busqueda);
+    let palabra = busqueda;
+    palabramodificada = palabra.trim().replace(/\s+/g, "%20");
+    buscarpelis(palabramodificada);
+    refBuscador.current.value = "";
+    navigate("/busqueda");
   };
-  
+
   return (
     <Container>
       {/* si isScrolled es true entronces la clase es scrolled en caso contrario estará solo con flex */}
@@ -84,7 +85,7 @@ export default function Navbar({ isScrolled }) {
           </ul>
         </div>
         <div className="right flex a-center">
-          <div className={`search ${showsearch ? "showsearch" : ""}`}>
+          <div className={`search ${showsearch || window.innerWidth<minMedia ? "showsearch" : ""}`}>
             <button
               onFocus={() => setShowSearch(true)}
               onBlur={() => {
@@ -95,6 +96,7 @@ export default function Navbar({ isScrolled }) {
               <FaSearch />
             </button>
             <input
+              ref={refBuscador}
               type="text"
               placeholder="Títulos, géneros"
               onMouseEnter={() => setInputHover(true)}
@@ -107,8 +109,6 @@ export default function Navbar({ isScrolled }) {
               onKeyDown={handleKeyDown}
             />
           </div>
-          {<h4>{busqueda}</h4>}
-          {console.log({busqueda})}
           <button
             onClick={() => {
               signOut(firebaseAuth);
@@ -117,7 +117,6 @@ export default function Navbar({ isScrolled }) {
             <FaPowerOff />
           </button>
         </div>
-        <button onClick={buscarpelis}>Buscar pelis</button>
       </nav>
     </Container>
   );
@@ -147,6 +146,8 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
       gap: 1rem;
+      padding: 1rem;
+      height: auto;
     }
     .left {
       gap: 2rem;

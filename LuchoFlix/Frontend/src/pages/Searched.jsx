@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { minMedia } from "../utils/constants";
+
 
 // Obetener datos, utilizando el store
 import { fetchSearched, getGenero } from "../store";
@@ -39,9 +41,9 @@ const Searched = () => {
   //   if (genresLoaded) dispatch(fetchSearched({ type: "all" }));
   // }, [dispatch, genresLoaded]);
 
-  const buscarpelis = () => {
-    dispatch(fetchSearched({ type: "all" }));
-  };
+  // const buscarpelis = () => {
+  //   dispatch(fetchSearched({ type: "all" }));
+  // };
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, (currentUser) => {
@@ -60,7 +62,8 @@ const Searched = () => {
       <Navbar isScrolled={isScrolled} />
       <div className="content flex a-center column">
         <h1>Peliculas Buscadas</h1>
-        {console.log("movies ssearched es igual a = " + moviessearched)}
+        {/* {console.log("movies ssearched es igual a = " + moviessearched)} */}
+        {/* {console.log(moviessearched[5])} */}
         {moviessearched === undefined || moviessearched.length === 0 ? (
           <h4>No se encontraron películas </h4>
         ) : (
@@ -74,7 +77,7 @@ const Searched = () => {
                     movieData={movie}
                     index={index}
                     key={movie.id}
-                    isLiked={true}
+                    // isLiked={true}
                   />
                 );
               })}
@@ -93,4 +96,20 @@ const Container = styled.div`
     margin: 2.3rem;
     margin-top: 8rem;
     gap: 3rem;
-    `;
+    @media (max-width: ${minMedia}px) {
+      margin-top: 11rem;
+    }
+  
+    .grid {
+      flex-wrap: wrap;
+      gap: 1rem;
+      @media (max-width: ${minMedia}px) {
+        justify-content: center;
+      }
+    };
+
+    img {
+      max-height: 150px;
+    }
+
+  }`;

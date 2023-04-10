@@ -43,7 +43,7 @@ const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
       element.id &&
       element.genre_ids && element.genre_ids.length > 0 &&
       element.backdrop_path &&
-      (element.original_title || element.original_name )
+      (element.title || element.original_name )
       ) {
         // Cambian el id del genero por el nombre del genero en string 
         element.genre_ids.forEach((genero) => {
@@ -57,12 +57,13 @@ const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
         // agrega al array de cada pelicula la informacion necesaria
         arrayPeliculas.push({
           id: element.id,
-          name: element.original_name
-            ? element.original_name
-            : element.original_title,
+          name: element.title
+            ? element.title
+            : element.original_name,
           image: element.backdrop_path,
           genres: generosDePelicula.slice(0, 3),
         });
+        // console.log(arrayPeliculas);
         }
     });
 };
@@ -113,6 +114,8 @@ export const fetchSearched = createAsyncThunk(
       true
     );
     // console.log(uri);
+    console.log(`https://api.themoviedb.org/3/search/multi?api_key=0c88a0020acf0787927c7ab02d10a416&language=es&query=${type}`
+    );
     return data;
   }
 );

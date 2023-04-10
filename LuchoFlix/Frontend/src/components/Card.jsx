@@ -145,7 +145,8 @@ const Container = styled.div`
     position: absolute;
     // position: relative;
     /* Sube el resumen del cuadro */
-    top: -18vh;
+    // top: -18vh;
+    top: -8vh;
     left: 0;
     border-radius: 0.3rem;
     box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
