@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchMovies, getGenero } from "../store";
+import { minMedia } from "../utils/constants";
+
 // Control sesion logueada
 import { onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from "../utils/firebase-config";
@@ -78,6 +80,9 @@ const Container = styled.div`
       text-align: center;
       color: white;
       margin-top: 4rem;
+    }
+    @media (max-width: ${minMedia}px) {
+      margin-top: 11rem;
     }
   }
 `;
