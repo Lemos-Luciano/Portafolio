@@ -8,6 +8,9 @@ import axios from "axios";
 // Medidas Responsive
 // import { minMedia } from "../utils/constants";
 
+// sweet alert
+import Swal from "sweetalert2";
+
 
 // Control logueo
 import { firebaseAuth } from "../utils/firebase-config";
@@ -36,17 +39,61 @@ function Card({ movieData, isLiked = false }) {
     });
   }, [navigate]);
 
+
+  // -----------------------------
+  // ALERTS
+  // // sweet alert
+
+
+    const alertRepeatMovie = () => {
+      Swal.fire({
+          title: "Advertencia",
+          text: "La película ya se encuentra agregada",
+          icon: "info",
+          confirmButtonColor: "#e50914",
+          customClass: {
+            confirmButton: 'alertButton',
+          },
+          timer: 3000,
+          timerProgressBar: true,
+      })
+    };
+
+    const alertAddMovie = () => {
+      Swal.fire({
+          title: "Perfecto!",
+          text: "La pelicula fue agregada con exito",
+          icon: "success",
+          confirmButtonColor: "#e50914",
+          customClass: {
+            confirmButton: 'alertButton',
+          },
+          timer: 3000,
+          timerProgressBar: true,
+      })
+    };
+
   const addToList = async () => {
     try {
       // console.log(`${process.env.REACT_APP_BACKEND_URL}`);
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/add`, {
         email,
         data: movieData,
+      })
+      // .then ((respuesta) => {console.log(respuesta.data.msg)});
+      .then ((respuesta) => {
+        if (respuesta.data.msg === "Repetida") {
+          alertRepeatMovie()
+        } else if (respuesta.data.msg === "Agregada") {
+          alertAddMovie()
+        }
       });
     } catch (error) {
       console.log(error);
     }
   };
+
+  // -----------------------------
 
   return (
     <Container
@@ -127,6 +174,7 @@ const Container = styled.div`
   // height: 100px;
   cursor: pointer;
   position: relative;
+
   .imagen-slider{
     object-fit: cover;
     height: 100%;

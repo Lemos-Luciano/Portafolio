@@ -6,6 +6,8 @@ import MovieLogo from "../assets/homeTitle.webp";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+// sweet alert
+import Swal from "sweetalert2";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies, getGenero } from "../store";
@@ -52,6 +54,15 @@ export default function Home() {
     return () => (window.onscroll = null);
   };
 
+  // sweet alert
+  const sweetalert = () => {
+    Swal.fire({
+        title: "Advertencia",
+        text: "La película ya se encuentra agregada",
+        icon: "error",
+        confirmButtonColor: "#e50914",
+    })
+  };
 
   return (
     <Container>
@@ -73,7 +84,9 @@ export default function Home() {
             >
               <FaPlay /> Play
             </button>
-            <button className="flex j-center a-center">
+            <button className="flex j-center a-center"
+              onClick={sweetalert}
+            >
               <AiOutlineInfoCircle /> Más Info
             </button>
           </div>

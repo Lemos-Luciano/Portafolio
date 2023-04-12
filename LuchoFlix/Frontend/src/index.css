@@ -53,3 +53,10 @@ body::-webkit-scrollbar {
 /* .prueba {
   justify-content: center;
 } */
+
+
+
+/* sweet alert */
+.alertButton {
+  width: 100px;
+}

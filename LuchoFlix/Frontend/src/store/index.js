@@ -6,6 +6,11 @@ import {
 import { TMBD_BASE_URL, API_KEY } from "../utils/constants";
 import axios from "axios";
 
+// sweet alert
+import Swal from "sweetalert2";
+
+
+
 const initialState = {
   movies: [],
   genresLoaded: false,
@@ -142,15 +147,28 @@ export const getUserLikedMovies = createAsyncThunk(
   "lucho/getLiked",
   async (email) => {
     const {
-      // data: { movies },
       data: { movies },
     } = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/user/liked/${email}`
     );
-    // return movies;
     return movies;
   }
 );
+
+
+const alertRemoveMovie = () => {
+  Swal.fire({
+    icon: "success",
+    title: "Perfecto!",
+    text: "La pelicula ha sido removida con exito",
+    confirmButtonColor: "#e50914",
+    customClass: {
+      confirmButton: 'alertButton',
+    },
+    timer: 3000,
+    timerProgressBar: true,
+  })
+};
 
 export const removeFromLikedMovies = createAsyncThunk(
   "lucho/deleteLiked",
@@ -161,6 +179,8 @@ export const removeFromLikedMovies = createAsyncThunk(
       email,
       movieId,
     });
+    console.log(movies);
+    alertRemoveMovie();
     return movies;
   }
 );
