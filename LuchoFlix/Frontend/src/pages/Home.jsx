@@ -54,13 +54,20 @@ export default function Home() {
     return () => (window.onscroll = null);
   };
 
+
   // sweet alert
   const sweetalert = () => {
     Swal.fire({
-        title: "Advertencia",
-        text: "La película ya se encuentra agregada",
-        icon: "error",
+        title: "Lo lamentemos",
+        text: "Todavia estamos construyendo esta función, gracias por su comprensión",
+        icon: "info",
         confirmButtonColor: "#e50914",
+        confirmButtonColor: "#e50914",
+          customClass: {
+            confirmButton: 'alertButton',
+          },
+          timer: 3000,
+          timerProgressBar: true,
     })
   };
 

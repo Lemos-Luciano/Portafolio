@@ -48,8 +48,10 @@ const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
       element.id &&
       element.genre_ids && element.genre_ids.length > 0 &&
       element.backdrop_path &&
-      (element.title || element.original_name )
+      (element.title || element.original_name ) &&
+      element.overview
       ) {
+        // console.log(array);
         // Cambian el id del genero por el nombre del genero en string 
         element.genre_ids.forEach((genero) => {
           const nombreGenero = genres.find(({ id }) => id === genero);
@@ -67,6 +69,7 @@ const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
             : element.original_name,
           image: element.backdrop_path,
           genres: generosDePelicula.slice(0, 3),
+          overview: element.overview
         });
         // console.log(arrayPeliculas);
         }
@@ -96,7 +99,7 @@ export const fetchMovies = createAsyncThunk(
     return getDatosIniciales(
       // Obtenemos las tendencias, segun el type (pelicula, serie, persona)
       // https://developers.themoviedb.org/3/trending/get-trending
-      `${TMBD_BASE_URL}/trending/${type}/week?api_key=${API_KEY}`,
+      `${TMBD_BASE_URL}/trending/${type}/week?api_key=${API_KEY}&language=es`,
       genres,
       true
     );
@@ -179,7 +182,7 @@ export const removeFromLikedMovies = createAsyncThunk(
       email,
       movieId,
     });
-    console.log(movies);
+    // console.log(movies);
     alertRemoveMovie();
     return movies;
   }

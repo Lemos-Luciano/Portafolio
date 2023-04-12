@@ -40,6 +40,9 @@ function Card({ movieData, isLiked = false }) {
   }, [navigate]);
 
 
+  useEffect(() => {
+
+  },[]);
   // -----------------------------
   // ALERTS
   // // sweet alert
@@ -70,6 +73,28 @@ function Card({ movieData, isLiked = false }) {
           },
           timer: 3000,
           timerProgressBar: true,
+      })
+    };
+
+
+
+    const moreInfo = () => {
+      Swal.fire({
+          title: `${movieData.name}`,
+          imageUrl: `${IMAGE_PATH_500}${movieData.image}`,
+          imageHeight: 300,
+          text: "la pelicula fue agregda",
+          // icon: "success",
+          html: `<div className="genres flex">
+          <p>${movieData.overview}</p>
+          <br>
+          <h5> ${movieData.genres} </h5>
+          
+        </div>`,
+          confirmButtonColor: "#e50914",
+          customClass: {
+            confirmButton: 'alertButton',
+          },
       })
     };
 
@@ -150,7 +175,7 @@ function Card({ movieData, isLiked = false }) {
                 )}
               </div>
               <div className="info">
-                <BiChevronDown title="More Info" />
+                <BiChevronDown title="More Info" onClick={moreInfo}/>
               </div>
             </div>
             <div className="genres flex">
@@ -174,24 +199,29 @@ const Container = styled.div`
   // height: 100px;
   cursor: pointer;
   position: relative;
+  // z-index: 10;
+
 
   .imagen-slider{
     object-fit: cover;
     height: 100%;
     width: auto;
+    position: relative;
+    z-index: 10;
   }
   img {
     border-radius: 0.2rem;
     height: 100%;
     width: 100%;
-    z-index: 10;
+    // position: relative;
+    // z-index: 10;
   }
   .hover {
-    z-index: 99;
     height: max-content;
     width: 20rem;
     position: absolute;
     // position: relative;
+    z-index: 250;
     /* Sube el resumen del cuadro */
     // top: -18vh;
     top: -8vh;
@@ -210,7 +240,7 @@ const Container = styled.div`
       object-fit: cover;
       border-radius: 0.3rem;
       top: 0;
-      z-index: 4;
+      z-index: 252;
       position: absolute;
     }
     video {
@@ -220,9 +250,13 @@ const Container = styled.div`
       border-radius: 0.3rem;
       top: 0;
       //   El video se reproducirá encima de la foto
-      z-index: 5;
+      z-index: 255;
       position: absolute;
     }
+  }
+  .info-container {
+    position: relative;
+    z-index: 999;
   }
   .icons {
     .controls {

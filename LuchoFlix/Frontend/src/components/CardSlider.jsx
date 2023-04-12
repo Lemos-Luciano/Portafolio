@@ -101,14 +101,17 @@ const CardSlider = ({ data, title }) => {
 const Container = styled.div`
   gap: 1rem;
   padding: 2rem 0;
+  // position: relative;      
+  // z-index: 2;
+
   h1 {
     margin-left: 50px;
   }
   .wrapper {
     position: relative;
     .slider-total {
-      z-index: 50;
       position: relative;      
+      z-index: 50;
       .slider {
         // position: absolute;
         height: 20vh;
