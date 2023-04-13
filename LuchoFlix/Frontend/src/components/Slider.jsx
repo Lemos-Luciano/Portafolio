@@ -12,7 +12,6 @@ const slider = ({movies}) => {
   return (
     <Container className='luciano'>
         {/* Cada slider tiene 10 peliculas */}
-      <div>Luciano</div>
       <CardSlider title="Tendencias" data={getMoviesFromRange(0,10)} className="luciano"/>
       <CardSlider title="Nuevos lanzamientos" data={getMoviesFromRange(10,20)} className="luciano" />
       <CardSlider title="Popular" data={getMoviesFromRange(20,30)} />

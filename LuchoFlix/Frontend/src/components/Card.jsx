@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IMAGE_PATH_500 } from "../utils/constants";
-import video from "../assets/Video.mp4";
 import axios from "axios";
+
+import video from "../assets/Video.mp4";
 
 // Medidas Responsive
 // import { minMedia } from "../utils/constants";
@@ -41,7 +42,6 @@ function Card({ movieData, isLiked = false }) {
 
 
   useEffect(() => {
-
   },[]);
   // -----------------------------
   // ALERTS
@@ -76,20 +76,27 @@ function Card({ movieData, isLiked = false }) {
       })
     };
 
-
-
+  
     const moreInfo = () => {
       Swal.fire({
+          // background: 'rgba(109, 109, 110, 0.7)',
+          background: 'rgba(0, 0, 0, 0.9)',
+          color: "white",
           title: `${movieData.name}`,
-          imageUrl: `${IMAGE_PATH_500}${movieData.image}`,
+          // imageUrl: `${IMAGE_PATH_500}${movieData.image}`,
           imageHeight: 300,
           text: "la pelicula fue agregda",
           // icon: "success",
-          html: `<div className="genres flex">
-          <p>${movieData.overview}</p>
-          <br>
-          <h5> ${movieData.genres} </h5>
-          
+          html: ` 
+        <div class="pelicula">
+        <p>${movieData.overview}</p>
+        <br>
+        <h5> ${movieData.genres} </h5>
+        <iframe
+          src="http://www.youtube.com/embed/${movieData.trailer}?autoplay=1&mute=1"
+          frameborder="0"
+        /> 
+
         </div>`,
           confirmButtonColor: "#e50914",
           customClass: {

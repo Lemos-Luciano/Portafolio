@@ -10,9 +10,9 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, getGenero } from "../store";
+import { fetchMovies, getGenero, getTrailer } from "../store";
 // Slider
-import Slider from '../components/Slider';
+import Slider from "../components/Slider";
 // Medidas Responsive
 import { minMedia } from "../utils/constants";
 // Control sesion logueada
@@ -21,7 +21,6 @@ import { firebaseAuth } from "../utils/firebase-config";
 
 
 export default function Home() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -31,23 +30,25 @@ export default function Home() {
     });
   });
 
-
   // Si se realiza scroll se ejecuta, el fondo del nav se coloca en negro
   const [isScrolled, setIsScrolled] = useState(false);
 
   // llama al reducer del store con nombre lucho
-  const genresLoaded = useSelector ((state) => state.lucho.genresLoaded);
-  const movies = useSelector ((state) => state.lucho.movies);
-
+  const genresLoaded = useSelector((state) => state.lucho.genresLoaded);
+  const movies = useSelector((state) => state.lucho.movies);
 
   // pruebo si funciona getGenero
-  useEffect (() => {
-    dispatch(getGenero())
+  useEffect(() => {
+    dispatch(getGenero());
   }, [dispatch]);
 
-  useEffect (() => {
-    if(genresLoaded) dispatch(fetchMovies( {type : "all"}));
+  useEffect(() => {
+    if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
   }, [dispatch, genresLoaded]);
+
+  // useEffect(() => {
+  //   dispatch(getTrailer());
+  // }, [dispatch]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -58,17 +59,17 @@ export default function Home() {
   // sweet alert
   const sweetalert = () => {
     Swal.fire({
-        title: "Lo lamentemos",
-        text: "Todavia estamos construyendo esta función, gracias por su comprensión",
-        icon: "info",
-        confirmButtonColor: "#e50914",
-        confirmButtonColor: "#e50914",
-          customClass: {
-            confirmButton: 'alertButton',
-          },
-          timer: 3000,
-          timerProgressBar: true,
-    })
+      title: "Lo lamentemos",
+      text: "Todavia estamos construyendo esta función, gracias por su comprensión",
+      icon: "info",
+      confirmButtonColor: "#e50914",
+      confirmButtonColor: "#e50914",
+      customClass: {
+        confirmButton: "alertButton",
+      },
+      timer: 3000,
+      timerProgressBar: true,
+    });
   };
 
   return (
@@ -91,13 +92,14 @@ export default function Home() {
             >
               <FaPlay /> Play
             </button>
-            <button className="flex j-center a-center"
-              onClick={sweetalert}
-            >
+            <button className="flex j-center a-center" onClick={sweetalert}>
               <AiOutlineInfoCircle /> Más Info
             </button>
           </div>
         </div>
+      </div>
+      <div>
+        <button onClick={getTrailer}>buscar trailer</button>
       </div>
       <Slider movies={movies} />
     </Container>
@@ -114,8 +116,8 @@ const Container = styled.div`
     img {
       height: 100vh;
       width: 100vw;
-      @media (max-width:${minMedia}px) {  
-        height: 70vh;    
+      @media (max-width: ${minMedia}px) {
+        height: 70vh;
       }
     }
     .container {
@@ -126,8 +128,8 @@ const Container = styled.div`
           height: 100%;
           width: 100%;
           margin-left: 5rem;
-          @media (max-width:${minMedia}px) {  
-          width: 70vw;
+          @media (max-width: ${minMedia}px) {
+            width: 70vw;
           }
         }
       }
@@ -157,9 +159,9 @@ const Container = styled.div`
               font-size: 1.8rem;
             }
           }
-          @media (max-width:${minMedia}px) {  
+          @media (max-width: ${minMedia}px) {
             font-size: 0.8rem;
-            }
+          }
         }
       }
     }
