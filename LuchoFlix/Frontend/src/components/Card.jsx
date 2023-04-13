@@ -95,7 +95,7 @@ function Card({ movieData, isLiked = false }) {
         <br>
         <h5> ${movieData.genres} </h5>
         <iframe
-          src="http://www.youtube.com/embed/${movieData.trailer}?autoplay=1&mute=1"
+          src="http://www.youtube.com/embed/${movieData.trailer}"
           frameborder="0"
         /> 
 
