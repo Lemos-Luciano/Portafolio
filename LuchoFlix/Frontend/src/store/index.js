@@ -38,25 +38,6 @@ export const getGenero = createAsyncThunk("lucho/genres", async () => {
   return genres;
 });
 
-export const getTrailer = createAsyncThunk("lucho/trailer", async (url) => {
-  // trailer
-  const trailerMovies = await axios.get(
-    `${TMBD_BASE_URL}/movie/${url}/videos?api_key=${API_KEY}&language=es`
-  );
-  // console.log(trailerMovies);
-  // https://api.themoviedb.org/3/movie/594767/videos?api_key=0c88a0020acf0787927c7ab02d10a416&language=es
-  let trailer = trailerMovies.data.results;
-  let index = trailer.findIndex(e => e.name.includes('Tráiler'));
-//   if (index !== -1) {
-//     console.log(index);
-//     console.log(trailer[index].key);
-// }
-  let urltrailer = trailer[index].key;
-  // console.log(trailerMovies);
-  return urltrailer;
-});
-
-
 
 // Crea el array con la informacion importante de cada pelicula
 const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
@@ -88,16 +69,6 @@ const crearArrayConDatosIniciales = (array, arrayPeliculas, genres) => {
           `${TMBD_BASE_URL}/movie/${element.id}/videos?api_key=${API_KEY}&language=en`
         );
         let trailer = trailerMovies.data.results;
-        const conditions = ["Tráiler"];
-        // console.log("el trailer es:");
-        // console.log(trailer);
-        // let encontrado = trailer.findIndex(e => conditions.some(i => e.includes(i)));
-
-        // console.log("encontrado es: ");
-        // console.log(encontrado);
-
-        // let index = trailer.findIndex(e => e.name.some(el => 'Tráiler'));
-        // conditions.some(el => str1.includes(el));
         let index = trailer.findIndex(e => e.name.includes('Tráiler') || e.name.includes('Trailer') || e.name.includes('trailer') );
         let urltrailer = trailer[index].key;
         // console.log(index);
@@ -137,8 +108,6 @@ const getDatosIniciales = async (api, genres, paging) => {
 export const fetchMovies = createAsyncThunk(
   "lucho/tendencias",
   async ({ type }, thunkApi) => {
-    // const urlsinopsis = getTrailer("WhCuNiqUi2w");
-    // const urlsinopsis = "WhCuNiqUi2w";
     const {
       lucho: { genres },
     } = thunkApi.getState();

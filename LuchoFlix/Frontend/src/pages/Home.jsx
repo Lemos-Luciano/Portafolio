@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, getGenero, getTrailer } from "../store";
+import { fetchMovies, getGenero } from "../store";
 // Slider
 import Slider from "../components/Slider";
 // Medidas Responsive
@@ -46,9 +46,6 @@ export default function Home() {
     if (genresLoaded) dispatch(fetchMovies({ type: "all" }));
   }, [dispatch, genresLoaded]);
 
-  // useEffect(() => {
-  //   dispatch(getTrailer());
-  // }, [dispatch]);
 
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -97,9 +94,6 @@ export default function Home() {
             </button>
           </div>
         </div>
-      </div>
-      <div>
-        <button onClick={getTrailer}>buscar trailer</button>
       </div>
       <Slider movies={movies} />
     </Container>

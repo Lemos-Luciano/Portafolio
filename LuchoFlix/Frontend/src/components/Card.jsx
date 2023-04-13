@@ -82,6 +82,8 @@ function Card({ movieData, isLiked = false }) {
           // background: 'rgba(109, 109, 110, 0.7)',
           background: 'rgba(0, 0, 0, 0.9)',
           color: "white",
+          // padding: '1rem',
+          padding: false,
           title: `${movieData.name}`,
           // imageUrl: `${IMAGE_PATH_500}${movieData.image}`,
           imageHeight: 300,
@@ -101,6 +103,7 @@ function Card({ movieData, isLiked = false }) {
           confirmButtonColor: "#e50914",
           customClass: {
             confirmButton: 'alertButton',
+            popup: 'containerpopup',
           },
       })
     };
@@ -144,12 +147,12 @@ function Card({ movieData, isLiked = false }) {
               alt="movie"
               onClick={() => navigate("/player")}
             />
-            <video
+            {/* <video
               src={video}
               autoPlay
               loop
               onClick={() => navigate("/player")}
-            />
+            /> */}
           </div>
           <div className="info-container flex column">
             <h3

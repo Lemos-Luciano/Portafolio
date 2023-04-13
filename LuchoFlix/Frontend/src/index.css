@@ -67,4 +67,19 @@ body::-webkit-scrollbar {
 }
 .pelicula iframe {
   height: 400px;
+
+}
+
+/* .containerpopup {
+  padding: 15rem;
+} */
+
+
+@media (max-width: 800px) {
+  .pelicula iframe {
+    height: 150px;
+  }
+  .pelicula p{
+    margin: 1rem;
+  }
 }
