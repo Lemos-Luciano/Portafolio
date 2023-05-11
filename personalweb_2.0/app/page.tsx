@@ -1,4 +1,5 @@
 import About from "./components/About";
+import ContactMe from "./components/ContactMe";
 import Experiencia from "./components/Experiencia";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -31,7 +32,9 @@ export default function Home() {
         <Proyectos />
       </section>
 
-      {/* Contact Me */}
+      <section id="contactme" className="snap-start">
+        <ContactMe />
+      </section>
 
     </div>  
   )
