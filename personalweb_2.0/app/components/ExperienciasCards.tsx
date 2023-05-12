@@ -1,6 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from "framer-motion";
+import FotoNext from "../../public/Next.png";
+import FotoGoogle from "../../public/GoogleLogo.png";
 
 type Props = {}
 
@@ -13,16 +15,16 @@ export default function ExperienciasCards({}: Props) {
         whileInView={{opacity:1, y:0,}}
         viewport={{ once:true}}
         className='w-32 h-32 rounded-full xl:w-[200px] xl:h-[200px] object-cover object-center'
-        src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png" 
+        src={FotoGoogle.src}
         alt="" />
 
         <div className='px-0 md:px-10'>
             <h4 className='text-4xl font-light'>CEO de google</h4>
             <p className='font-bold text-2xl mt-1'>Parrafo</p>
             <div className='flex space-x-2 my-2'>
-                <img className='h-10 w-10 rounded-full' src="https://global.discourse-cdn.com/auth0/original/2X/a/ae35edce19e64c53e5d455b22e8a2c82d093d4c9.png" alt="" />
-                <img className='h-10 w-10 rounded-full' src="https://global.discourse-cdn.com/auth0/original/2X/a/ae35edce19e64c53e5d455b22e8a2c82d093d4c9.png" alt="" />
-                <img className='h-10 w-10 rounded-full' src="https://global.discourse-cdn.com/auth0/original/2X/a/ae35edce19e64c53e5d455b22e8a2c82d093d4c9.png" alt="" />
+                <img className='h-10 w-10 rounded-full' src={FotoNext.src} alt="" />
+                <img className='h-10 w-10 rounded-full' src={FotoNext.src} alt="" />
+                <img className='h-10 w-10 rounded-full' src={FotoNext.src} alt="" />
             </div>
             <p  className='uppercase py-5 text-gray-300'>Comence a trabajar en 1900 y termine tal fecha...</p>
             <ul className='list-disc space-y-4 ml-5 text-lg'>

@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from "framer-motion";
+import Proyecto1 from "../../public/Proyecto1_LuchoFlix.png";
 
 type Props = {}
 
@@ -24,7 +25,7 @@ export default function Proyectos({}: Props) {
                     transition={{duration:1.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
-                    src="https://github.com/Lemos-Luciano/Portafolio/blob/main/LuchoFlix/Frontend/src/assets/logo.png?raw=true" alt="" />
+                    src={Proyecto1.src} alt="" />
                 
                 <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                     <h4 className='text-4xl font-semibold text-center'>

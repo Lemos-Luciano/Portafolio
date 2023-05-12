@@ -3,6 +3,7 @@ import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Link from "next/link";
+import FotoPerfil from "../../public/Profile.jpg";
 
 type Props = {};
 
@@ -21,7 +22,7 @@ export default function Hero({}: Props) {
       <BackgroundCircles />
       <img
         className="relative rounded-full h-32 w-32 mx-auto object-cover"
-        src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/CV/fotoCV.jpg?raw=true"
+        src={FotoPerfil.src}
         alt="Profile Image"
       />
       <div className="z-20">
