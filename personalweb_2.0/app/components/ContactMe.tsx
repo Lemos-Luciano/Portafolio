@@ -1,9 +1,20 @@
+"use client";
 import React from 'react';
 import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type Inputs = {
+    name: string,
+    email: string,
+    asunto: string,
+    mensaje: string,
+};
 
 type Props = {}
 
 export default function ContactMe({}: Props) {
+      const { register, handleSubmit } = useForm<Inputs>();
+      const onSubmit : SubmitHandler<Inputs> = (Formdata) => console.log(Formdata);
   return (
     <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
@@ -33,7 +44,7 @@ export default function ContactMe({}: Props) {
                 </div>
             </div>
 
-            <form className='flex flex-col space-y-2 w-fit mx-auto'>
+            {/* <form className='flex flex-col space-y-2 w-fit mx-auto'>
                 <div className='flex space-x-2'>
                     <input placeholder='Nombre' className="contactInput" type="text" />
                     <input placeholder='Email' className="contactInput" type="email" />
@@ -45,7 +56,17 @@ export default function ContactMe({}: Props) {
                 <button 
                 type="submit"
                 className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'>Enviar</button>
-            </form>
+            </form> */}
+
+            
+            <form action="https://formsubmit.co/llemos@uoc.edu" method="POST">
+                <input type="text" placeholder="Nombre" name="nombre" />
+                <input type="email" placeholder="email"  name="email" />
+                <input type="text" placeholder="Motivo" name="motivo" />
+                <textarea name="mensaje" placeholder="Mensaje"></textarea>
+                <button 
+                type="submit"
+                className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'>Enviar</button>            </form>
         </div>
     </div>
   )
