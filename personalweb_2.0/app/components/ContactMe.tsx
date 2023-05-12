@@ -1,20 +1,20 @@
 "use client";
 import React from 'react';
 import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
-import { SubmitHandler, useForm } from "react-hook-form";
+// import { SubmitHandler, useForm } from "react-hook-form";
 
-type Inputs = {
-    name: string,
-    email: string,
-    asunto: string,
-    mensaje: string,
-};
+// type Inputs = {
+//     name: string,
+//     email: string,
+//     asunto: string,
+//     mensaje: string,
+// };
 
 type Props = {}
 
 export default function ContactMe({}: Props) {
-      const { register, handleSubmit } = useForm<Inputs>();
-      const onSubmit : SubmitHandler<Inputs> = (Formdata) => console.log(Formdata);
+    //   const { register, handleSubmit } = useForm<Inputs>();
+    //   const onSubmit : SubmitHandler<Inputs> = (Formdata) => console.log(Formdata);
   return (
     <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
