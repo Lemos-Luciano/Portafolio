@@ -2,7 +2,7 @@
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
-import Link from "next/link";
+
 import FotoPerfil from "../../public/Profile.jpg";
 
 type Props = {};
@@ -35,21 +35,22 @@ export default function Hero({}: Props) {
         </h1>
 
         <div className="pt-5">
-          <Link href="#about">
+            <a href="#about">
             <button className="heroButton"> About </button>
-          </Link>
-          <Link href="#experiencia">
+            </a>
+
+          <a href="#experiencia">
             <button className="heroButton"> Experiencia </button>
-          </Link >
-          <Link href="#skills">
+          </a >
+          <a href="#skills">
             <button className="heroButton"> Skills </button>
-          </Link>
-          <Link href="#proyectos">
+          </a>
+          <a href="#proyectos">
             <button className="heroButton"> Proyectos </button>
-          </Link>
-          <Link href="#contactame">
+          </a>
+          <a href="#contactame">
             <button className="heroButton"> Contacto </button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
