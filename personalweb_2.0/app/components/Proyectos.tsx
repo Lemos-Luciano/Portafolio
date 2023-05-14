@@ -13,7 +13,7 @@ export default function Proyectos({}: Props) {
     transition={{duration:2}}
     whileInView={{opacity:1}}
     className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
+        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl max-md:tracking-[10px]'>
             Proyectos
         </h3>
 
@@ -25,17 +25,21 @@ export default function Proyectos({}: Props) {
                     transition={{duration:1.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
-                    src={Proyecto1.src} alt="" />
+                    src={Proyecto1.src} alt="Imagen Proyecto" />
                 
                 <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
-                    <h4 className='text-4xl font-semibold text-center'>
+                    <h4 className='text-4xl font-semibold text-center max-md:text-base'>
                         <span className='underline decoration-[#F7AB0A]/50'>
                             caso {i+1} de {proyectos.length}: LuchoFlix
                         </span> 
                     </h4>
 
-                    <p className='text-lg text-center md:text-left'>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi nobis suscipit eum quod pariatur veniam, vero, molestias obcaecati aliquid nostrum maxime reiciendis. A, corrupti at modi amet cupiditate eveniet voluptates quisquam, cumque ratione ipsam similique itaque tenetur error fugit eligendi perspiciatis optio tempore expedita. Facere labore mollitia consequatur, dolorem voluptates quas tempora quae illum minima nisi, ad saepe recusandae odit possimus delectus vel culpa aliquid ipsam dolor minus unde et? Eligendi repellat tempore dolorem quo laudantium ipsa quae blanditiis itaque.
+                    <p className='text-lg text-center md:text-left max-md:text-xs'>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi nobis suscipit eum quod pariatur veniam, vero, molestias obcaecati aliquid nostrum maxime reiciendis. A, corrupti at modi amet cupiditate eveniet voluptates 
+                        quisquam, cumque ratione ipsam similique itaque tenetur error fugit eligendi perspiciatis optio tempore
+                            <span className='hidden md:inline'>
+                            expedita. Facere labore mollitia consequatur, dolorem voluptates quas tempora quae illum minima nisi, ad saepe recusandae odit possimus delectus vel culpa aliquid ipsam dolor minus unde et? Eligendi repellat tempore dolorem quo laudantium ipsa quae blanditiis itaque.
+                            </span>
                     </p>
                 </div>
             </div>

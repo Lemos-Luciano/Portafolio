@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import Image from 'next/image';
+
 
 import Head from "next/head";
 import Mano from "../public/DedoPaArriba.png";
@@ -54,8 +56,8 @@ const Home : NextPage = () => {
       <a href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer ">
           <div className="flex items-center justify-center">
-            <img 
-            src={Mano.src}
+            <Image 
+            src={Mano}
             alt="Mano" 
             className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 hover:scale-150 cursor-pointer" />
           </div>

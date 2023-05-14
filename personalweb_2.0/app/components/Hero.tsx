@@ -10,26 +10,30 @@ type Props = {};
 export default function Hero({}: Props) {
   const [text, count] = useTypewriter({
     words: [
-      "Luciano Lemos",
-      "Saltando el renglon si el texto es largo como este ejemplo",
-      "Bienvenid@s",
+      "Bienvenid@",
+      "Soy Luciano Lemos",
+      "Espero que disfrute mi contenido",
+      "No dude en contactarme🤙📲",
     ],
     loop: true,
     delaySpeed: 2000,
   });
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
-      <BackgroundCircles />
-      <img
-        className="relative rounded-full h-32 w-32 mx-auto object-cover"
-        src={FotoPerfil.src}
-        alt="Profile Image"
-      />
+
+      <div>
+        <BackgroundCircles />
+        <img
+          className="relative rounded-full h-32 w-32 max-md:h-32 max-md:w-32 mx-auto object-cover"
+          src={FotoPerfil.src}
+          alt="Profile Image"
+        />
+      </div>
       <div className="z-20">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-          Desarrollador Fullstack
+        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] max-md:text-xs">
+          Desarrollador   Fullstack
         </h2>
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10">
+        <h1 className="text-5xl lg:text-6xl font-semibold px-10 max-md:text-3xl">
           <span> {text} </span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
