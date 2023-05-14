@@ -18,17 +18,12 @@ export default function Header({}: Props) {
       className="flex flex-row items-center">
         {/* Social Icons */}
         <SocialIcon
-          url="https://www.youtube.com"
+          url="https://www.linkedin.com/in/luciano-lemos"
           fgColor="gray"
           bgColor="transparent"
         />
         <SocialIcon
-          url="https://www.youtube.com"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.youtube.com"
+          url="https://github.com/Lemos-Luciano"
           fgColor="gray"
           bgColor="transparent"
         />

@@ -9,7 +9,6 @@ type Props = {
 };
 
 export default function Proyectos({}: Props) {
-    const proyectos = [1,2,3];
 
     const todoslosproyectos = [
         {
@@ -55,7 +54,7 @@ export default function Proyectos({}: Props) {
                     transition={{duration:1.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
-                    src={proyecto.foto} alt="Imagen Proyecto" 
+                    src={`../proyectos/proyecto${i}.png`} alt="Imagen Proyecto" 
                     className='flex max-w-lg max-md:max-w-sm max-sm:max-w-xs'
                     />
                 </a>
@@ -64,7 +63,7 @@ export default function Proyectos({}: Props) {
                     <h4 className='text-4xl font-semibold text-center max-md:text-base max-lg:text-lg'>
                         <span className='underline decoration-[#F7AB0A]/50'>
                          {proyecto.nombre}  
-                        </span> | Proyecto {i+1} de {proyectos.length}
+                        </span> | Proyecto {i+1} de {todoslosproyectos.length}
                     </h4>
                     <p className='text-lg text-center md:text-left max-md:text-xs max-lg:text-base '>
                         {proyecto.descripcion}
