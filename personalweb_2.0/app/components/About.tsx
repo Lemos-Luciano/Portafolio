@@ -15,7 +15,7 @@ export default function About({}: Props) {
     transition={{ duration: 2.0 }}
     whileInView={{ opacity: 1 }}
     className='flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
-        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl max-md:tracking-[10px]'> About </h3>
+        <h3 className='absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl max-md:tracking-[10px]'> About </h3>
 
         <div className='bg-[#292929] rounded-md p-10 flex flex-col relative text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
             <motion.img 

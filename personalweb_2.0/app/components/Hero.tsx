@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React  from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
@@ -8,6 +8,7 @@ import FotoPerfil from "../../public/Profile.jpg";
 type Props = {};
 
 export default function Hero({}: Props) {
+
   const [text, count] = useTypewriter({
     words: [
       "Bienvenid@",
@@ -18,21 +19,20 @@ export default function Hero({}: Props) {
     loop: true,
     delaySpeed: 2000,
   });
+
   return (
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
-
-      <div>
         <BackgroundCircles />
+      <div className="z-20 space-y-10">
+        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] max-md:text-xs">
+          Desarrollador   Fullstack
+        </h2>
         <img
           className="relative rounded-full h-32 w-32 max-md:h-32 max-md:w-32 mx-auto object-cover"
           src={FotoPerfil.src}
           alt="Profile Image"
+          id="fotoperfil"
         />
-      </div>
-      <div className="z-20">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] max-md:text-xs">
-          Desarrollador   Fullstack
-        </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10 max-md:text-3xl">
           <span> {text} </span>
           <Cursor cursorColor="#F7AB0A" />
@@ -58,5 +58,6 @@ export default function Hero({}: Props) {
         </div>
       </div>
     </div>
+    
   );
 }
