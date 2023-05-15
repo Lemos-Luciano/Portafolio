@@ -38,7 +38,7 @@ export default function Skills({}: Props) {
         Un poco de la experencias
       </h3>
 
-      <Image src={`/../public/skills/react.png`}
+      <Image src={`/skills/react.png`}
       alt="Foto react"
       width={500}
       height={500}
