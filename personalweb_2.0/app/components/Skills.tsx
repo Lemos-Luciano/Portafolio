@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import Skill from "./Skill";
 import Image from 'next/image';
 
 
@@ -9,8 +8,8 @@ type Props = {};
 
 export default function Skills({}: Props) {
   const skillsfront = [
-    { nombre: "React" },
-    { nombre: "TypeScript" },
+    { nombre: "React"},
+    { nombre: "TypeScript"},
     { nombre: "NextJs" },
     { nombre: "TailwindCss" },
   ];
@@ -41,6 +40,30 @@ export default function Skills({}: Props) {
       <Image src={'/next.png'} height={200} width={200} alt="logo next"></Image>
       <img src={process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'} alt="Foto de dedos" />
 
+      <div>
+        <h2>probando</h2>
+        <img
+                src={`../../public/skills/Nextjs.png`}
+                alt="Imagen 1"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+        <img
+                src={`/../public/skills/Nextjs.png`}
+                alt="Imagen 2"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+        <img
+                src={`/public/skills/Nextjs.png`}
+                alt="Imagen 3"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+        <img
+                src={`/skills/Nextjs.png`}
+                alt="Imagen 4"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+          
+      </div>
       <div className="flex my-28">
 
         <div className="flex flex-wrap max-w-sm bg-gray-700 content-center items-center gap-7 ">
