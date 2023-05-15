@@ -38,13 +38,7 @@ export default function Skills({}: Props) {
         Un poco de la experencias
       </h3>
 
-      <Image
-      src={'/'+ process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'}
-      alt="Foto react"
-      width={500}
-      height={500}
-      />
-
+      <Image src={'/next.png'} height={200} width={200} alt="logo next"></Image>
       <img src={process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'} alt="Foto de dedos" />
 
       <div className="flex my-28">
