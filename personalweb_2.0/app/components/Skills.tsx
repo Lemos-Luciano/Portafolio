@@ -38,11 +38,14 @@ export default function Skills({}: Props) {
         Un poco de la experencias
       </h3>
 
-      <Image src={`/skills/react.png`}
+      <Image
+      src={'/'+ process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'}
       alt="Foto react"
       width={500}
       height={500}
       />
+
+      <img src={process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'} alt="Foto de dedos" />
 
       <div className="flex my-28">
 
