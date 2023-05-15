@@ -2,6 +2,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Skill from "./Skill";
+import Image from 'next/image';
+
 
 type Props = {};
 
@@ -35,6 +37,12 @@ export default function Skills({}: Props) {
       <h3 className="absolute top-36 uppercase tracking-[3px] text-gray-500 text-sm">
         Un poco de la experencias
       </h3>
+
+      <Image src={`/../public/skills/react.png`}
+      alt="Foto react"
+      width={500}
+      height={500}
+      />
 
       <div className="flex my-28">
 
