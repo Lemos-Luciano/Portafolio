@@ -54,7 +54,8 @@ export default function Proyectos({}: Props) {
                     transition={{duration:1.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
-                    src={`../proyectos/proyecto${i}.png`} alt="Imagen Proyecto" 
+                    src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/proyectos/Proyecto${i}.png?raw=true`} 
+                    alt={`Imagen Proyecto ${i}`} 
                     className='flex max-w-lg max-md:max-w-sm max-sm:max-w-xs'
                     />
                 </a>
