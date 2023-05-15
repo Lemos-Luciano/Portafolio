@@ -42,7 +42,7 @@ export default function Skills({}: Props) {
           {skillsfront.map((skill, i) => (
             <div key={i} className="group relative flex cursor-pointer">
               <img
-                src={`../skills/${skill.nombre}.png`}
+                src={`../../public/skills/${skill.nombre}.png`}
                 alt="Imagen Proyecto"
                 className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
               />
