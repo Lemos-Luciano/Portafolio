@@ -39,7 +39,6 @@ export default function Skills({}: Props) {
 
       <Image src={'/next.png'} height={200} width={200} alt="logo next"></Image>
       <img src={process.env.PUBLIC_URL + '/DedoPaArriba.png.jpg'} alt="Foto de dedos" />
-
       <div>
         <h2>probando</h2>
         <img
@@ -58,11 +57,44 @@ export default function Skills({}: Props) {
                 className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
               />
         <img
+                src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/Skills/Nextjs.png?raw=true`}
+                alt="Imagen 4"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+        <img
                 src={`/skills/Nextjs.png`}
                 alt="Imagen 4"
                 className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
               />
-          
+      </div>
+
+      <div>
+        <h2>probando2</h2>
+        {/* <Image
+                src={`../../public/skills/Nextjs.png`}
+                alt="Imagen 1"
+                width={300}
+                height={300}/>
+        <Image
+                src={`/../public/skills/Nextjs.png`}
+                alt="Imagen 2"
+                width={300}
+                height={300}/>
+        <Image
+                src={`/public/skills/Nextjs.png`}
+                alt="Imagen 3"
+                width={300}
+                height={300}/> */}
+        <Image
+                src={`/skills/Nextjs.png`}
+                alt="Imagen 4"
+                width={300}
+                height={300}/>
+        <Image
+                src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/Skills/Nextjs.png?raw=true`}
+                alt="Imagen 4"
+                width={300}
+                height={300}/>
       </div>
       <div className="flex my-28">
 
