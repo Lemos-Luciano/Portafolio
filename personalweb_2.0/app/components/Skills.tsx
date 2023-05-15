@@ -83,6 +83,9 @@ export default function Skills({}: Props) {
               </div>
             </div>
           ))}
+
+
+          
         </div>
 
         <div className="flex flex-wrap max-w-sm bg-gray-700 content-center justify-center gap-7 ">
@@ -104,6 +107,57 @@ export default function Skills({}: Props) {
           ))}
         </div>
       </div>
+
+      <div className="w-[300px] h-[150px] bg-blue-700 relative">Imagen 1
+        <div className="bg-red-400 absolute top-0 left-0 h-[100%] max-w-[100%] overflow-hidden barradesplazadora">Imagen 2
+          <textarea readOnly className="opacity-0 resize-x w10 h-10 relative top-[50%] scale-y-[50]"></textarea>
+        </div>
+      </div>
+
+
+        <div className="flex flex-wrap w-[400px] h-[600px] bg-gray-700 gap-7 relative">
+          {skillsfront.map((skill, i) => (
+            <div key={i} className="group relative flex cursor-pointer">
+              <img
+                src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/Skills/${skill.nombre}.png?raw=true`}
+                alt="Imagen Proyecto"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+              <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24 md:w-28 md:h-28 xl:w-32 xl:h-32 rounded-full z-0">
+                <div className="flex items-center justify-center h-full">
+                  <p className="text-3xl font-bold text-black opacity-100">
+                    {skill.nombre}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div className="absolute top-0 left-0 bg-green-700 h-[100%] max-w-[100%] overflow-hidden barradesplazadora justify-end">
+          <textarea readOnly className="opacity-0 z-50 resize-x w10 h-10 relative top-[50%] scale-y-[10000]"></textarea>
+          {skillsback.map((skill, i) => (
+            <div key={i} className="group relative flex cursor-pointer">
+              <img
+                src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/Skills/${skill.nombre}.png?raw=true`}
+                alt="Imagen Proyecto"
+                className="rounded-full border border-gray-500 object-scale-down w-24 h-24 md:w-28 md:h-28 xl:w-32 xl:h-32 filter group-hover:grayscale transition duration-300 ease-in-out"
+              />
+              <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24 md:w-28 md:h-28 xl:w-32 xl:h-32 rounded-full z-0">
+                <div className="flex items-center justify-center h-full">
+                  <p className="text-3xl font-bold text-black opacity-100">
+                    {skill.nombre}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+          
+        </div>
+
+
+
+
     </motion.div>
   );
 }
