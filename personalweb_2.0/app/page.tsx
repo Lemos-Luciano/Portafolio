@@ -53,8 +53,8 @@ const Home : NextPage = () => {
       </section>
 
 
-      <a href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer ">
+      <a href="#hero" className="sticky bottom-5 w-full cursor-pointer">
+        <footer >
           <div className="flex items-center justify-center">
             <Image 
             src={Mano}

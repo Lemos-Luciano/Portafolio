@@ -4,15 +4,15 @@
 @tailwind utilities;
 
 html {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @media (max-width: 1280px) {
-  html { font-size: 14px; }
+  html { font-size: 16px; }
 }
 
 @media (max-width: 1024px) {
-  html { font-size: 12px; }
+  html { font-size: 15px; }
 }
 
 @media (max-width: 768px) {
@@ -26,7 +26,7 @@ html {
     }
 
     .heroButton {
-        @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm max-md:text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40
+        @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-base tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40
     }
 
     .contactInput {

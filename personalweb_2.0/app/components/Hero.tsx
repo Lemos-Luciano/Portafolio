@@ -24,16 +24,16 @@ export default function Hero({}: Props) {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
         <BackgroundCircles />
       <div className="z-20 space-y-10">
-        <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] max-md:text-xs">
+        <h2 className="text-base uppercase text-gray-500 pb-2 tracking-[15px]">
           Desarrollador   Fullstack
         </h2>
         <img
-          className="relative rounded-full h-32 w-32 max-md:h-32 max-md:w-32 mx-auto object-cover"
+          className="relative rounded-full h-32 w-32 mx-auto object-cover"
           src={FotoPerfil.src}
           alt="Profile Image"
           id="fotoperfil"
         />
-        <h1 className="text-5xl lg:text-6xl font-semibold px-10 max-md:text-3xl">
+        <h1 className="text-2xl font-semibold px-10">
           <span> {text} </span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
