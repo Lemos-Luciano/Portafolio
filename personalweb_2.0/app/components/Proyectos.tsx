@@ -16,7 +16,7 @@ export default function Proyectos({}: Props) {
             foto : "../Proyecto1_LuchoFlix.png",
             url: "https://luchoflix.vercel.app/",
             git: "https://github.com/Lemos-Luciano/Portafolio/tree/main/LuchoFlix",
-            descripcion: 'Web con las mejores sinopsis de peliculas (con resumenes escritos y videos de trailers). El front de la aplicación está realizada con React y el backend con Nodejs y express LuchoFlix toma los datos de la web https://developers.themoviedb.org/ y a su vez dispone de una base de datos propia alojada en mongoDB. La misma es utilizada para guardar el historial de los usuarios (peliculas favoritas, etc.) La autenticacion de los usuarios y la cuentas de los mismo estan alojados en Firebase de google',
+            descripcion: 'Web con las mejores sinopsis de peliculas. El front de la aplicación está realizada con React y el backend con Nodejs y express. LuchoFlix toma los datos de la web https://developers.themoviedb.org/ y a su vez dispone de una base de datos propia alojada en mongoDB. La misma es utilizada para guardar el historial de los usuarios (peliculas favoritas, etc.) La autenticacion de los usuarios y la cuentas de los mismo estan alojados en Firebase de google',
         },
         {
             nombre: "WebPersonal2.0",
@@ -51,12 +51,12 @@ export default function Proyectos({}: Props) {
                 <a href={proyecto.url}  target="_blank">
                     <motion.img 
                     initial={{ opacity:0, y:-200}}
-                    transition={{duration:1.5}}
+                    transition={{duration:2.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
                     src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/proyectos/Proyecto${i}.png?raw=true`} 
                     alt={`Imagen Proyecto ${i}`} 
-                    className='flex max-w-lg'
+                    className='flex max-w-md'
                     />
                 </a>
 
@@ -66,9 +66,9 @@ export default function Proyectos({}: Props) {
                          {proyecto.nombre}  
                         </span> | Proyecto {i+1} de {todoslosproyectos.length}
                     </h4>
-                    <p className='text-base text-center md:text-left '>
+                    <p className='text-base text-center max-md:text-left '>
                         {proyecto.descripcion}
-                            <span className='hidden md:inline'>
+                            <span className='hidden'>
                             texto largo para ocultar
                             </span>
                     </p>

@@ -6,7 +6,7 @@ type Props = {}
 
 export default function ContactMe({}: Props) {
   return (
-    <div className='h-screen flex relative flex-row  max-md:flex-col justify-center space-x-12 items-center'>
+    <div className='h-screen flex relative flex-row  max-md:flex-col justify-center space-x-12 max-md:space-x-0 items-center'>
     {/* <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center'> */}
         <h3 className='titulos'>
             Contacto
@@ -14,7 +14,7 @@ export default function ContactMe({}: Props) {
 
         {/* Datos personales */}        
             {/* <div className='flex flex-col space-y-7 px-2 max-w-lg' > */}
-            <div className='flex flex-col space-y-7 px-2'>
+            <div className='flex flex-col space-y-7 px-2 max-md:mb-7'>
                 <div>
                     <h4 className='text-xl font-semibold text-center '>
                         Tengo justo lo que usted necesita <br />
@@ -43,7 +43,7 @@ export default function ContactMe({}: Props) {
                     </div >
                 </div>
 
-            <div>
+            <div className='max-md:w-96'>
                 <form action="https://formsubmit.co/llemos@uoc.edu" method="POST"
                 className='flex flex-col space-y-2 mx-auto'>
                 {/* className='flex flex-col space-y-2 w-fit mx-auto'> */}
