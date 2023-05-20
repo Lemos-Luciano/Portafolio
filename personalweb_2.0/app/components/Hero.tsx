@@ -37,7 +37,7 @@ export default function Hero({}: Props) {
             <BackgroundCircles />
           </div>
         </div>
-        <h1 className="text-2xl font-semibold px-10">
+        <h1 className="relative z-20 text-2xl font-semibold px-10">
           <span> {text} </span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
