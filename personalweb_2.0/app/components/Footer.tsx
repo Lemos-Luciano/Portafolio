@@ -4,7 +4,7 @@ type Props = {}
 
 export default function Footer({}: Props) {
   return (
-    <div className="sticky top-[90vh] w-full cursor-pointer flex items-center justify-center mx-auto z-20 ">
+    <div className="sticky top-[90vh] max-md:top-[85vh] w-full cursor-pointer flex items-center justify-center mx-auto z-20 ">
         <a href="#hero" >
         {/* <div className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center"> */}
         <div className="flex items-center justify-center">
