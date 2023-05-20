@@ -61,12 +61,12 @@ export default function Proyectos({}: Props) {
                 </a>
 
                 <div className='space-y-10 px-0 max-w-6xl'>
-                    <h4 className='text-4xl font-semibold text-center max-md:text-base max-lg:text-lg'>
+                    <h4 className='text-xl font-semibold text-center max-md:text-base max-lg:text-lg'>
                         <span className='underline decoration-[#F7AB0A]/50'>
                          {proyecto.nombre}  
                         </span> | Proyecto {i+1} de {todoslosproyectos.length}
                     </h4>
-                    <p className='text-lg text-center md:text-left '>
+                    <p className='text-base text-center md:text-left '>
                         {proyecto.descripcion}
                             <span className='hidden md:inline'>
                             texto largo para ocultar
