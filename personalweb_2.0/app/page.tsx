@@ -7,6 +7,7 @@ import Mano from "../public/DedoPaArriba.png";
 
 
 import About from "./components/About";
+import Footer from "./components/Footer";
 import ContactMe from "./components/ContactMe";
 import Experiencia from "./components/Experiencia";
 import Header from "./components/Header";
@@ -27,6 +28,7 @@ const Home : NextPage = () => {
       </Head>
 
       <Header />
+      <Footer />
 
       <section id="hero" className="snap-start">
         <Hero />
@@ -52,17 +54,6 @@ const Home : NextPage = () => {
         <ContactMe />
       </section>
 
-
-      <a href="#hero" className="sticky bottom-5 w-full cursor-pointer">
-        <footer >
-          <div className="flex items-center justify-center">
-            <Image 
-            src={Mano}
-            alt="Mano" 
-            className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 hover:scale-150 cursor-pointer" />
-          </div>
-        </footer>
-      </a>
 
     </div>  
   )
