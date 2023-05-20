@@ -29,5 +29,6 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "react-compare-slider": "^2.2.0"
   }
 }

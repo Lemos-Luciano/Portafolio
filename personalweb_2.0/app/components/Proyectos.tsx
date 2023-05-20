@@ -41,13 +41,13 @@ export default function Proyectos({}: Props) {
     transition={{duration:2}}
     whileInView={{opacity:1}}
     className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-        <h3 className='absolute top-20 uppercase tracking-[20px] text-gray-500 text-2xl max-md:tracking-[10px]'>
+        <h3 className='titulos'>
             Proyectos
         </h3>
 
         <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/200 scrollbar-thumb-[#F7AB0A]/80'>
             {todoslosproyectos.map((proyecto, i) => (
-            <div key={i} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 max-md:space-y-3 items-center justify-center p-20 h-screen'>
+            <div key={i} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 h-screen'>
                 <a href={proyecto.url}  target="_blank">
                     <motion.img 
                     initial={{ opacity:0, y:-200}}
@@ -56,17 +56,17 @@ export default function Proyectos({}: Props) {
                     viewport={{ once:true}}
                     src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/proyectos/Proyecto${i}.png?raw=true`} 
                     alt={`Imagen Proyecto ${i}`} 
-                    className='flex max-w-lg max-md:max-w-sm max-sm:max-w-xs'
+                    className='flex max-w-lg'
                     />
                 </a>
 
-                <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
+                <div className='space-y-10 px-0 max-w-6xl'>
                     <h4 className='text-4xl font-semibold text-center max-md:text-base max-lg:text-lg'>
                         <span className='underline decoration-[#F7AB0A]/50'>
                          {proyecto.nombre}  
                         </span> | Proyecto {i+1} de {todoslosproyectos.length}
                     </h4>
-                    <p className='text-lg text-center md:text-left max-md:text-xs max-lg:text-base '>
+                    <p className='text-lg text-center md:text-left '>
                         {proyecto.descripcion}
                             <span className='hidden md:inline'>
                             texto largo para ocultar
