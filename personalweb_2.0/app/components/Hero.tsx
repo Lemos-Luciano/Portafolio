@@ -33,7 +33,7 @@ export default function Hero({}: Props) {
             alt="Profile Image"
             id="fotoperfil"
           />
-          <div className="absolute left-[50%] top-0">
+          <div className="absolute left-[50%] top-0 z-0">
             <BackgroundCircles />
           </div>
         </div>
