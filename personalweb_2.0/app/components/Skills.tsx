@@ -21,6 +21,7 @@ export default function Skills({}: Props) {
     { nombre: "Firebase" },
     { nombre: "MongoDB" },
     { nombre: "Azure" },
+    { nombre: "Redux" },
   ];
 
   return (
@@ -51,7 +52,7 @@ export default function Skills({}: Props) {
               />
               <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24 max-md:w-16 max-md:h-16 rounded-full z-0">
                 <div className="flex items-center justify-center h-full">
-                  <p className="text-base font-bold text-black opacity-100">
+                  <p className="text-base max-md:text-xs font-bold text-black opacity-100">
                     {skill.nombre}
                   </p>
                 </div>
@@ -73,7 +74,7 @@ export default function Skills({}: Props) {
               />
               <div className="absolute opacity-0 group-hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white h-24 w-24 max-md:w-16 max-md:h-16 rounded-full z-0">
                 <div className="flex items-center justify-center h-full">
-                <p className="text-base font-bold text-black opacity-100">
+                <p className="text-base max-md:text-xs font-bold text-black opacity-100">
                     {skill.nombre}
                   </p>
                 </div>
