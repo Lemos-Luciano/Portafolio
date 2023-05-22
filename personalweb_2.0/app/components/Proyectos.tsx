@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
+import { TbWorldWww } from 'react-icons/tb';
+
 
 
 
@@ -16,7 +18,7 @@ export default function Proyectos({}: Props) {
             foto : "../Proyecto1_LuchoFlix.png",
             url: "https://luchoflix.vercel.app/",
             git: "https://github.com/Lemos-Luciano/Portafolio/tree/main/LuchoFlix",
-            descripcion: 'Web con las mejores sinopsis de peliculas. El front de la aplicación está realizada con React y el backend con Nodejs y express. LuchoFlix toma los datos de la web https://developers.themoviedb.org/ y a su vez dispone de una base de datos propia alojada en mongoDB. La misma es utilizada para guardar el historial de los usuarios (peliculas favoritas, etc.) La autenticacion de los usuarios y la cuentas de los mismo estan alojados en Firebase de google',
+            descripcion: 'Web con las mejores sinopsis de películas. Realizada con React y Nodejs (ExpressJs). LuchoFlix toma los datos de la API “https://developers.themoviedb.org/” y a su vez dispone de una base de datos propia alojada en MongoDB. La misma es utilizada para guardar el historial de los usuarios (películas favoritas, etc.) La autenticación de los usuarios y la cuentas de los mismo están alojados en Firebase de Google',
         },
         {
             nombre: "WebPersonal2.0",
@@ -30,7 +32,7 @@ export default function Proyectos({}: Props) {
             url: "https://lucianolemos-apiproject.vercel.app/",
             git: "https://github.com/Lemos-Luciano/Portafolio/tree/main/API_Project",
             foto : "../Proyecto3_country_api.png",
-            descripcion: 'Proyecto en la cual podemos consultar los datos más relevantes de un país, el mismo. Se conecta a la API "https://restcountries.com/" obteniendo la información solicitada.',
+            descripcion: 'Proyecto en la cual podemos consultar los datos más relevantes de un país. Se conecta a la API "https://restcountries.com/" obteniendo la información solicitada.',
         }
         
     ];
@@ -61,11 +63,14 @@ export default function Proyectos({}: Props) {
                 </a>
 
                 <div className='space-y-10 px-0 max-w-6xl'>
-                    <h4 className='text-xl font-semibold text-center max-md:text-base max-lg:text-lg'>
-                        <span className='underline decoration-[#F7AB0A]/50'>
-                         {proyecto.nombre}  
-                        </span> | Proyecto {i+1} de {todoslosproyectos.length}
-                    </h4>
+                    <a href={proyecto.url} target="_blank"> 
+                        <h4 className='text-xl font-semibold text-center max-md:text-base max-lg:text-lg'>
+                            <TbWorldWww className='inline-block text-2xl mr-4'/>
+                            <span className='underline decoration-[#F7AB0A]/50'>
+                             {proyecto.nombre}  
+                            </span>  | Proyecto {i+1} de {todoslosproyectos.length} 
+                        </h4>
+                    </a>
                     <p className='text-base text-center max-md:text-left '>
                         {proyecto.descripcion}
                             <span className='hidden'>

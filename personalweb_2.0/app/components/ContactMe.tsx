@@ -1,10 +1,21 @@
 "use client";
 import React from 'react';
 import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import Swal from 'sweetalert2'
 
-type Props = {}
 
-export default function ContactMe({}: Props) {
+type Props = {
+    onClick?: React.MouseEventHandler
+}
+
+export default function ContactMe({ onClick }: Props) {
+    const sweetalert = 
+        Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
   return (
     <div className='h-screen flex relative flex-row  max-md:flex-col justify-center space-x-12 max-md:space-x-0 items-center'>
     {/* <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center'> */}
@@ -55,7 +66,10 @@ export default function ContactMe({}: Props) {
                     <textarea name="mensaje" placeholder="Mensaje"  className="contactInput" ></textarea>
                     <button
                         type="submit"
-                        className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'>Enviar
+                        className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'
+                        onClick={(e:any) => sweetalert}
+                        >
+                            Enviar
                     </button>
                     {/* <!-- Luego de submit, nos dirige a la pagina deseada --> */}
                     <input type="hidden" name="_next" value="https://lucianolemos.vercel.app/"/>
