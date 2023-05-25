@@ -1,70 +1,25 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">LuchoFlix</h1>
 
-## Available Scripts
+<h3><strong>Bienvenid@s a LuchoFlix.</strong></h3>
+<p>Web con las mejores sinopsis de películas. Realizada con React y Nodejs (ExpressJs). LuchoFlix toma los datos de la API “https://developers.themoviedb.org/” y a su vez dispone de una base de datos propia alojada en MongoDB. La misma es utilizada para guardar el historial de los usuarios (películas favoritas, etc.) La autenticación de los usuarios y la cuentas de los mismo están alojados en Firebase de Google. <br>
+Espero que sea de gran ayuda, no dude en contactarse conmigo para mayor información.</p>
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## 🔗 Links
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<a href="https://lucianolemos.vercel.app/" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/personalweb.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `URL Página web personal` </a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🤳🏽 Contacto
 
-### `npm run build`
+<a href="https://api.whatsapp.com/send/?phone=34604124841&text=Hola+Luciano%2C+he+visto+tu+curriculum+vitae+y+quer%C3%ADa+ponerme+en+contacto+contigo+por+una+oferta+de+trabajo.&type=phone_number&app_absent=0" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Whatsapp.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `+34 604 12 48 41`</a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<a href="mailto:llemos@uoc.edu?subject=Oferta%20de%20trabajo&body=Hola%20Luciano,%20he%20visto%20tus%20trabajos%20y%20quer%C3%ADa%20ponerme%20en%20contacto%20contigo%20por%20una%20oferta%20de%20trabajo.%0BPuedes%20ponerte%20en%20contacto%20con%20nosotros%20a%20trav%C3%A9s%20de%3A%0B%09Mail:%20[%20Completar%20]%0B%09Tel%C3%A9fono:%20[%20Completar%20]%0B%09Horarios:%20[%20Completar%20]%0B%0BMuchas%20gracias%20por%20tu%20tiempo%0B%0BSaludos" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Mail.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `llemos@uoc.edu` </a>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a href="https://www.linkedin.com/in/luciano-lemos" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/2linkedin.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `https://www.linkedin.com/in/luciano-lemos` </a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<a href="https://github.com/Lemos-Luciano" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Github.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `https://github.com/Lemos-Luciano` </a>

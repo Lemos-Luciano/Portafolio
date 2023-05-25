@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<h1 align="center">Personal Web 2.0</h1>
 
-First, run the development server:
+<h3><strong>Bienvenid@s a mi web personal.</strong></h3>
+<p>Aquí encontrará una breve descripción sobre mí y acceso directo a mis trabajos personales.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+En la parte inferior de la página web encontrará mis datos de contacto en caso de querer comunicarse conmigo. También, puede rellenar el formulario y me pondré en contacto con usted en la brevedad. <br>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El proyecto se encuentra realizado con React | NextJs. Utilizando TypeScript y TtailwindCss para el formato css. <br>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Espero que sea de gran ayuda, no dude en contactarse conmigo para mayor información.</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<br>
 
-## Learn More
+## 🔗 Links
 
-To learn more about Next.js, take a look at the following resources:
+<a href="https://lucianolemos.vercel.app/" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/personalweb.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `URL Página web personal` </a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🤳🏽 Contacto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<a href="https://api.whatsapp.com/send/?phone=34604124841&text=Hola+Luciano%2C+he+visto+tu+curriculum+vitae+y+quer%C3%ADa+ponerme+en+contacto+contigo+por+una+oferta+de+trabajo.&type=phone_number&app_absent=0" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Whatsapp.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `+34 604 12 48 41`</a>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<a href="mailto:llemos@uoc.edu?subject=Oferta%20de%20trabajo&body=Hola%20Luciano,%20he%20visto%20tus%20trabajos%20y%20quer%C3%ADa%20ponerme%20en%20contacto%20contigo%20por%20una%20oferta%20de%20trabajo.%0BPuedes%20ponerte%20en%20contacto%20con%20nosotros%20a%20trav%C3%A9s%20de%3A%0B%09Mail:%20[%20Completar%20]%0B%09Tel%C3%A9fono:%20[%20Completar%20]%0B%09Horarios:%20[%20Completar%20]%0B%0BMuchas%20gracias%20por%20tu%20tiempo%0B%0BSaludos" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Mail.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `llemos@uoc.edu` </a>
+
+<a href="https://www.linkedin.com/in/luciano-lemos" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/2linkedin.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `https://www.linkedin.com/in/luciano-lemos` </a>
+
+<a href="https://github.com/Lemos-Luciano" target="blank"><img align="center" src="https://github.com/Lemos-Luciano/Portafolio/blob/main/Images/icons/1Github.png" alt="Para más información contactar al https://www.linkedin.com/in/luciano-lemos" height="40" width="40" /> `https://github.com/Lemos-Luciano` </a>
