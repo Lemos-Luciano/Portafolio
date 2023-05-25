@@ -2,13 +2,14 @@
 import React from 'react';
 import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2'
+import { updateLanguageServiceSourceFile } from 'typescript';
 
 
 type Props = {
-    onClick?: React.MouseEventHandler
+
 }
 
-export default function ContactMe({ onClick }: Props) {
+export default function ContactMe( {} : Props){
     const sweetalert = 
         Swal.fire({
         title: 'Error!',
@@ -16,6 +17,16 @@ export default function ContactMe({ onClick }: Props) {
         icon: 'error',
         confirmButtonText: 'Cool'
       })
+
+      function saludar(){
+        return Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        
+      }
   return (
     <div className='h-screen flex relative flex-row  max-md:flex-col justify-center space-x-12 max-md:space-x-0 items-center'>
     {/* <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center'> */}
@@ -30,6 +41,7 @@ export default function ContactMe({ onClick }: Props) {
                     <h4 className='text-xl font-semibold text-center '>
                         Tengo justo lo que usted necesita <br />
                         <span className='decoration-[#F7AB0A]/50 underline'>Contácteme</span>
+                        <button onClick={() => {saludar()}}>boton </button>
                     </h4>
                 </div>
                 <div className='ml-8 space-y-5'>
@@ -67,7 +79,7 @@ export default function ContactMe({ onClick }: Props) {
                     <button
                         type="submit"
                         className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'
-                        onClick={(e:any) => sweetalert}
+                        // onClick={(e:any) => sweetalert}
                         >
                             Enviar
                     </button>
