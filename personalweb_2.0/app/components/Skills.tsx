@@ -13,6 +13,7 @@ export default function Skills({}: Props) {
     { nombre: "TypeScript"},
     { nombre: "Nextjs" },
     { nombre: "TailwindCss" },
+    { nombre: "Redux" },
   ];
 
   const skillsback = [
@@ -21,7 +22,6 @@ export default function Skills({}: Props) {
     { nombre: "Firebase" },
     { nombre: "MongoDB" },
     { nombre: "Azure" },
-    { nombre: "Redux" },
   ];
 
   return (

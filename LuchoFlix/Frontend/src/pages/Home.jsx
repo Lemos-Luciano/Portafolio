@@ -54,19 +54,52 @@ export default function Home() {
 
 
   // sweet alert
-  const sweetalert = () => {
+  // const sweetalert = () => {
+  //   Swal.fire({
+  //     title: "Lo lamentemos",
+  //     text: "Todavia estamos construyendo esta función, gracias por su comprensión",
+  //     icon: "info",
+  //     confirmButtonColor: "#e50914",
+  //     confirmButtonColor: "#e50914",
+  //     customClass: {
+  //       confirmButton: "alertButton",
+  //     },
+  //     timer: 3000,
+  //     timerProgressBar: true,
+  //   });
+  // };
+
+  // Mas Info Strangers Things
+  const moreInfo = () => {
     Swal.fire({
-      title: "Lo lamentemos",
-      text: "Todavia estamos construyendo esta función, gracias por su comprensión",
-      icon: "info",
-      confirmButtonColor: "#e50914",
-      confirmButtonColor: "#e50914",
-      customClass: {
-        confirmButton: "alertButton",
-      },
-      timer: 3000,
-      timerProgressBar: true,
-    });
+        // background: 'rgba(109, 109, 110, 0.7)',
+        background: 'rgba(0, 0, 0, 0.9)',
+        color: "white",
+        // padding: '1rem',
+        padding: false,
+        title: `Stranger Things`,
+        // imageUrl: `${IMAGE_PATH_500}${movieData.image}`,
+        imageHeight: 300,
+        text: "la pelicula fue agregda",
+        // icon: "success",
+        html: ` 
+      <div class="pelicula">
+      <p>A raíz de la desaparición de un niño, un pueblo desvela un misterio relacionado con experimentos secretos, fuerzas sobrenaturales aterradoras y una niña muy extraña.</p>
+      <br>
+      <h5> Drama, Misterio </h5>
+      <br>
+      <iframe
+        src="https://www.youtube.com/embed/x7Yq9MJUqjY?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1&showinfo=0&cc_load_policy=1&loop=1%22"
+        frameborder="0"
+      /> 
+
+      </div>`,
+        confirmButtonColor: "#e50914",
+        customClass: {
+          confirmButton: 'alertButton',
+          popup: 'containerpopup',
+        },
+    })
   };
 
   return (
@@ -89,7 +122,7 @@ export default function Home() {
             >
               <FaPlay /> Play
             </button>
-            <button className="flex j-center a-center" onClick={sweetalert}>
+            <button className="flex j-center a-center" onClick={moreInfo}>
               <AiOutlineInfoCircle /> Más Info
             </button>
           </div>
