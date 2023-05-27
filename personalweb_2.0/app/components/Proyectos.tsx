@@ -49,7 +49,7 @@ export default function Proyectos({}: Props) {
 
         <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/200 scrollbar-thumb-[#F7AB0A]/80'>
             {todoslosproyectos.map((proyecto, i) => (
-            <div key={i} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 h-screen'>
+            <div key={i} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center pt-28 px-14 h-screen'>
                 <a href={proyecto.url}  target="_blank">
                     <motion.img 
                     initial={{ opacity:0, y:-200}}

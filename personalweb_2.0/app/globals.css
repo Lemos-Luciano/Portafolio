@@ -8,15 +8,15 @@ html {
 }
 
 @media (max-width: 1760px) {
-  html { font-size: 15px; }
+  html { font-size: 14px; }
 }
 
-/* @media (max-width: 1024px) {
-  html { font-size: 14px; }
-} */
+@media (max-width: 1290px) {
+  html { font-size: 12px; }
+}
 
 @media (max-width: 768px) {
-  html { font-size: 14px; }
+  html { font-size: 11px; }
 }
 
 @layer components {
