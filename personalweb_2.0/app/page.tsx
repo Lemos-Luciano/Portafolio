@@ -1,10 +1,8 @@
-import type { NextPage } from "next";
-import Image from 'next/image';
+"use client"
 
+import type { NextPage } from "next";
 
 import Head from "next/head";
-import Mano from "../public/DedoPaArriba.png";
-
 
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -16,9 +14,18 @@ import Proyectos from "./components/Proyectos";
 import Skills from "./components/Skills";
 
 
+import { useEffect } from "react";
 
 
 const Home : NextPage = () => {
+
+  useEffect(() => {
+    // Detectar el idioma del navegador
+    const detectedLanguage = navigator.language.split('-')[0];
+    console.log(detectedLanguage);
+    
+    // i18n.changeLanguage(detectedLanguage);
+  }, []);
   
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/200 scrollbar-thumb-[#F7AB0A]/80">
