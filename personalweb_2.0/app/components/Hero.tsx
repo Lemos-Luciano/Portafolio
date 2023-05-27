@@ -5,9 +5,15 @@ import BackgroundCircles from "./BackgroundCircles";
 
 import FotoPerfil from "../../public/Profile.jpg";
 
+
+import { useTranslation } from 'react-i18next';
+
+
 type Props = {};
 
 export default function Hero({}: Props) {
+
+  const { t, i18n } = useTranslation();
 
   const [text, count] = useTypewriter({
     words: [
@@ -44,7 +50,7 @@ export default function Hero({}: Props) {
 
         <div className="pt-5">
             <a href="#about">
-            <button className="heroButton"> About </button>
+            <button className="heroButton"> {t('about')} </button>
             </a>
 
           {/* <a href="#experiencia">
