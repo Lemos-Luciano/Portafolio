@@ -4,13 +4,23 @@ import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 
 
+import { useTranslation } from 'react-i18next';
+
+
 
 type Props = {};
 
 export default function Header({}: Props) {
-  return (
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string | undefined) => {
+    i18n.changeLanguage(lng);
+  };
+
+ return (
     // <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
-    <div className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
+    <div className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-50 xl:items-center">
       <motion.div 
       initial={{ x:-500, opacity: 0, scale: 0.5,}}
       animate={{ x: 0, opacity: 1, scale: 1, }}
@@ -28,6 +38,12 @@ export default function Header({}: Props) {
           bgColor="transparent"
         />
       </motion.div>
+
+      <div className="">
+      <button onClick={() => changeLanguage('en')}>English</button>
+
+      <button onClick={() => changeLanguage('es')}>Español</button>
+      </div>
 
       <motion.div 
         initial={{ x:500, opacity: 0, scale: 0.5,}}

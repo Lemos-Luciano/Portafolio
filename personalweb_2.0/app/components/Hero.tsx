@@ -50,7 +50,7 @@ export default function Hero({}: Props) {
 
         <div className="pt-5">
             <a href="#about">
-            <button className="heroButton"> {t('about')} </button>
+            <button className="heroButton"> {t('hero.about')} </button>
             </a>
 
           {/* <a href="#experiencia">
@@ -58,13 +58,13 @@ export default function Hero({}: Props) {
           </a > */}
 
           <a href="#skills">
-            <button className="heroButton"> Skills </button>
+            <button className="heroButton"> {t('hero.skills')} </button>
           </a>
           <a href="#proyectos">
-            <button className="heroButton"> Proyectos </button>
+            <button className="heroButton"> {t('hero.projects')} </button>
           </a>
           <a href="#contactame">
-            <button className="heroButton"> Contacto </button>
+            <button className="heroButton"> {t('hero.contact')} </button>
           </a>
         </div>
       </div>

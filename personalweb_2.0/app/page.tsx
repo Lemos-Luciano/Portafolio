@@ -14,7 +14,9 @@ import Proyectos from "./components/Proyectos";
 import Skills from "./components/Skills";
 
 
-import { useEffect } from "react";
+import React, { useEffect } from 'react';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import i18n from '../i18n.js';
 
 
 const Home : NextPage = () => {
@@ -23,11 +25,11 @@ const Home : NextPage = () => {
     // Detectar el idioma del navegador
     const detectedLanguage = navigator.language.split('-')[0];
     console.log(detectedLanguage);
-    
-    // i18n.changeLanguage(detectedLanguage);
+    i18n.changeLanguage(detectedLanguage);
   }, []);
   
   return (
+    <I18nextProvider i18n={i18n}>
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/200 scrollbar-thumb-[#F7AB0A]/80">
       
       <Head>
@@ -62,7 +64,8 @@ const Home : NextPage = () => {
       </section>
 
 
-    </div>  
+    </div>
+    </I18nextProvider>  
   )
 };
 

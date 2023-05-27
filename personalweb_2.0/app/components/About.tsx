@@ -3,12 +3,14 @@ import React from 'react';
 import { motion } from "framer-motion";
 import FotoPerfil from "../../public/Profile.jpg";
 
+import { useTranslation } from 'react-i18next';
 
 
 
 type Props = {}
 
 export default function About({}: Props) {
+    const { t, i18n } = useTranslation();
   return (
     <motion.div 
     initial={{opacity: 0 }}
@@ -42,7 +44,7 @@ export default function About({}: Props) {
 
 
             <div className=' px-0 md:px-10 flex flex-col space-y-7 max-w-2xl'>
-                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'>Un poco de mi <span className='underline decoration-[#F7AB0A]/50'>historia</span> personal</h4>
+                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'>{t('about.titulo1')} <span className='underline decoration-[#F7AB0A]/50'>{t('about.titulo2')}</span> {t('about.titulo3')} </h4>
 
                 <h3 className='text-xl font-semibold'>Desarrollador fullstack | Python y Javascript.</h3>
                 <div>
