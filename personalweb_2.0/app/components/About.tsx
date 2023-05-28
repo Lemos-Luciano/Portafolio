@@ -1,9 +1,10 @@
 "use client";
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from "framer-motion";
 import FotoPerfil from "../../public/Profile.jpg";
 
 import { useTranslation } from 'react-i18next';
+import LanguageContext from '../context/LanguageContext';
 
 
 
@@ -11,6 +12,8 @@ type Props = {}
 
 export default function About({}: Props) {
     const { t, i18n } = useTranslation();
+    // Llama las variables desde el contexto
+    const {texts, cambiarIdioma} = useContext(LanguageContext)
   return (
     <motion.div 
     initial={{opacity: 0 }}
@@ -44,21 +47,28 @@ export default function About({}: Props) {
 
 
             <div className=' px-0 md:px-10 flex flex-col space-y-7 max-w-2xl'>
+                <div>
+                    <button value="es" onClick={cambiarIdioma}>es</button>
+                    <h4>   {texts.saludo}  </h4>
+                    <button value="en" onClick={cambiarIdioma}>en</button>
+                </div>
                 <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'>{t('about.titulo1')} <span className='underline decoration-[#F7AB0A]/50'>{t('about.titulo2')}</span> {t('about.titulo3')} </h4>
 
                 <h3 className='text-xl font-semibold'>Desarrollador fullstack | Python y Javascript.</h3>
                 <div>
                     <p className='text-base text-left'>
-                    Las mayorías de mis proyectos se encuentran realizado con las siguientes tecnologías:
-                    <br />
-                    <li>Fronted: React / Next.js, TypeScript y TailwindCss</li>
-                    <li>Backend: Node.Js / Express.js, Firebase y Azure</li>
-                    <li>Base de datos: MongoDB y SQL Server</li>
+                        Las mayorías de mis proyectos se encuentran realizados con las siguientes tecnologías:
+                    </p>
+                    <ul>
+                        <li>Fronted: React / Next.js, TypeScript y TailwindCss</li>
+                        <li>Backend: Node.Js / Express.js, Firebase y Azure</li>
+                        <li>Base de datos: MongoDB y SQL Server</li>
+                    </ul>
                     <br />
                     <span className='hidden md:inline'>
-                        Para más información no dude en visualizar mis trabajos personales en la pestaña proyectos. También, puede ponerse en contacto conmigo o si lo prefiere rellene el formulario que se encuentra en la parte inferior de la página, me pondré en contacto con usted lo antes posible.                    </span>
-                    </p>
-                </div>
+                        Para más información no dude en visualizar mis trabajos personales en la pestaña proyectos. También, puede ponerse en contacto conmigo o si lo prefiere rellene el formulario que se encuentra en la parte inferior de la página, me pondré en contacto con usted lo antes posible.
+                    </span>
+                    </div>
             </div>
     </div>
         </motion.div>

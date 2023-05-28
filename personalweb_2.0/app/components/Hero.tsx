@@ -1,5 +1,5 @@
 "use client";
-import React  from "react";
+import React, { useContext }  from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
@@ -7,6 +7,8 @@ import FotoPerfil from "../../public/Profile.jpg";
 
 
 import { useTranslation } from 'react-i18next';
+import LanguageContext from '../context/LanguageContext';
+
 
 
 type Props = {};
@@ -14,6 +16,8 @@ type Props = {};
 export default function Hero({}: Props) {
 
   const { t, i18n } = useTranslation();
+  // Llama las variables desde el contexto
+  const {texts, cambiarIdioma} = useContext(LanguageContext)
 
   const [text, count] = useTypewriter({
     words: [
@@ -61,7 +65,7 @@ export default function Hero({}: Props) {
             <button className="heroButton"> {t('hero.skills')} </button>
           </a>
           <a href="#proyectos">
-            <button className="heroButton"> {t('hero.projects')} </button>
+            <button className="heroButton"> {texts.hero_projects} </button>
           </a>
           <a href="#contactame">
             <button className="heroButton"> {t('hero.contact')} </button>

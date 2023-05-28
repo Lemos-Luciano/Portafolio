@@ -18,6 +18,7 @@ import React, { useEffect } from 'react';
 import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from '../i18n.js';
 
+import {LanguageProvider} from "../app/context/LanguageContext"
 
 const Home : NextPage = () => {
 
@@ -29,6 +30,7 @@ const Home : NextPage = () => {
   }, []);
   
   return (
+    <LanguageProvider>
     <I18nextProvider i18n={i18n}>
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/200 scrollbar-thumb-[#F7AB0A]/80">
       
@@ -66,6 +68,7 @@ const Home : NextPage = () => {
 
     </div>
     </I18nextProvider>  
+    </LanguageProvider>
   )
 };
 
