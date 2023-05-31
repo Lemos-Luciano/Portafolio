@@ -1,16 +1,23 @@
 import { createContext, useEffect, useState } from "react";
 
+
 const LanguageContext = createContext();
 
 const initialLanguage = "es"
 const translation = {
     es : {
-        "saludo" : "saludo",
+        "hero_about" : "Sobre Mi",
+        "hero_skills" : "Skills",
         "hero_projects" : "Proyectos",
+        "hero_contact" : "Contacto",
+        "hero_words" : `["esta en español", "llamame papi"]`,
     },
     en : {
-        "saludo" : "hellow",
+        "hero_about" : "About",
+        "hero_skills" : "Skills",
         "hero_projects" : "Projects",
+        "hero_contact" : "Contact",
+        "hero_words" : `["esta en ingles", "call me dady"]`,
 
     }
 }
@@ -34,7 +41,7 @@ const LanguageProvider = ({children}) => {
       }, []);
 
     const cambiarIdioma = (e) => {
-        if (e.target.value === "es") {
+        if (e.target.checked === true) {
             setlanguage("es");
             settexts(translation.es);
         } else {
@@ -44,7 +51,7 @@ const LanguageProvider = ({children}) => {
         console.log(language);
     }
 
-    const data = { texts, cambiarIdioma }
+    const data = { texts, cambiarIdioma, language }
     return <LanguageContext.Provider value={data}>{children}</LanguageContext.Provider>
 }
 

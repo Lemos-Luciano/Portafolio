@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { motion } from "framer-motion";
 import FotoPerfil from "../../public/Profile.jpg";
 
-import { useTranslation } from 'react-i18next';
 import LanguageContext from '../context/LanguageContext';
 
 
@@ -11,7 +10,6 @@ import LanguageContext from '../context/LanguageContext';
 type Props = {}
 
 export default function About({}: Props) {
-    const { t, i18n } = useTranslation();
     // Llama las variables desde el contexto
     const {texts, cambiarIdioma} = useContext(LanguageContext)
   return (
@@ -52,7 +50,7 @@ export default function About({}: Props) {
                     <h4>   {texts.saludo}  </h4>
                     <button value="en" onClick={cambiarIdioma}>en</button>
                 </div>
-                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'>{t('about.titulo1')} <span className='underline decoration-[#F7AB0A]/50'>{t('about.titulo2')}</span> {t('about.titulo3')} </h4>
+                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'> probando <span className='underline decoration-[#F7AB0A]/50'> un poco </span> sobre mi</h4>
 
                 <h3 className='text-xl font-semibold'>Desarrollador fullstack | Python y Javascript.</h3>
                 <div>

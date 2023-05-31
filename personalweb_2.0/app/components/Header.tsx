@@ -1,22 +1,17 @@
 'use client'
-import React from "react";
+import React, { useContext } from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
+import Boton2 from "../components/Boton2"
 
-
-import { useTranslation } from 'react-i18next';
-
+import LanguageContext from '../context/LanguageContext';
 
 
 type Props = {};
 
 export default function Header({}: Props) {
 
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lng: string | undefined) => {
-    i18n.changeLanguage(lng);
-  };
+  const {texts, cambiarIdioma} = useContext(LanguageContext)
 
  return (
     // <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
@@ -39,11 +34,10 @@ export default function Header({}: Props) {
         />
       </motion.div>
 
-      <div className="">
-      <button onClick={() => changeLanguage('en')}>English</button>
 
-      <button onClick={() => changeLanguage('es')}>Español</button>
-      </div>
+          <Boton2></Boton2>
+
+
 
       <motion.div 
         initial={{ x:500, opacity: 0, scale: 0.5,}}

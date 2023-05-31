@@ -1,31 +1,36 @@
 "use client";
-import React, { useContext }  from "react";
+import React, { useContext, useEffect }  from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
 import FotoPerfil from "../../public/Profile.jpg";
-
-
-import { useTranslation } from 'react-i18next';
 import LanguageContext from '../context/LanguageContext';
-
 
 
 type Props = {};
 
 export default function Hero({}: Props) {
 
-  const { t, i18n } = useTranslation();
-  // Llama las variables desde el contexto
-  const {texts, cambiarIdioma} = useContext(LanguageContext)
+
+  const {texts, language} = useContext(LanguageContext)
+
+  const word1 = [
+    "Bienvenid@",
+    "Soy Luciano Lemos",
+    "Espero que disfrute mis proyectos",
+    "No dude en contactarme🤙📲",
+  ]
+
+  const word2 = [
+    "Welcome",
+    "I'm Luciano Lemos",
+    "I hope you enjoy my projects",
+    "Feel free to contact me🤙📲",
+  ]
+
 
   const [text, count] = useTypewriter({
-    words: [
-      "Bienvenid@",
-      "Soy Luciano Lemos",
-      "Espero que disfrute mi contenido",
-      "No dude en contactarme🤙📲",
-    ],
+    words: (language === "es") ? word1 : word2,
     loop: true,
     delaySpeed: 2000,
   });
@@ -54,7 +59,7 @@ export default function Hero({}: Props) {
 
         <div className="pt-5">
             <a href="#about">
-            <button className="heroButton"> {t('hero.about')} </button>
+            <button className="heroButton"> {texts.hero_about} </button>
             </a>
 
           {/* <a href="#experiencia">
@@ -62,17 +67,18 @@ export default function Hero({}: Props) {
           </a > */}
 
           <a href="#skills">
-            <button className="heroButton"> {t('hero.skills')} </button>
+            <button className="heroButton"> {texts.hero_skills} </button>
           </a>
+ 
           <a href="#proyectos">
             <button className="heroButton"> {texts.hero_projects} </button>
           </a>
           <a href="#contactame">
-            <button className="heroButton"> {t('hero.contact')} </button>
+            <button className="heroButton"> {texts.hero_contact} </button>
           </a>
         </div>
       </div>
     </div>
-    
+
   );
 }
