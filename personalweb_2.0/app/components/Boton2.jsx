@@ -5,7 +5,7 @@ import SpainFlag from "../../public/spain-flag.svg"
 import LanguageContext from '../context/LanguageContext';
 
 
-const boton2 = () => {
+const Boton2 = () => {
 
     const {language, cambiarIdioma} = useContext(LanguageContext)
 
@@ -178,4 +178,4 @@ const Container = styled.div`
   }
   `;
 
-export default boton2;
+export default Boton2;

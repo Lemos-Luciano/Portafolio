@@ -5,7 +5,7 @@ import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/reac
 import Swal from 'sweetalert2'
 
 
-const boton1 = () => {
+const Boton1 = () => {
 
 
   function saludar(){
@@ -159,4 +159,4 @@ const Container = styled.div`
   }
 `;
 
-export default boton1
+export default Boton1
