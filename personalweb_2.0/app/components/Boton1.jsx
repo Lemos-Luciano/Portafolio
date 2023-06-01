@@ -102,7 +102,7 @@ const Container = styled.div`
     outline: none;
     color: rgb(255, 255, 255);
     background: #111;
-    cursor: pointer;
+    // cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 10px;
