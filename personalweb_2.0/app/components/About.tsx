@@ -7,14 +7,14 @@ import LanguageContext from '../context/LanguageContext';
 type Props = {}
 
 export default function About({}: Props) {
-    const {texts, cambiarIdioma} = useContext(LanguageContext)
+    const { texts } = useContext(LanguageContext)
   return (
     <motion.div 
     initial={{opacity: 0 }}
     transition={{ duration: 2.0 }}
     whileInView={{ opacity: 1 }}
     className='flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
-        <h3 className='titulos'> About </h3>
+        <h3 className='titulos'> {texts.hero_about} </h3>
 
         <div className='bg-[#292929] rounded-md p-10 flex flex-col md:flex-row relative text-center md:text-left  max-w-7xl px-10 justify-evenly mx-auto items-center'>
             
@@ -41,21 +41,22 @@ export default function About({}: Props) {
 
 
             <div className=' px-0 md:px-10 flex flex-col space-y-7 max-w-2xl'>
-                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'> probando <span className='underline decoration-[#F7AB0A]/50'> un poco </span> sobre mi</h4>
+                <h4 className='text-2xl font-semibold lg:mb-2 max-md:hidden'>  {texts.about_title1} <span className='underline decoration-[#F7AB0A]/50'>  {texts.about_title2} </span> {texts.about_title3} </h4>
 
-                <h3 className='text-xl font-semibold'>Desarrollador fullstack | Python y Javascript.</h3>
+                <h3 className='text-xl font-semibold'> {texts.about_title4} </h3>
                 <div>
                     <p className='text-base text-left'>
-                        Las mayorías de mis proyectos se encuentran realizados con las siguientes tecnologías:
+                        {texts.about_p1}
                     </p>
-                    <ul>
-                        <li>Fronted: React / Next.js, TypeScript y TailwindCss</li>
-                        <li>Backend: Node.Js / Express.js, Firebase y Azure</li>
-                        <li>Base de datos: MongoDB y SQL Server</li>
+                    <ul className='text-left'>
+                        <br />
+                        <li> {texts.about_p2} </li>
+                        <li> {texts.about_p3} </li>
+                        <li> {texts.about_p4} </li>
                     </ul>
                     <br />
                     <span className='hidden md:inline'>
-                        Para más información no dude en visualizar mis trabajos personales en la pestaña proyectos. También, puede ponerse en contacto conmigo o si lo prefiere rellene el formulario que se encuentra en la parte inferior de la página, me pondré en contacto con usted lo antes posible.
+                        {texts.about_p5}  
                     </span>
                 </div>
             </div>

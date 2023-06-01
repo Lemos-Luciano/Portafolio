@@ -42,6 +42,10 @@ html {
 
 
 
+
+
+/* --------------- */
+/* BOTON IDIOMAS INICIO */
 .checkbox-wrapper-55 input[type="checkbox"] {
   visibility: hidden;
   display: none;
@@ -186,3 +190,5 @@ html {
 .checkbox-wrapper-55 input:checked:focus + .switch-left + .switch-right {
   color: #333;
 }
+/* BOTON IDIOMAS FIN */
+/* --------------- */

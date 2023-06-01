@@ -1,13 +1,17 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Image from 'next/image';
+import LanguageContext from '../context/LanguageContext';
 
 
 
 type Props = {};
 
 export default function Skills({}: Props) {
+
+  const { texts } = useContext(LanguageContext)
+  
   const skillsfront = [
     { nombre: "React"},
     { nombre: "TypeScript"},
@@ -32,11 +36,11 @@ export default function Skills({}: Props) {
       className="flex relative flex-col text-center md:text-left xl:flex-row max-w-[2000px] p-10 min-h-screen justify-center mx-auto items-center"
     >
       <h3 className="titulos">
-        skills
+        {texts.hero_skills}
       </h3>
 
       <h3 className="absolute top-32 max-md:top-[10rem] uppercase tracking-[3px] text-gray-500 text-base">
-        Un poco de mi experencia personal
+        {texts.skills_title}
       </h3>
 
       <div className="flex max-md:flex-col">

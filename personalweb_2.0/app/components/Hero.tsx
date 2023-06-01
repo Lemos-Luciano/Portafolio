@@ -38,7 +38,7 @@ export default function Hero({}: Props) {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
       <div className="z-20 space-y-10">
         <h2 className="text-base uppercase text-gray-500 pb-2 tracking-[15px]">
-          Desarrollador   Fullstack
+          {texts.hero_title}
         </h2>
         <div className="relative">
           <img

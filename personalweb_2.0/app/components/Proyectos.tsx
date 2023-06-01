@@ -1,8 +1,10 @@
 "use client";
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from "framer-motion";
 import { SocialIcon } from "react-social-icons";
 import { TbWorldWww } from 'react-icons/tb';
+import LanguageContext from '../context/LanguageContext';
+
 
 
 
@@ -11,6 +13,8 @@ type Props = {
 };
 
 export default function Proyectos({}: Props) {
+
+    const {texts, language} = useContext(LanguageContext)
 
     const todoslosproyectos = [
         {
@@ -56,7 +60,7 @@ export default function Proyectos({}: Props) {
                     transition={{duration:2.5}}
                     whileInView={{opacity:1, y:0}}
                     viewport={{ once:true}}
-                    src={`https://github.com/Lemos-Luciano/Portafolio/blob/main/personalweb_2.0/public/proyectos/Proyecto${i}.png?raw=true`} 
+                    src="../../proyectos/Proyecto${i}.png?raw=true"
                     alt={`Imagen Proyecto ${i}`} 
                     className='flex max-w-md'
                     />
