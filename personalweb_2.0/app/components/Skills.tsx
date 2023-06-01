@@ -39,7 +39,7 @@ export default function Skills({}: Props) {
         {texts.hero_skills}
       </h3>
 
-      <h3 className="absolute top-32 max-md:top-[10rem] uppercase tracking-[3px] text-gray-500 text-base">
+      <h3 className="absolute top-36 max-md:top-[10rem] px-20 uppercase tracking-[3px] text-gray-500 text-base">
         {texts.skills_title}
       </h3>
 

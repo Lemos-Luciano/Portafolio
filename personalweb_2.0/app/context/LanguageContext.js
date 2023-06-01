@@ -20,6 +20,8 @@ const translation = {
         "about_p4" : "• Base de datos:  MongoDB y SQL Server",
         "about_p5" : 'Para más información no dude en visualizar mis trabajos personales en la pestaña "proyectos". También, puede ponerse en contacto conmigo o si lo prefiere rellene el formulario que se encuentra en la parte inferior de la página, me pondré en contacto con usted lo antes posible.',
         "skills_title" :  "Habilidades y herramientas utilizadas en mis proyectos.",
+        "contact_slogan" : "Tengo justo lo que usted necesita",
+        "contact_slogan2" : "Contácteme",
 
 
     },
@@ -39,6 +41,8 @@ const translation = {
         "about_p4" : "• Database: MongoDB and SQL Server",
         "about_p5" : 'For more information, please feel free to view my personal projects under the "Projects" tab. Additionally, you can contact me directly or fill out the form located at the bottom of the page, and I will get back to you as soon as possible.',
         "skills_title" :  "Skills and tools utilized in my projects.",
+        "contact_slogan" : "I have exactly what you need",
+        "contact_slogan2" : "Contact me",
 
     
     }

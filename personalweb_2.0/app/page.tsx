@@ -27,6 +27,8 @@ const Home: NextPage = () => {
         </Head>
 
         <Header />
+        <Footer />
+
 
         <section id="hero" className="snap-start">
           <Hero />
@@ -48,7 +50,6 @@ const Home: NextPage = () => {
           <ContactMe />
         </section>
 
-        <Footer />
       </div>
     </LanguageProvider>
   )

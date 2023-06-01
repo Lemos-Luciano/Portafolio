@@ -1,19 +1,24 @@
 "use client"
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from "styled-components";
 import { BeakerIcon, EnvelopeIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
 import Swal from 'sweetalert2'
+import LanguageContext from '../context/LanguageContext';
 
 
 const Boton1 = () => {
 
+  const {texts, language} = useContext(LanguageContext)
 
   function saludar(){
+    const titleUpdated = (language === "es") ? "Muchas gracias" : "Thank you very much";
+    const textUpdated = (language === "es") ? "Me pondré en contacto contigo lo antes posible" : "I will contact you as soon as possible";
+    const confirmbuttonUpdated = (language === "es") ? "Entendido" : "Done";
     return Swal.fire({
-        title: 'Muchas gracias',
-        text: 'Me pondré en contacto contigo en la brevedad',
+        title: titleUpdated,
+        text: textUpdated,
         icon: 'success',
-        confirmButtonText: 'Entendido',
+        confirmButtonText: confirmbuttonUpdated,
         timer: 5000,
       })
     
@@ -24,7 +29,7 @@ const Boton1 = () => {
 
  <div className='h-screen flex relative flex-row  max-md:flex-col justify-center items-center'>
         <h3 className='titulos'>
-            Contacto
+            {texts.hero_contact}
         </h3>
       <div className="button-85 flex justify-center items-center space-x-12 max-md:space-x-0 m-5 max-lg:flex-col max-lg:space-y-5">
     {/* <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center'> */}
@@ -34,8 +39,8 @@ const Boton1 = () => {
             <div className='flex flex-col space-y-7 px-2 max-md:mb-7'>
                 <div>
                     <h4 className='text-xl font-semibold text-center '>
-                        Tengo justo lo que usted necesita <br />
-                        <span className='decoration-[#F7AB0A]/50 underline'>Contácteme</span>
+                        {texts.contact_slogan} <br />
+                        <span className='decoration-[#F7AB0A]/50 underline'> {texts.contact_slogan2}</span>
                     </h4>
                 </div>
                 <div className='ml-8 space-y-5'>
@@ -65,17 +70,17 @@ const Boton1 = () => {
                 className='flex flex-col space-y-2 mx-auto'>
                 {/* className='flex flex-col space-y-2 w-fit mx-auto'> */}
                     <div className='flex space-x-2 max-md:flex-col max-md:space-y-2 max-md:space-x-0'>
-                        <input type="text" placeholder="Nombre" name="nombre" className="contactInput"  />
-                        <input type="email" placeholder="email"  name="email" className="contactInput"  />
+                        <input type="text" placeholder={(language === "es") ? "Nombre" : "Name"} name="nombre" className="contactInput"  />
+                        <input type="email" placeholder={(language === "es") ? "Correo electrónico" : "Email"}  name="email" className="contactInput"  />
                     </div>
-                    <input type="text" placeholder="Motivo" name="motivo"  className="contactInput"  />
-                    <textarea name="mensaje" placeholder="Mensaje"  className="contactInput" ></textarea>
+                    <input type="text" placeholder={(language === "es") ? "Motivo" : "Subject"} name="Motivo"  className="contactInput"  />
+                    <textarea name="mensaje" placeholder={(language === "es") ? "Mensaje" : "Message"}  className="contactInput" ></textarea>
                     <button
                         type="submit"
                         className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'
                         onClick={() => {saludar()}}
                         >
-                            Enviar
+                           {(language === "es") ? "Enviar" : "Submit"}
                     </button>
                     {/* <!-- Luego de submit, nos dirige a la pagina deseada --> */}
                     <input type="hidden" name="_next" value="https://lucianolemos.vercel.app/"/>
