@@ -26,7 +26,7 @@ const Boton1 = () => {
         <h3 className='titulos'>
             Contacto
         </h3>
-      <div class="button-85 flex justify-center items-center space-x-12 max-md:space-x-0 m-5" role="button">
+      <div className="button-85 flex justify-center items-center space-x-12 max-md:space-x-0 m-5" role="button">
     {/* <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly items-center'> */}
 
         {/* Datos personales */}        

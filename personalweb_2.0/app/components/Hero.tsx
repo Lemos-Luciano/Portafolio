@@ -3,7 +3,6 @@ import React, { useContext, useEffect }  from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
-import FotoPerfil from "../../public/Profile.jpg";
 import LanguageContext from '../context/LanguageContext';
 
 
@@ -44,7 +43,7 @@ export default function Hero({}: Props) {
         <div className="relative">
           <img
             className="relative rounded-full h-32 w-32 mx-auto object-cover"
-            src={FotoPerfil.src}
+            src="../../Profile.jpg"
             alt="Profile Image"
             id="fotoperfil"
           />

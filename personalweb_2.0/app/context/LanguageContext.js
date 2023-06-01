@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react";
 
 const LanguageContext = createContext();
 
-const initialLanguage = "es"
 const translation = {
     es : {
         "hero_about" : "Sobre Mi",
@@ -22,31 +21,47 @@ const translation = {
     }
 }
 
+const initialLanguage = "es"
 const LanguageProvider = ({children}) => {
 
     
-    const [language, setlanguage] = useState(initialLanguage);
-    const [texts, settexts] = useState(translation[language])
+    const [language, setLanguage] = useState(initialLanguage);
+    const [texts, setTexts] = useState(translation[language]);
+
 
     useEffect(() => {
-        // Detectar el idioma del navegador
-        const detectedLanguage = navigator.language.split('-')[0];
-        if (detectedLanguage === "es") {
-            setlanguage("es");
-            settexts(translation.es);
-        } else {
-            setlanguage("en");
-            settexts(translation.en);
-        };
+        // Establecer el idioma en el cliente
+        setLanguage(localStorage.getItem("language") || initialLanguage);
+        console.log("el localstorage da "+localStorage.getItem("language") );
       }, []);
+    
+      useEffect(() => {
+        // Actualizar los textos cuando el idioma cambie
+        setTexts(translation[language]);
+        localStorage.setItem("language", language);
+      }, [language]);
+
+
+    // useEffect(() => {
+        
+    //     // Detectar el idioma del navegador
+    //     const detectedLanguage = navigator.language.split('-')[0];
+    //     if (detectedLanguage === "es") {
+    //         setlanguage("es");
+    //         setTexts(translation.es);
+    //     } else {
+    //         setlanguage("en");
+    //         setTexts(translation.en);
+    //     };
+    //   }, []);
 
     const cambiarIdioma = (e) => {
         if (e.target.checked === true) {
-            setlanguage("es");
-            settexts(translation.es);
+            setLanguage("es");
+            setTexts(translation.es);
         } else {
-            setlanguage("en");
-            settexts(translation.en);
+            setLanguage("en");
+            setTexts(translation.en);
         };
         console.log(language);
     }

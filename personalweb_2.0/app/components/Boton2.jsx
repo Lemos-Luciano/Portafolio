@@ -11,16 +11,16 @@ const Boton2 = () => {
   return (
     <Container>
         
-<div class="checkbox-wrapper-55">
-  <label class="rocker rocker-small">
+<div className="checkbox-wrapper-55">
+  <label className="rocker rocker-small">
     <input type="checkbox" onChange={cambiarIdioma} defaultChecked={(language === "es") ? true : false}/>
-    <span class="switch-left">
+    <span className="switch-left">
         {/* Esp */}
         {/* <img src={SpainFlag} alt="" /> */}
         <img src="../../spain-flag.svg" alt="Descripción de la imagen"  style={{padding:1}}/>
         {/* <img src="../../BevelledArgentina.svg" alt="Descripción de la imagen" width={30} style={{marginTop:1}}/> */}
     </span>
-    <span class="switch-right">
+    <span className="switch-right">
         <img src="../../united-kingdom-flag-uk.svg" alt="Descripción de la imagen" style={{padding:1}}/>
     </span>
   </label>
