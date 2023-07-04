@@ -12,7 +12,7 @@ type Props = {
 export default function ContactMe( {} : Props){
       function saludar(){
         return Swal.fire({
-            title: 'la puta madre',
+            title: 'Muchas gracias',
             text: 'Me pondré en contacto contigo en la brevedad',
             icon: 'success',
             confirmButtonText: 'Entendido',

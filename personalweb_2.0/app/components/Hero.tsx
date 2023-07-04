@@ -15,15 +15,15 @@ export default function Hero({}: Props) {
 
   const word1 = [
     "Bienvenid@",
-    "Soy Luciano Lemos",
-    "Espero que disfrute mis proyectos",
+    "Mi nombre es Luciano Lemos",
+    "Espero que disfrute mi contenido",
     "No dude en contactarme🤙📲",
   ]
 
   const word2 = [
     "Welcome",
     "I'm Luciano Lemos",
-    "I hope you enjoy my projects",
+    "I hope you enjoy my content",
     "Feel free to contact me🤙📲",
   ]
 

@@ -52,9 +52,9 @@ const Boton1 = () => {
                     </div>
         
                     <div className='flex items-center space-x-5 justify-start'>
-                            <a href='mailto:llemos@uoc.edu?subject=Oferta%20de%20trabajo&body=Hola%20Luciano,%20he%20visto%20tu%20curriculum%20vitae%20y%20quer%C3%ADa%20ponerme%20en%20contacto%20contigo%20por%20una%20oferta%20de%20trabajo.%0BPuedes%20ponerte%20en%20contacto%20con%20nosotros%20a%20trav%C3%A9s%20de%3A%0B%09Mail:%20[%20Completar%20]%0B%09Tel%C3%A9fono:%20[%20Completar%20]%0B%09Horarios:%20[%20Completar%20]%0B%0BMuchas%20gracias%20por%20tu%20tiempo%0B%0BSaludos' className='flex space-x-5'>
+                            <a href='mailto:luciano.lemos.musi@gmail.com?subject=Oferta%20de%20trabajo&body=Hola%20Luciano,%20he%20visto%20tu%20curriculum%20vitae%20y%20quer%C3%ADa%20ponerme%20en%20contacto%20contigo%20por%20una%20oferta%20de%20trabajo.%0BPuedes%20ponerte%20en%20contacto%20con%20nosotros%20a%20trav%C3%A9s%20de%3A%0B%09Mail:%20[%20Completar%20]%0B%09Tel%C3%A9fono:%20[%20Completar%20]%0B%09Horarios:%20[%20Completar%20]%0B%0BMuchas%20gracias%20por%20tu%20tiempo%0B%0BSaludos' className='flex space-x-5'>
                             <EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                            <p className='text-xl'>llemos@uoc.edu</p>
+                            <p className='text-xl'>luciano.lemos.musi@gmail.com</p>
                             </a>
                     </div>
                         {/* 
@@ -66,7 +66,7 @@ const Boton1 = () => {
                 </div>
 
             <div className='max-md:w-96'>
-                <form action="https://formsubmit.co/llemos@uoc.edu" method="POST"
+                <form action="https://formsubmit.co/luciano.lemos.musi@gmail.com" method="POST"
                 className='flex flex-col space-y-2 mx-auto'>
                 {/* className='flex flex-col space-y-2 w-fit mx-auto'> */}
                     <div className='flex space-x-2 max-md:flex-col max-md:space-y-2 max-md:space-x-0'>
