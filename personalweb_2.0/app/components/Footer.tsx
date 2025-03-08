@@ -22,7 +22,7 @@ export default function Footer({}: Props) {
           title="Jerarquias2"
           width="1140"
           height="541.25"
-          src="https://app.powerbi.com/reportEmbed?reportId=0dd75a14-0b20-4ea4-9642-93f00d64d437&autoAuth=true&ctid=3a6d51bf-f1d4-47df-9a61-8bbe9c0e1e66"
+          src="https://app.powerbi.com/links/K5dF50sSW3?ctid=3a6d51bf-f1d4-47df-9a61-8bbe9c0e1e66&pbi_source=linkShare"
           frameBorder="0"
           allowFullScreen
         ></iframe>
